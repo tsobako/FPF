@@ -81,6 +81,7 @@ Pattern and headers templates are explained in pattern E.8.
 | A.15 | **Role–Method–Work Alignment (Contextual Enactment)** | Stable | *Keywords:* enactment, alignment, plan vs reality, design vs run, MIC, WorkPlan. *Queries:* "How do roles, methods, and work connect?", "How does an intention become an action in FPF?" | **Integrates:** A.2, A.3, A.4. **Prerequisite for:** all operational models. |
 | A.15.1 | **`U.Work`: The Record of Occurrence** | Stable | *Keywords:* execution, event, run, actuals, log, occurrence. *Queries:* "What is a Work record?", "Where are actual resource costs stored?" | **Refines:** A.15. **Used by:** B.1.6, all Part D. |
 | A.15.2 | **`U.WorkPlan`: The Schedule of Intent** | Stable | *Keywords:* plan, schedule, intent, forecast. *Queries:* "How to model a plan or schedule?", "Difference between a WorkPlan and a MethodDescription." | **Refines:** A.15. **Informs:** `U.Work`. |
+| A.15.3 | **`SlotFillingsPlanItem` — Planned Slot-Fillings Baseline (WorkPlanning PlanItem)** | Stable | *Keywords:* planned baseline, slot owner, planned filler, edition pins, `Γ_time` selector, guard pins, WorkPlanning, P2W seam, variance trail. *Queries:* "What is SlotFillingsPlanItem in FPF?", "How to keep planned slot filling separate from FinalizeLaunchValues?", "How to pin editions and time in WorkPlanning baselines?" | **Builds on:** A.15.2, A.6.5, E.10.D1, E.17, E.18, E.19. **Used by:** A.6.7 (suite contract pins), Part G universalization, suite/kit specialised baselines. |
 | A.16 | **Formality–Openness Ladder (FOL): Building Closed Worlds Inside an Open World** | Stub | *Keywords:* formality levels, rigor, proof, specification, sketch, F0-F9. *Queries:* "How to measure the formality of a document?", "What are the F0-F9 levels?" | **Builds on:** A.1. **Informs:** B.3. |
 | A.17 | **A.CHR-NORM — Canonical “Characteristic” & rename (Dimension/Axis → Characteristic)** | Stable | *Keywords:* characteristic, measurement, property, attribute, dimension, axis. *Queries:* "What is the correct term for a measurable property?", "How to define a metric?" | **Prerequisite for:** A.18, A.19, C.16. |
 | A.18 | **A.CSLC-KERNEL — Minimal CSLC in Kernel (Characteristic/Scale/Level/Coordinate)** | Stable | *Keywords:* CSLC, scale, level, coordinate, measurement Standard. *Queries:* "What is the CSLC Standard?", "How to ensure measurements are comparable?" | **Builds on:** A.17. **Prerequisite for:** all metric-based patterns. |
@@ -12432,8 +12433,8 @@ This aligns with A.6.P’s requirement to replace umbrella tokens with explicit 
 > **Builds on:** A.6.P (RPR); F.0.1:2.3 (Explicit Bridge Principle); E.10.D1 (Context discipline); E.10.U9 (Alignment/Bridge lexical discipline); F.9 (Bridge discipline + reasoning primitives); F.7/F.8 (Concept‑Set rows & weakest‑link); F.5 (labels); A.7 (Strict Distinction: lanes + stance hygiene); E.19 (normative precision)
 > **Coordinates with:** E.17 (Viewpoints / Views / Correspondences, when the prose is really about views/projections); C.3.3 (KindBridge, when the claim is about kind/classification transfer); A.6.6 (Identification/indexing, when the umbrella is really about IDs); Concept‑Set row scope rules; E.10 lexical SD (umbrella tokens); B.3 penalty conversion (if used)
 > **Delta‑Class:** Δ‑3 (new normative pattern; additive; does not change existing kernel semantics)
-> **Impact radius:** any document, table row, or boundary statement that asserts cross‑context sameness/compatibility/alignment between SenseCells
-> **Mint vs reuse:** reuses `Bridge`, `BridgeKind`, `dir`, `CL`, `Loss`, `scope`; does not mint new kernel relations
+> **Impact radius:** any document, table row, or boundary statement that asserts cross‑context sameness/compatibility/alignment between SenseCells, or collapses **A.7 lanes** / `CHR:ReferencePlane`s under umbrella “same/equivalent/…” wording
+> **Mint vs reuse:** reuses `Bridge`, `BridgeKind`, `dir`, `CL`, `Loss`, `scope`; adds A.6.9‑specific Bridge‑Card qualifiers (`Γ_time`, `facetSpan`) (annotation slots; do not alter the kernel Bridge predicate); does not mint new kernel relations
 > **Rationale witness:** required (in decision/publication lanes) for (i) declaring any Bridge with `scope` stronger than **Naming‑only**, and (ii) any strengthening edit (`scope` upgrade or `CL` increase). Provide the rationale as `witnessRefs` (review note, evaluation suite, decision log excerpt, etc.) and, where your process uses it, link the change to a DRR entry.
 
 ### A.6.9:1 - Problem frame
@@ -12446,6 +12447,9 @@ In FPF terms, this is almost never a single claim. It is a *Bridge situation* th
 * a potentially hidden **direction** (A→B is not B→A);
 * a hidden **degree of fit** (≈ vs ⊑/⊒ vs ⋂ vs ⊥, or interpretation‑only);
 * near‑inevitable **loss/distortion** on transfer;
+* a (usually implicit) **edition / time‑slice basis** for both endpoints and the correspondence judgement (`Γ_time`);
+* a usually implicit **facet span** (`facetSpan`; “which aspects are being aligned?”) — the correspondence is often a *partial lens*, not whole‑cell sameness;
+* a critical ambiguity between **lexical synonymy / translation** (“same word/label”), **referential co‑denotation** (“same referent under different IDs”), and **value‑level normalization** (“equivalent after φ‑normalization / unit conversion”).
 * a critical ambiguity between **explaining** a correspondence and **licensing substitution**.
 
 A.6.9 is the RPR specialisation that makes this structure explicit and prevents accidental “global identity” claims when the author’s intent is merely naming convenience or interpretive help.
@@ -12462,6 +12466,8 @@ When an umbrella predicate is used as if it were a single relation, readers (and
 
 The result is not merely imprecise wording: it changes what inferences are considered safe, and it pollutes Concept‑Set row scopes via unnoticed weakest‑link violations.
 
+It also breaks **temporal coherence**: if the underlying canons (glossaries, schemas, code lists, ontologies) evolve, an un‑pinned “equivalent” claim silently becomes a claim about *two different editions at once*.
+
 ### A.6.9:3 - Forces
 
 | Force                      | Pull                                            | Push                                                                      |
@@ -12471,6 +12477,7 @@ The result is not merely imprecise wording: it changes what inferences are consi
 | Direction sensitivity      | Many correspondences are one‑way.               | Natural language defaults to symmetry (“equivalent”).                     |
 | Partial overlap is common  | Real systems rarely coincide perfectly.         | “Same” collapses overlap vs inclusion vs disjointness.                    |
 | Evidence evolves           | Fit changes as counter‑examples are discovered. | Without change classes, people “re‑align” without recording what changed. |
+| Version drift              | Canons/models are versioned and revised.        | Without `Γ_time` pinning, “equivalent” becomes temporally incoherent.     |
 | Safety of reuse            | Substitution can reduce work.                   | Substitution without explicit `CL`/Loss is a latent defect.               |
 
 ### A.6.9:4 - Solution
@@ -12481,13 +12488,17 @@ This specialisation follows the A.6.P RPR envelope: it (i) defines a **trigger r
 
 #### A.6.9:4.0 - Trigger rule (normative)
 
-An occurrence SHALL be treated as an A.6.9 trigger when **CtxA ≠ CtxB** and the prose (or a table row comment) uses any of the following as if they were a single relation:
+An occurrence SHALL be treated as an A.6.9 trigger when **either** (i) `CtxA ≠ CtxB`, **or** (ii) the statement collapses **A.7 lanes** (`Object | Description | Carrier`) or `CHR:ReferencePlane`s under an umbrella sameness predicate, and the prose (or a table row comment) uses any of the following as if they were a single relation:
 
 * **Umbrella predicates**: “same”, “identical”, “equivalent”, “align”, “map”, “match”, “correspond(s)”, and close variants.
 * **Reuse‑intent shorthands** that often smuggle licences: “treat as”, “reuse”, “share”, “unify”, “canonical”, “single source of truth”, “synced”, “normalized”, “one‑to‑one”, “same ID”, “mirrors”.
 * **Endpoint umbrellas** in the presence of a cross‑context sameness claim (e.g., “the system/service/model/table/class”) — this is simultaneously an endpoint‑identity problem and a Bridge problem.
 
 **ID/reference caveat.** Tokens like “same ID”, “same key”, “one‑to‑one”, “synced”, or “mirrors” often denote an **identification/indexing** claim or an **operational mapping artefact** rather than a sense‑level correspondence. If an ID claim is being used as a proxy for meaning (“same ID ⇒ same thing/role”), split it into (i) an explicit identification/indexing claim (A.6.6) and (ii) any Bridge claim about meaning (this pattern). Keep code/ETL facts as `witnessRefs`; they do not determine `kind/CL/Loss/scope` by themselves.
+
+**Multilingual caveat.** In non‑English prose, treat local‑language equivalents of the umbrella tokens as the same trigger class (e.g., Russian “эквивалентно”, “соответствует”, “это одно и то же”).
+
+**Lane/plane‑only caveat.** If `CtxA = CtxB` and the trigger is solely a lane/plane collapse, repair lane/plane typing first (A.7 / declared `Φ_plane`). You MAY satisfy this pattern by re‑typing endpoints + adding an explicit non‑licensing marker; do not invent a Bridge unless you actually need an auditable cross‑Context licence record.
 
 When triggered, the author SHALL do exactly one of:
 
@@ -12504,6 +12515,8 @@ The repair has three moves:
 0. **Resolve endpoints as SenseCells (and pin editions where relevant).** If the surface text uses pronominal/metonymic bundles (“the system”, “the model”, “it”, “this class”, “that table”, “the service”), treat this as an endpoint‑identity problem first: enumerate candidates and select the intended `σ@Ctx` endpoints (Candidate‑Set Note, A.6.P:4.0b). Also check **lane** and **stance/time tags**: ensure each candidate sits on the intended A.7 lane (**Object | Description | Carrier**) and record any time‑stance tags on the relevant artefacts/sources (e.g., `DesignRunTag = design | run`) that affect substitution safety. Do not treat `DesignRunTag` as a separate Context; it is a time tag on artefacts/sources. If the only crossing is design↔run, route via an Interpretation Bridge (`kind=⇄ᴅʀ`, `scope=Explanation‑only`) unless you have a separately justified substitution Bridge within a fixed lane. If the triggering token is an identifier/key/code, repair it as a Carrier‑lane identification/indexing claim first (A.6.6), and only then decide whether there is also a sense‑level Bridge claim. If the ambiguity is actually a **CHR:ReferencePlane** mix (e.g., “a database column” vs “a real‑world attribute”), treat that as a ReferencePlane issue: restate endpoints on a single `CHR:ReferencePlane`, or route the crossing through a declared `Φ_plane` policy before attempting any substitution licence. In decision/publication lanes, endpoint ambiguity is fail‑closed: if the intended endpoints cannot be resolved from local cues and `witnessRefs`, keep the sentence as Plain explanatory prose (or an Explanation‑only Bridge) and do not use it to justify cross‑Context reuse, Concept‑Set rows, or substitution.
    * **Modularity note:** if the endpoint token itself is a known umbrella term (e.g., “service”), apply the relevant endpoint‑disambiguation RPR first (e.g., A.6.8 for “service”), then return here for the cross‑context sameness predicate.
    * **View/projection note:** if the prose is primarily about **views/projections/correspondences** rather than sameness licences, coordinate with E.17 (multi‑view describing). You may still need a Bridge for naming/substitution licences, but do not let “is a view of” silently become “is the same as”.
+   * **Edition / canon pinning (Γ_time).** If either endpoint’s meaning is fixed by a versioned canon (glossary, schema, code list, ontology, model release), record the specific editions (or “as‑of” date) used to make the correspondence judgement, and carry that as `Γ_time` on the Bridge Card. If you cannot state `Γ_time` in decision/publication lanes, fail‑closed: keep the prose Explanation‑only and do not justify rows or substitution.
+   * **Ontology category sanity (Kinds vs instances vs values).** Before declaring `kind/dir/CL/scope`, check that the endpoints live at compatible ontological strata (e.g., *Kind/classification* vs *instance* vs *measurement value*). If the “equivalence” is really a kind/classification transfer, coordinate with **C.3.3 KindBridge**; if it is a value‑normalization claim, treat it as a Measurement‑family bridge and make the normalization channel explicit in `Loss` (and/or `witnessRefs`).
 
 1. **Replace the umbrella predicate with a Bridge reference** (or an inline Bridge Card).
 2. **Choose the Bridge’s kind, direction, licence scope, `CL`, and Loss notes explicitly**, instead of letting readers infer them.
@@ -12521,6 +12534,11 @@ A conforming cross‑Context claim is expressed as a Bridge declaration:
 ⊢ Bridge(σA@CtxA, σB@CtxB) : ⟨senseFamily, kind, dir, CL, Loss, scope⟩
 ```
 
+**A.6.9 qualifiers (pattern‑level; Bridge‑Card annotations).** A.6.9 additionally requires:
+* `Γ_time` — edition/as‑of basis for the correspondence judgement (MUST in decision/publication lanes),
+* `facetSpan` — the facet‑preservation span when the correspondence is not whole‑cell.
+These live on the Bridge Card as qualifiers; they do **not** change the kernel Bridge predicate signature.
+
 This record is a **conceptual judgement and licensed‑use record** (a thought‑format), not an ETL pipeline, API guarantee, or a “mapping implementation”. Operational mapping artefacts (aligner models, lookup tables, transformation code) belong in `witnessRefs` and do not erase `Loss` or relax `scope` by themselves.
 
 **Non‑inheritance note.** A Bridge relates two local senses; it does **not** make `CtxA` a sub‑Context of `CtxB` (or vice versa), and it does not create “global identity” between Contexts.
@@ -12533,8 +12551,7 @@ This record is a **conceptual judgement and licensed‑use record** (a thought�
 
 #### A.6.9:4.2 - Explicit contract skeleton
 
-A.6.9 fixes the minimal slot set that must be made explicit whenever a cross‑Context “same/equivalent/align/map/…” assertion appears.
-
+A.6.9 fixes the minimal slot set that must be made explicit whenever a cross‑Context (or cross‑lane / cross‑plane) “same/equivalent/align/map/…” assertion appears.
 | Slot                 |               Required | Meaning / constraints                                                                                                                  |
 | -------------------- | ---------------------: | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `BridgeId`           |          Yes (if cited) | Required whenever the Bridge is referenced from multiple places, used to justify row scope, or used as a licence in decision/publication lanes. Inline cards MAY omit an id for a single‑use didactic gloss. **When present, the id is a registry reference** (per the F.9 registry‑reference note): check existence / edition pinning, not signature export. |
@@ -12542,15 +12559,20 @@ A.6.9 fixes the minimal slot set that must be made explicit whenever a cross‑C
 | `senseFamily`        |                    Yes | Use a named family (F.9). For substitution‑capable Bridges, this MUST be a single family (Role / Status / Measurement / Type‑structure / …). If the correspondence crosses families, use an **Interpretation** kind (`⇄ᴅʀ / →ᴍᴇᵃ / →ᴅᵉᵒ`) and record the channel explicitly (e.g., `Method ⇄ᴅʀ Execution`, `Measurement →ᴍᴇᵃ Requirement/Clause`, `Deontic →ᴅᵉᵒ Execution`), keeping `scope=Explanation‑only`. |
 | `kind`               |                    Yes | One of the F.9 kinds: `≈ / ⊑ / ⊒ / ⋂ / ⊥ / ⇄ᴅʀ / →ᴍᴇᵃ / →ᴅᵉᵒ`. Use `⊑/⊒` only for defensible inclusion. If you can name a counter‑case that violates inclusion for these endpoints, you do **not** have `⊑/⊒` — use `⋂` or refine endpoints (SenseCell split). |
 | `dir`                |                    Yes | Always explicit (F.9). Use `A→B` for any **substitution** claim (Role Assignment & Enactment‑eligible), even when `kind=≈`. Use `A↔B` only to express a symmetric correspondence (or Type‑structure reuse); it does **not** imply bidirectional substitution. **No implicit inversion.** **Inclusion sanity:** when `kind∈{⊑,⊒}`, ensure `dir` matches the intended safe reading (substitution, when allowed, goes **from narrower to broader**); if needed, swap endpoints or declare the inverse Bridge explicitly rather than relying on prose. |
+| `Γ_time`             | Yes (in decision/publication lanes); otherwise Should | **Edition / time‑slice basis** for the Bridge judgement. Pin (or reference) the editions of the canons that fix the endpoints’ meanings (glossary/schema/code list/ontology/model release), or state an “as‑of” date for both sides. If endpoint notation already pins editions unambiguously, you MAY set `Γ_time = =endpointPins`. If the correspondence is intentionally *rolling*, say so explicitly and attach an update policy + witnesses; rolling claims MUST NOT justify substitution unless a specific edition pair is pinned for the decision being justified. |
 | `CL`                 |                    Yes | Integer `0–3` with label (`0 Opposed`, `1 Comparable`, `2 Translatable`, `3 Near‑identity`) and a one‑line “why”. For `CL=3`, the “why” MUST cite matched invariants (see below). |
 | `Loss`               |                    Yes | **Non‑empty Loss Notes** stating what fails to carry (units, scope, granularity, preconditions, stance). `Loss: none` is permitted **only** when `CL=3` and matched invariants are cited; for `kind=⊥`, use `Loss: n/a (incompatibility claim)` (F.9). |
+| `facetSpan`          | Yes (if not whole‑cell); otherwise May | The **facet span** of the correspondence (what is being aligned / preserved): e.g., `{label}`, `{identifier semantics}`, `{membership}`, `{value after unit normalization}`, `{role qualifiers}`, `{status lattice}`. If the bridge is facet‑limited, either (a) refine endpoints into facet SenseCells (preferred), or (b) declare `facetSpan` explicitly and keep `scope` capped appropriately. |
 | `counterExample`     |           Yes (if CL≤2) | The crispest case where the next‑stronger reading would mislead (substitution, row scope, or type reuse). For `CL=3`, state “no known counterexamples under invariants” (and cite the invariant set). |
 | `invariants`         |           Yes (if CL=3) | A short list of the invariants that justify `CL=3` (domain + measurement + stance constraints as applicable), with pointers (`witnessRefs`) to where they are checked or argued. |
 | `scope`              |                    Yes | Allowed use (F.9): `Explanation‑only / Naming‑only / Role Assignment & Enactment‑eligible / Type‑structure`. This is a **maximum licence** for how the Bridge may be used in reasoning and tables. Do not confuse it with **Claim scope (G)** from USM (A.2.6), and do not encode “sometimes substitution” by mixing scopes—narrow endpoints instead (see below). |
-| `witnessRefs`        |                 Should | Evidence artefacts (alignment report, evaluation suite, test cases, review notes).                                                     |
+| `witnessRefs`        | Should (MUST in decision/publication lanes for any Bridge used beyond Explanation‑only) | Evidence artefacts / witness set (rules, tests, audits, empirical evaluations, review notes, alignment reports). `witnessRefs` are how readers distinguish “declared” from “demonstrated”. |
 | `didacticHook`       |                    May | A single sentence that teaches the safe reading.                                                                                       |
 
 **Hard separation:** “shared label” is `Naming‑only`; “can replace in decisions/enactment” is `Role Assignment & Enactment‑eligible` and requires the substitution conditions; “can be treated as the same class/type for structural inference” is `Type‑structure` and requires near‑identity under invariants.
+
+**Two “scopes” warning.** `scope` is a **licence scope** (how the Bridge may be used). The *facet span* of the correspondence (“which aspects are aligned?”) MUST be carried either by endpoint refinement (preferred) or by an explicit `span` + consistent `Loss`. Do not overload `scope` to mean facet span.
+**Naming note.** Use `facetSpan` for facet limitation to avoid confusion with other “span” operators/vocabulary elsewhere in the spec.
 
 **Kind/scope admissibility (concept‑level; non‑deontic).**
 
@@ -12568,19 +12590,23 @@ The following constraints are stated as *admissibility conditions* (E.19): they 
 
 #### A.6.9:4.3 - Change‑class lexicon
 
-A.6.9 forbids “re‑align / re‑map / now equivalent” as a change description. Changes are narrated using the **A.6.P change classes**; the Bridge‑specific verbs below are narrative shorthands that map to A.6.P:4.4 (`declareRelation`, `withdrawRelation`, `retargetParticipant`, `reviseByValue`, `rescope`, `refreshWitnesses`).
+A.6.9 forbids “re‑align / re‑map / now equivalent” as a change description. Changes are narrated using the **A.6.P change classes**; the Bridge‑specific verbs below are narrative shorthands that map to A.6.P:4.4 (`declareRelation`, `withdrawRelation`, `retargetParticipant`, `reviseByValue`, `rescope`, `retime`, `refreshWitnesses`).
 Authors SHALL NOT use umbrella verbs (“re‑align”, “re‑map”, “now equivalent”, …) as change narration. Narrate changes using the change‑class lexicon below (mapped to A.6.P:4.4).
 
 1. `declareBridge(BridgeId, σA@CtxA, σB@CtxB, …slots…)`
 2. `withdrawBridge(BridgeId)`
 3. `retargetEndpoint(BridgeId, σA→σA', σB→σB')` (edition pinning or SenseCell split/merge)
-4. `changeBridgeKind(BridgeId, kind→kind')` (maps to A.6.P `changeRelationKind`)
-5. `adjustCL(BridgeId, CL→CL')` (raise/lower, with at least one new invariant or counter‑example)
-6. `rescope(BridgeId, scope→scope')` (Naming‑only → Role Assignment & Enactment‑eligible / Type‑structure is a strengthening; requires DRR and MUST be unconditional for the same endpoints)
-7. `reviseLossNotes(BridgeId, Loss→Loss')`
-8. `refreshWitnesses(BridgeId, witnessRefs→witnessRefs')` (adding one witness is a special case: set‑union + re‑publish)
+4. `retime(BridgeId, Γ_time→Γ_time')` (maps to A.6.P `retime(newΓ_time)`; semantic; edition‑fenced in decision/publication lanes)
+5. `changeBridgeKind(BridgeId, kind→kind')` (maps to A.6.P `changeRelationKind`)
+6. `adjustCL(BridgeId, CL→CL')` (raise/lower, with at least one new invariant or counter‑example)
+7. `rescope(BridgeId, scope→scope')` (Naming‑only → Role Assignment & Enactment‑eligible / Type‑structure is a strengthening; requires DRR and MUST be unconditional for the same endpoints)
+8. `reviseLossNotes(BridgeId, Loss→Loss')`
+9. `reviseFacetSpan(BridgeId, facetSpan→facetSpan')` (maps to A.6.P `reviseByValue`; semantic; edition‑fenced in decision/publication lanes)
+10. `refreshWitnesses(BridgeId, witnessRefs→witnessRefs')` (adding one witness is a special case: set‑union + re‑publish)
 
 **Edition fence (decision/publication lanes).** Any semantic edit to a Bridge’s slots (endpoints, kind, dir, CL, scope, invariants) SHALL be published as a **new Bridge edition** (with an explicit supersedes/withdraws note) rather than rewriting a prior edition in place. This preserves auditability and prevents “silent strengthening” through edits.
+
+Semantic edits include changes to `Γ_time` or declared `facetSpan` (because they change what editions/aspects the correspondence judgement is about).
 
 **Workflow/guard‑scoped strengthening is not a plain `rescope`.** If the stronger licence holds only after filtering/guards (e.g., “human users only”), represent that by **refining endpoints** (SenseCell split) and declaring a Bridge for the refined endpoints (new id or new edition), rather than upgrading the broad Bridge’s scope.
 
@@ -12590,8 +12616,7 @@ Authors SHALL NOT use umbrella verbs (“re‑align”, “re‑map”, “now e
 
 **Umbrella tokens (red‑flag triggers):** “same”, “identical”, “equivalent”, “align”, “map”, “match”, “correspond(s)”, and close variants.
 
-These are only in‑scope here when used as **cross‑Context predicates** (`CtxA ≠ CtxB`). For that case:
-
+These are only in‑scope here when used as **cross‑Context predicates** (`CtxA ≠ CtxB`) or when the prose collapses **A.7 lanes** / `CHR:ReferencePlane`s under an umbrella sameness predicate. For that case:
 * In **Tech register** (normative / decision‑carrying prose), authors SHALL NOT use umbrella tokens as standalone cross‑Context predicates. Use a Bridge reference and a licence‑revealing verb instead (“share a label”, “substitutes for”, “explain in terms of”).
 * In **Plain didactic** or quoted legacy prose, umbrella tokens MAY appear, but only if the paragraph also includes an explicit Bridge reference (BridgeId or inline Bridge Card) so readers are not forced to infer `kind/dir/CL/Loss/scope`.
 
@@ -12628,6 +12653,8 @@ Updates:
 
 **Default safety rule (normative):** authors SHALL NOT assign `CL≥1` (nor claim Naming‑only or substitution) unless they can state `Loss` notes and (for `CL≤2`) a `counterExample`. Otherwise, keep the statement as Explanation‑only (didactic gloss) or postpone the cross‑Context claim until evidence exists.
 If the stable intent is **anti‑conflation** (“do not treat them as the same”), make that explicit as `kind=⊥` with `scope=Explanation‑only` (contrast), or—when the contrast is stable and repeatedly needed—publish a contrast row per the Concept‑Set discipline instead of relying on “not the same” prose.
+
+When endpoint meanings are versioned, the same rule applies to `Γ_time`: if you cannot state the edition/as‑of basis, keep the claim Explanation‑only and do not justify rows or substitution.
 
 #### A.6.9:4.6 - Mapping artefacts are not Bridges (normative clarification)
 
@@ -12744,6 +12771,8 @@ A document or boundary statement conforms to A.6.9 iff:
 * **CC‑A.6.9‑8 (Change narration).** Changes to cross‑Context fit are narrated using the change‑class lexicon (declare/withdraw/adjustCL/rescope/…) rather than umbrella verbs.
 * **CC‑A.6.9‑9 (Kind/scope admissibility).** Any Bridge used to justify cross‑Context sameness satisfies the admissibility constraints INV‑XCTX‑KS‑1 … INV‑XCTX‑KS‑5 (no overlap‑to‑substitution; no disjoint/interpretation rows; substitution is directional; Type‑structure only under `≈` + `CL=3` + invariants).
 * **CC‑A.6.9‑10 (Registry reference hygiene).** If a BridgeId (or policy/edition id) is cited, it is treated as a **registry reference** (existence / edition pinning), not as a semantic symbol exported by signatures.
+* **CC‑A.6.9‑11 (Edition basis).** In decision/publication lanes, any Bridge used to justify Naming‑only / substitution / Type‑structure SHALL state `Γ_time` (edition pins or “as‑of” basis). If `Γ_time` cannot be stated, the claim MUST remain Explanation‑only and MUST NOT justify rows or substitution.
+* **CC‑A.6.9‑12 (Facet honesty).** If the correspondence holds only on a subset of facets, the author SHALL either (a) refine endpoints into the facet SenseCells (preferred) or (b) declare `facetSpan` explicitly, with `Loss` consistent with that facet span. Whole‑cell Bridges MUST NOT be used to smuggle facet‑only correspondences.
 
 ### A.6.9:8 - Common Anti‑Patterns and How to Avoid Them
 
@@ -12761,6 +12790,9 @@ A document or boundary statement conforms to A.6.9 iff:
 | **AP‑XCTX‑10** | Two‑way substitution by symmetry | “The Bridge is A↔B, so we can substitute both ways.” | `A↔B` expresses correspondence symmetry, not two substitution licences; substitution is directional and must be stated (F.9:13.2). | Declare both substitution directions explicitly (two licences / two Bridges / two editions), each with Loss + counter‑examples. |
 | **AP‑XCTX‑11** | Kind/dir mismatch | `kind=⊒` but `dir=A→B` is used as if it licensed substitution. | Inverts narrower/broader; encourages unsafe “narrowing substitution” and silent information loss. | Swap endpoints (so the intended safe direction is written as `A→B` with `kind=⊑`), or declare an explicit inverse Bridge; keep scope ≤ Naming‑only until the direction is justified. |
 | **AP‑XCTX‑12** | Kernel promotion by Bridge | “Since A≈B, we can mint a unified global type and treat both as instances.” | Bridges translate local senses; they do not mint global meaning or new `U.Type`s. | If you need a new shared type/kind, follow A.11; keep Bridges as translators between Context-local senses. |
+| **AP‑XCTX‑13** | Edition drift / timeless equivalence | “A is equivalent to B” with no edition/as‑of basis. | Makes the claim temporally incoherent as canons evolve; readers silently compare different revisions. | Pin editions via `Γ_time`; publish Bridge edits as new editions; fail‑closed to Explanation‑only when `Γ_time` cannot be stated. |
+| **AP‑XCTX‑14** | Facet‑only alignment masquerading as whole‑cell sameness | “Customer corresponds to User” (but only `email` or an external ID aligns). | Collapses a partial lens into global sameness; invites unsafe substitution and row scope creep. | Refine endpoints to the facet SenseCells, or declare `facetSpan` explicitly and keep `scope` capped (usually Naming‑only). |
+| **AP‑XCTX‑15** | Lexical translation ⇒ semantic identity | “Term A is the same as term B” (just a translation / synonym). | Confuses labels with referents; erases loss and context. | Use `scope=Naming‑only` with explicit `Loss` (incl. language/canon notes) and a counter‑example; do not imply substitution. |
 
 ### A.6.9:9 - Consequences
 
@@ -12778,6 +12810,8 @@ A document or boundary statement conforms to A.6.9 iff:
   * Can surface uncomfortable truth: many “same” claims are only Naming‑only.
 
 **Adoption test (PRAG).** Take any cross‑Context sentence that uses an umbrella predicate (“same/equivalent/align/map/…”). If the team cannot (a) name the two SenseCell endpoints, (b) state `dir`, (c) write at least one Loss bullet, and (d) give a crisp counter‑example (for CL≤2), then the claim is not ready to be treated as Naming‑only or substitution‑eligible. Keep it as Explanation‑only (or explicit non‑licensing prose) until evidence exists.
+
+If the endpoints’ canons are versioned and the team cannot state `Γ_time` (edition/as‑of basis), treat that as the same kind of “evidence missing”: keep the claim Explanation‑only.
 
 ### A.6.9:10 - Rationale
 
@@ -15327,6 +15361,412 @@ Use this as a human‑readable checklist (not a rigid schema):
 * **Rationale:** Elevates **planning/scheduling** to a first‑class episteme that coordinates Methods, RoleAssignings, and Work without conflation.
 
 ### A.15.2:End
+
+## A.15.3 - SlotFillingsPlanItem
+
+> **Tech-name:** `SlotFillingsPlanItem`
+> **Plain-name:** planned slot-fillings baseline item (planned baseline)
+> **Type:** Architectural (A)
+> **Status:** Stable
+> **Normativity:** Normative (unless explicitly marked informative)
+> **Placement:** Part A → A.15 (Work & WorkPlanning)
+> **Builds on:** pattern template (E.8), `U.WorkPlan` (A.15.2), Work enactment discipline (A.15.1 / TGA), Context discipline (E.10.D1), `MechSuiteDescription` (A.6.7), conformance discipline (E.19), publication/view discipline (E.17; views are projections, not places of meaning)
+> **Used by:** planned-baseline requirements from suites/kits; P2W (selection → WorkPlanning → WorkEnactment); Part G universalization
+> **Purpose (one line):** provide a universal, context-explicit **planned baseline** that maps a slot-owner’s `SlotKind`s to **planned fillers**, to be consumed by Work enactment where launch values are finalized.
+
+**Minting notes (informative)**
+* **Mint vs reuse:** This pattern mints the kind name `SlotFillingsPlanItem`. It reuses existing Core terms and disciplines (e.g., `U.WorkPlan.PlanItem`, SlotKind/ValueKind/RefKind/refMode discipline, edition pinning, `U.BoundedContext`, and the P2W split between WorkPlanning and WorkEnactment).
+* **`SlotFillingsPlanItem` (kind name):** keep the suffix `PlanItem` to preserve the WorkPlanning locus. Do not mint aliases like *SlotBinding…* (conflicts with the A.6.5 binding discipline) or *SlotValue…* (ambiguous owner/context).
+* **Anchor names:** if any anchors in §4.2 are later materialized as formal field names, keep `…_ref` only for fields whose values are concrete RefKind handles, and keep `…_id` only for identifiers. Avoid introducing generic placeholders like `SpecRef/PolicyRef/GateRef` inside this pattern; prefer existing concrete ref kinds (or a dedicated DRR+LEX step).
+* **Row vocabulary:** treat `SlotFillingRow` and `PlannedFiller` as *internal* names of this pattern unless/until a separate DRR+LEX step promotes them to shared tokens.
+
+### A.15.3:1 - Problem frame
+
+FPF frequently needs to make **reproducible, reviewable choices** about *what fills which conceptual slot* (spec refs, policy refs, mechanism-instance refs, time selectors, evidence hooks, etc.) **before** any Work is enacted. These choices must be visible as a planned baseline for a concrete P2W slice (CG-frame / path slice / publication scope), and must remain distinct from run-time “actuals” and gate decisions.
+
+However, absent a universal WorkPlanning artifact for “architecture-by-planned-slot-filling”, authors tend to hide these choices inside mechanism prose, CG/CN specs, ad-hoc cards, or informal checklists—making Part G patterns difficult to universalize and making Work audit trails ambiguous.
+
+`SlotFillingsPlanItem` addresses this by defining a **WorkPlan PlanItem kind** whose job is to state, in one place and with explicit context, a mapping:
+
+> *(Target slot owner, slot kind) → planned filler (ByValue | ByRef(<concrete RefKind>), with edition pins when needed)*
+
+and to do so in a form that can be cited by Work enactment and by suite/kit contract pins, without collapsing into “execution” or “decision logging”. 
+
+### A.15.3:2 - Problem (what breaks without it)
+
+Without an explicit `SlotFillingsPlanItem` baseline, at least six failure modes recur:
+
+1. **Hidden slot ownership and meaning drift:** a planned filler is stated without making explicit *whose* slot set is being filled, allowing silent reinterpretation of `SlotKind`s across kits/suites.
+
+2. **Plan/execution collapse:** plan documents get “backfilled” with run-time values, so there is no stable planned baseline and no clean variance trail. WorkPlan explicitly warns against this. 
+
+3. **Implicit time (“latest”) and implicit recency:** planned claims about comparability or launch readiness omit an explicit `Γ_time`, which violates the time discipline (“no implicit recency”). 
+
+4. **Edition ambiguity:** references to methods/policies/specs are not edition-pinned where reproducibility requires it, or the plan mutates the edition vector instead of citing pinned editions (edition changes are crossings, not “plan edits”). 
+   A particularly harmful subtype is **edition-key backfill**: retroactively editing a previously used baseline so that an edition-key change looks like an innocent PlanItem edit (hiding the required GateCrossing witness and breaking audit traceability).
+
+5. **Crossing invisibility:** cross-context/plane expectations (Bridge + policy ids) are not stated at plan time, so later gate crossings appear as “magic” rather than traceable expected constraints.
+
+6. **G-pattern fragmentation:** each Part G pattern invents its own place to stash planned refs (method pick, comparator pick, QD archive config, etc.), blocking a clean “G.Core” universal layer and making modular reuse brittle.
+
+### A.15.3:3 - Forces (what we must balance)
+
+* **Strict distinction:** planned baseline is not a run-time witness; launch values are finalized only in Work enactment. 
+* **Context must be explicit:** every normative claim/rule is context-bound; the PlanItem must carry its context rather than relying on file location or prose. 
+* **Time must be explicit:** no implicit “latest”; any plan that will be cited by comparability/launch checks needs an explicit `Γ_time` selector/rule. 
+* **SlotKind meaning is stable:** the plan may choose fillers, but must not reinterpret SlotKinds or smuggle new semantics into indices.
+* **Derived indices must not become “places of meaning”:** projections like “planned spec refs” are useful, but must remain derivable from the authoritative rows.
+* **Conceptual, not procedural:** no solver steps, no lints, no “data governance”; this is an epistemic object used by humans in review.
+* **Supports universalization:** one PlanItem pattern must be usable across the whole of Part G, not just G.5.
+* **Integrates with suites/kits:** suites may require a planned-baseline ref and may act as slot owners. 
+
+| Force | Tension |
+| --- | --- |
+| Plan/run split | Plan must be citeable without containing run-time values. |
+| Slot meaning stability | SlotKinds must not drift by implicit owner changes. |
+| Edition honesty | Baselines must pin editions where meaning changes; avoid “latest”. |
+| Suite/kit modularity | Suites define contracts; baselines choose fillers for a plan instance. |
+| Auditability | A reader must reconstruct “what was planned” without chasing hidden defaults. |
+| Extensibility | Allow suite-specialized variants without breaking universal core. |
+
+### A.15.3:4 - Solution
+
+#### A.15.3:4.1 Definition
+
+A `SlotFillingsPlanItem` is a **kind of `U.WorkPlan.PlanItem`** whose content is a **planned slot-fillings ledger** for a *single* slot owner, within an explicit P2W context.
+
+It is a **WorkPlanning baseline**, intended to be:
+
+* produced/approved in WorkPlanning,
+* **cited** by downstream Work enactment (as planned baseline),
+* compared against actual fillings (variance recorded in Work, not by rewriting the plan). 
+
+**Normative note (I/D/Spec vs views):** A `SlotFillingsPlanItem` is a Description-level planning episteme (a PlanItem). It MAY be projected into `U.View` (e.g., `TechCard(SlotFillingsPlanItemRef)`), but any view is strictly a projection and MUST NOT introduce additional claims or “shadow defaults”.
+
+#### A.15.3:4.2 Core conceptual descriptors (not a data schema)
+
+A conformant `SlotFillingsPlanItem` SHALL provide the following description (names are indicative; the semantics are normative):
+
+1. **PlanItem core (from A.15.2)**
+   The PlanItem MUST remain a planning artifact: it may include assumptions, dependencies, constraints, expected artifacts, and notes; it MUST NOT contain run-time logs/actuals. 
+
+2. **Target slot owner**
+
+   * `target_slot_owner_ref : <concrete …DescriptionRef>` (required)
+     Identifies the **owner of the SlotKind set** being filled (e.g., a kit description or a suite description).
+     The slot owner MUST be referenced as an **edition-addressable Description episteme** (a concrete `…DescriptionRef` such as `MechSuiteDescriptionRef`, `…KitDescriptionRef`, etc.),
+     and MUST NOT be a mechanism `U.Mechanism.IntensionRef` (or any other intensional ref).
+     A `MechSuiteDescription` MAY serve as a slot owner for this purpose.
+     If the slot owner’s SlotKind interface is edition-sensitive (or expected to evolve), the reference MUST be edition-pinned (e.g., `target_slot_owner_ref.edition`) whenever the PlanItem is used as a reproducibility baseline.
+
+3. **Described entity and grounding (for “whose measurements/choices?”)**
+
+   * `described_entity_ref : <concrete RefKind>` (required)
+     The referent is the *described entity* (C.2.3 role): the thing the planned baseline is **about**.
+     It MUST NOT be silently conflated with a holon. (Example: a baseline can be about a width/measure while the grounding holon is a stool with that width.)
+     Use a concrete RefKind of the described entity (e.g., `U.HolonRef`, `U.MeasureRef`, …). Do **not** mint a new generic `EntityRef` token inside this pattern.
+   * `grounding_holon_ref? : U.HolonRef` (optional; required when the described entity is not itself a holon and a grounding holon is needed for plane/frame anchoring)
+   * `reference_plane? : ReferencePlane` (optional; required when not unambiguously derivable from cited context artifacts such as CG-frame/spec pins)
+
+4. **Explicit planning context** (no hidden context)
+
+   * `bounded_context_ref : U.BoundedContextRef` (required)
+   * `cg_frame_ref? : CGFrameRef` (recommended when the fillings feed CG legality/selection)
+   * `path_slice_id? : PathSliceId` (recommended for P2W reproducibility)
+   * `publication_scope_id? : PublicationScopeId` (recommended if the plan will be surfaced in publication-facing views)
+     These anchors exist because context is mandatory for claims/rules in FPF-style authoring. 
+
+5. **Explicit time selector** (no implicit recency)
+
+   * exactly one of:
+
+     * `Γ_time_selector : Γ_timeSelector` (ByValue), or
+     * `Γ_time_rule_ref : Γ_timeRuleRef` (RefKind)
+       This MUST be present whenever the plan is intended to support comparability/launch-related downstream checks. 
+
+6. **Expected guard pins** (refs/expectations only; no gate decisions)
+
+   * `expected_usm_guard_pins : [USM.CompareGuard | USM.LaunchGuard]` (ByValue; subset of `{USM.CompareGuard, USM.LaunchGuard}`)
+     These lexemes are reserved for `USM.Guards` **pins** (gate-level surfaces), not for mechanism operator names.
+     If `USM.LaunchGuard` is expected, the plan MUST include enough pins/refs to make that guard executable downstream (explicit `Γ_time_*`, pinned editions where needed, and evidence hook anchors).
+     The PlanItem MUST NOT include outcomes for these guards and MUST NOT emulate gate decisions; it only records *expectations* and *required anchors*.
+
+   * `guard_owner_gate_ref? : <concrete OperationalGateRefKind>` (refs only; required when `expected_usm_guard_pins` is non-empty unless unambiguously derivable)
+     Identifies the gate that owns/aggregates `GuardFail` outcomes (via the `GuardOwnerGateSlot` discipline). This remains an expectation pin, not a decision log.
+     (Use the concrete RefKind that addresses `OperationalGate(profile)` in A.21. If such a RefKind does not yet exist, treat this as a DRR+LEX item.)
+
+7. **Planned evidence anchors (pin refs only)**
+
+   * `planned_evidence_pin_refs? : [<concrete …PinRef>…]`
+     These are anchors to *where* evidence will be placed or cited (typically SCR/RSCR pins; optionally other pin kinds explicitly allowed by the downstream guard regime),
+     not the evidence itself.
+
+8. **The planned slot-fillings ledger (authoritative rows)**
+
+   * `planned_fillings : [SlotFillingRow+]` where:
+
+     `SlotFillingRow := ⟨ slot_kind, planned_filler, edition_pin? ⟩`
+
+     * `slot_kind : SlotKind`
+       A SlotKind provided by the `target_slot_owner_ref` (the PlanItem MUST NOT reinterpret SlotKind meaning).
+       Unless the slot owner explicitly declares the slot as multi-valued, each `slot_kind` SHALL appear **at most once** in `planned_fillings`.
+     * `planned_filler : PlannedFiller` where:
+       `PlannedFiller := ByValue(value) | ByRef(ref : <concrete RefKind>)`
+       In `ByRef(…)`, the `ref` MUST be of a **concrete RefKind** (e.g., `…SpecRef`, `…PolicyRef`, `…MethodDescriptionRef`);
+       the PlanItem MUST NOT use an untyped/generic “Ref” / “RefKind” placeholder.
+       The chosen filler MUST conform to the SlotSpec discipline of the slot owner (A.6.5-style: `refMode ∈ {ByValue | <concrete RefKind>}`).
+       Changes to planned fillers are described using the A.6.5 verb discipline: ByValue content change (`fill/assign/update`) vs ref retargeting (`retarget`) vs ref resolution (`resolve`), never by “renaming the slot”.
+     * `edition_pin? : EditionId`
+       Required only when reproducibility depends on an edition **and** the planned filler cannot carry an edition pin directly (preferred: `…DescriptionRef.edition` on the ref itself).
+       If both the planned filler ref and the row provide edition pinning, they MUST agree (mismatch ⇒ nonconformant).
+       ByValue rows SHOULD NOT carry edition pins unless the pinned edition is explicitly tied to a cited external artifact (e.g., a referenced rule/policy/method description).
+
+9. **Derived indices (optional; never a second source of truth)**
+
+   * `planned_spec_ref_index? : [<concrete …SpecRef>…]`
+   * `planned_policy_ref_index? : [<concrete …PolicyRef>…]`
+   * `planned_mechanism_instance_ref_index? : [<concrete …MechanismInstanceRef>…]`
+     If any of these are present, they MUST be **derivable projections** of `planned_fillings`; any mismatch is nonconformant.
+     (These are *categories* of refs extracted from the authoritative rows, not an invitation to introduce new generic `SpecRef/PolicyRef` token-kinds.)
+
+10. **Expected crossing policy pins (refs only; no crossing witnesses)**
+
+   * `expected_crossing_policy_refs? : [⟨bridge_card_ref, phi_policy_id, psi_policy_id?, phi_plane_policy_id?, reference_plane(src,tgt)⟩ …]`
+     These communicate what the plan expects will be needed for crossings, without claiming that a crossing has occurred.
+     `bridge_card_ref` is expected to pin a Bridge identity/channel (BridgeId + channel) and to be auditable via downstream CrossingSurface/UTS rows.
+     This section states **Bridge-only** expectations; it MUST NOT introduce non-Bridge crossing mechanisms, and it MUST NOT embed CL/Φ/Ψ/Φ_plane tables (refs/policy-ids/pins only).
+
+   * `expected_crossing_surface_refs? : [CrossingSurfaceRef…]` (optional)
+     Permitted only when the plan is explicitly citing already-published CrossingSurface baselines (e.g., “fixed context constants”); otherwise, the PlanItem SHALL state only expected policy pins and allow the crossing witness to appear at the gate/work level.
+
+11. **Notes (didactic, non-normative)**
+
+* `planned_filling_notes?`
+  Helpful narrative for reviewers; must not embed new claims that contradict the rows.
+
+#### A.15.3:4.2.1 Canonical skeleton (Show)
+
+The following compact pseudo-record illustrates the intended *canonical minimum*: explicit context + explicit time + a few authoritative rows.
+
+```
+SlotFillingsPlanItem := ⟨
+  kind = SlotFillingsPlanItem,
+  target_slot_owner_ref = CHRMechanismSuiteDescriptionRef@edition(E_suite),
+  described_entity_ref = U.HolonRef(H:described-entity), // or another concrete RefKind per C.2.3
+  grounding_holon_ref = U.HolonRef(H:grounding-holon)?,  // when the described entity is not itself a holon
+  bounded_context_ref = U.BoundedContextRef(BC:context),
+  cg_frame_ref = CGFrameRef(CG:frame),              // optional but typical for G.* legality/selection
+  path_slice_id = PathSliceId(P2W:slice),           // optional but typical for reproducibility
+  Γ_time_selector = point(t0),                      // no implicit “latest”
+  expected_usm_guard_pins = {USM.CompareGuard, USM.LaunchGuard},
+  planned_evidence_pin_refs = [RSCR.PinRef(RSCR:evidence-anchor)],
+  planned_fillings = [
+    ⟨ slot_kind = CNSpecSlot, planned_filler = ByRef(CNSpecRef(CN:…@edition(E_cn))) ⟩,
+    ⟨ slot_kind = CGSpecSlot, planned_filler = ByRef(CGSpecRef(CG:…@edition(E_cg))) ⟩,
+    ⟨ slot_kind = ScoringMethodDescriptionSlot,
+      planned_filler = ByRef(ScoringMethodDescriptionRef(M:…@edition(E_m))) ⟩
+  ]
+⟩
+```
+
+#### A.15.3:4.3 Relation to Work enactment (planned baseline vs actuals)
+
+* A `SlotFillingsPlanItem` is **not** a witness of `FinalizeLaunchValues`.
+  Launch values (actuals) occur only in Work enactment, and their witness belongs in Work/audit surfaces, not in this PlanItem. 
+
+* Deviation at execution time is allowed, but it must be recorded as **variance in Work**, and the plan must not be rewritten to match the execution. 
+  When a Work enactment claims to follow a planned baseline, the Work MUST cite the `SlotFillingsPlanItem` in its Audit as the planned baseline reference, and MUST record any variance against it (rather than “backfilling” the plan).
+  The baseline citation SHOULD be edition-addressable (i.e., the Work cites a stable PlanItem edition), so that later PlanItem revisions cannot erase what was actually planned.
+  If the baseline needs to change (including any edition-pinned ref changes), author a **new PlanItem edition** (or a new PlanItem) and treat the difference as a planning change—not as a retroactive edit of the previously cited baseline.
+
+#### A.15.3:4.4 Relation to suites/kits
+
+* Any suite/kit that requires a “planned baseline” may require and cite a reference to a `SlotFillingsPlanItem` via its contract pins; `MechSuiteDescription` explicitly provides a place for such a requirement. 
+
+#### A.15.3:4.5 - Variants
+
+1. **Suite-specialized PlanItem (Refinement)**
+   A suite may define `XSuiteSlotFillingsPlanItem ⊑ SlotFillingsPlanItem` with:
+
+   * fixed `target_slot_owner_ref = XSuiteDescriptionRef`,
+   * additional required rows (e.g., mandatory pinned `CGSpecRef`, `CNSpecRef`, suite-required mechanism instance refs),
+   * additional required expected pins (guards, crossing policies).
+
+2. **Minimal vs crossing-aware variants**
+
+   * *Minimal:* includes only context + planned rows + time selector.
+   * *Crossing-aware:* adds `expected_crossing_policy_ref[]` and explicit `reference_plane`.
+
+3. **Evidence-gated variant**
+   For workflows where `USM.LaunchGuard` is expected, require `planned_evidence_pin_refs[]` and explicitly pin the relevant edition set needed for the later guard.
+
+#### A.15.3:4.6 - Non-goals
+
+* Not a mechanism; it performs no operations and publishes no operator signatures.
+* Not a `…Spec`; it is not an acceptance harness and does not replace CN-Spec or CG-Spec.
+* Not a hiding place for acceptance thresholds: any threshold-like semantics MUST live in explicit Acceptance/Policy artifacts (and be referenced/pinned), not smuggled in as anonymous ByValue numbers.
+* Not a gate log: it MUST NOT contain `GateDecision` / `DecisionLog`, and MUST NOT claim that a crossing occurred.
+* Not a run-time witness: it MUST NOT contain `FinalizeLaunchValues` actuals.
+* Not a publication surface: it may be projected to views, but it is not “the card” itself. Any view MUST be an explicit projection (e.g., `TechCard(PlanItemRef)`), and unchecked presentation drift is a known failure mode. 
+
+#### A.15.3:4.7 - When to use
+
+Use `SlotFillingsPlanItem` whenever:
+
+* a workflow will be enacted through P2W and you need a **planned baseline** for what fills a suite/kit’s slots;
+* you must pin editions/time policies explicitly (e.g., legality gates, comparator sets, transport registries);
+* you are refactoring/authoring Part G patterns and want a uniform place to record selected refs/policies/mechanism instances;
+* you expect a LaunchGate or any guard-based eligibility check to be meaningful and traceable.
+
+#### A.15.3:4.8 - Implementation notes
+
+**Informative authoring guidance (conceptual):**
+
+1. Choose one `target_slot_owner_ref` per PlanItem. If multiple slot owners are involved, author multiple `SlotFillingsPlanItem`s (one per owner) to keep slot meaning unambiguous.
+2. Fill rows by SlotKind, not by positional arguments or “index numbers”.
+3. If any downstream reasoning may hinge on “now vs then”, supply `Γ_time_selector` or `Γ_time_rule_ref` explicitly.
+4. Prefer edition-pinned references when the downstream step is intended to be reproducible across review cycles.
+5. Use derived indices only as projections for reader convenience; never maintain them independently.
+6. If a PlanItem has been cited as a baseline by a Work, do not “edit it in place” to match reality. Create a new PlanItem edition and let Work record variance and/or the required crossing witnesses.
+
+### A.15.3:5 - Archetypal Grounding (Tell–Show–Show; System / Episteme)
+
+#### A.15.3:5.1 - Archetype 1: CHR suite planned baseline for lawful characterization
+
+**Tell.** A team plans a characterization workflow over a CG-frame that uses a CHR mechanism suite. The suite requires an explicit planned baseline reference.
+
+**Show (failure without `SlotFillingsPlanItem`).** The “plan” is implicit: it says “use the latest CG-Spec and the current best comparator; compute scores and launch” without an explicit `Γ_time`, without edition pins, and without a stable mapping from SlotKinds to chosen fillers. Review later cannot distinguish: (i) what was planned, (ii) what was executed, and (iii) what changed via a crossing / edition-key shift.
+
+**Show (repair with `SlotFillingsPlanItem`).** A conformant `SlotFillingsPlanItem`:
+* targets `CHRMechanismSuiteDescriptionRef` as the slot owner (and pins its edition if used as a reproducibility baseline),
+* pins `CNSpecRef` and `CGSpecRef` (editions pinned where reproducibility requires),
+* pins a `ScoringMethodDescriptionRef.edition` (e.g., a monotone scoring family) and/or a set-valued method family (e.g., conformal-style set predictions),
+* declares `Γ_time_selector = point(t0)` (no implicit “latest”),
+* declares `expected_usm_guard_pins = {USM.CompareGuard, USM.LaunchGuard}`,
+* includes evidence pin refs that will later be populated/used in Work enactment.
+
+The resulting Work enactment cites this PlanItem as the planned baseline; any substitution (e.g., retargeting a method description ref) appears as Work variance (and, when relevant, as a crossing witness), not as a retroactive plan rewrite.
+
+#### A.15.3:5.2 - Archetype 2: Archive/QD selection with edition-sensitive descriptors
+
+**Tell.** A workflow plans to return an **archive** (quality-diversity style) rather than a single winner. The selection pipeline depends on descriptor maps and distance definitions that are edition-sensitive.
+
+**Show (failure without `SlotFillingsPlanItem`).** Descriptor-map and distance-definition drift is discovered only after the fact: an “archive” is produced, but reviewers cannot reconstruct which descriptor edition and distance definition were assumed at planning time, and the published view/card becomes the de facto (and mutable) “source of truth”.
+
+**Show (repair with `SlotFillingsPlanItem`).** A conformant `SlotFillingsPlanItem`:
+* targets an archive-selection kit/suite as `target_slot_owner_ref`,
+* pins `DescriptorMapDescriptionRef.edition` and `DistanceDefDescriptionRef.edition` (or their kit equivalents),
+* states `expected_usm_guard_pins = {USM.CompareGuard}` (if no LaunchGate is expected yet),
+* records expected crossing policy pins if descriptors are reused cross-context.
+
+This prevents “silent” descriptor drift across iterations and makes Part G’s archive-related extensions composable rather than embedded in selector prose.
+
+### A.15.3:6 - Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal**.
+
+| Lens | Bias / limitation introduced by the pattern | Mitigation |
+| --- | --- | --- |
+| Gov | Baseline immutability and variance recording can be misread as bureaucracy rather than epistemic hygiene. | Keep the baseline minimal; use suite-specialized refinements only when a suite contract truly requires them. |
+| Arch | Enforces a clean P2W seam and discourages “configuration hidden in mechanisms”. This can expose weakly-specified slot owners earlier. | Treat that friction as an architectural signal; refine the slot-owner interface rather than hiding choices in prose. |
+| Onto/Epist | Strongly biases toward explicit context/time/edition pinning; exploratory reasoning may feel constrained. | Use minimal variants (context + rows + time selector) for exploration; graduate to pinned editions only when reproducibility is required. |
+| Prag | Increases upfront authoring cost (explicit context, time, edition pins). | Use derived indices as projections for reader navigation; avoid duplicating content on views/cards. |
+| Did | Biases against “one true card” habits by treating views as projections; may clash with existing documentation culture. | Provide a TechCard/PlainView projection explicitly, but keep the PlanItem as the semantic authority. |
+
+### A.15.3:7 - Conformance Checklist
+
+| ID          | Check (normative)                                                                                                                                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CC-A15.3-01 | The object is a `U.WorkPlan.PlanItem` with `kind = SlotFillingsPlanItem`, and obeys WorkPlan guardrails (no logs/actuals, no step logic).                                                                           |
+| CC-A15.3-02 | `target_slot_owner_ref` is present and identifies a real SlotKind owner (kit/suite); SlotKinds in rows are interpreted only within that owner.                                                                      |
+| CC-A15.3-02a | If the PlanItem is used as a reproducibility baseline and the slot owner is edition-addressable, `target_slot_owner_ref` is edition-pinned (e.g., `…DescriptionRef.edition`).                                      |
+| CC-A15.3-02b | `target_slot_owner_ref` is a **Description-level** ref (e.g., `MechSuiteDescriptionRef`, `…KitDescriptionRef`) and MUST NOT be an intensional ref (e.g., `U.Mechanism.IntensionRef`). |
+| CC‑A15.3‑02c (single slot owner) | A `SlotFillingsPlanItem` targets exactly one slot owner via `target_slot_owner_ref`. If multiple slot owners are involved, they MUST be represented by multiple PlanItems (one per owner). |
+| CC-A15.3-03 | `described_entity_ref` is present. If `grounding_holon_ref` and/or `reference_plane` are omitted, they must be unambiguously derivable from cited context artifacts (e.g., the pinned CG-frame/spec context).      |
+| CC-A15.3-03a | `described_entity_ref` is a concrete RefKind (no generic “EntityRef” placeholder is introduced by this pattern). |
+| CC-A15.3-04 | Context anchors are explicit at least to `bounded_context_ref`; if the fillings support legality/selection, then CG-frame/path-slice anchors are present.                                                           |
+| CC-A15.3-05 | Time is explicit: the item includes `Γ_time_selector` or `Γ_time_rule_ref`; “latest/current” without explicit `Γ_time` is nonconformant.                                                                             |
+| CC-A15.3-05a | Exactly one of `Γ_time_selector` and `Γ_time_rule_ref` is present (XOR); both-present or both-absent is nonconformant. |
+| CC-A15.3-06 | `planned_fillings` is the authoritative source: each row is `⟨slot_kind, planned_filler, edition_pin?⟩`; each planned filler is explicit `ByValue` vs `ByRef(ref-of-concrete-RefKind)` and conforms to the slot owner’s SlotSpec discipline (no silent slot-meaning changes). |
+| CC-A15.3-06a | Unless the slot owner declares a slot as multi-valued, `planned_fillings` contains **no duplicate** `slot_kind` rows (duplicate keys ⇒ nonconformant). |
+| CC-A15.3-06b | If both a row and its `ByRef(…)` filler carry edition pinning, they MUST agree; mismatch ⇒ nonconformant. |
+| CC-A15.3-07 | Any present “indices” (`planned_*_ref_index`) are derivable projections of `planned_fillings` and are not independently authored; mismatch ⇒ nonconformant.                                                         |
+| CC-A15.3-08 | The PlanItem contains no `GateDecision` / `DecisionLog`, and makes no claim that a crossing occurred; only expected policy pins may be stated.                                                                      |
+| CC-A15.3-09 | The PlanItem contains no `FinalizeLaunchValues` witness and no launch-time actuals; launch values are finalized only in Work enactment.                                                                             |
+| CC-A15.3-10 | If `expected_usm_guard_pins` includes `USM.LaunchGuard`, the PlanItem contains sufficient pins/refs (explicit `Γ_time_*` + pinned editions + evidence pin anchors + `guard_owner_gate_ref` or an unambiguous derivation) to make downstream guard execution possible.     |
+| CC-A15.3-10a | In this pattern, “evidence anchors” are expressed as pin refs (e.g., SCR/RSCR pins). Introducing a new generic `EvidenceHookRef` token requires an explicit DRR+LEX step; absent that, use concrete pin refs. |
+| CC-A15.3-11 | The PlanItem does not claim to set or mutate the edition vector (`editions{…}` / edition_key). It may pin editions and may state *expected* edition-sensitive crossings, but edition changes themselves are crossings (gate/work-level witnesses). |
+| CC-A15.3-12 | When used as a baseline for enactment, execution-time deviations are recorded as Work variance and the baseline PlanItem is not rewritten (“no backfill”); the Work Audit cites the PlanItem (preferably by edition-addressable ref) as the planned baseline reference.  |
+| CC-A15.3-12a | Any change to edition-pinned refs that would alter the effective edition-key for legality/selection MUST NOT be retroactively applied to the already-cited baseline PlanItem. Treat it as (i) a new PlanItem edition for future enactments and (ii) variance and/or required crossing witnesses for the enactment that deviated. |
+| CC-A15.3-13 | If `expected_crossing_policy_refs` is present, it contains **refs/policy-ids only** (BridgeCardRef + policy-id refs + plane ids); it MUST NOT embed CL/Φ/Ψ/Φ_plane tables or introduce non-Bridge transport edges. |
+| CC‑A15.3‑13a (crossing surfaces are not witnesses) | `expected_crossing_surface_refs` (if present) is used only to cite already‑published, context‑constant CrossingSurface baselines; it MUST NOT be used to claim that a crossing occurred for this enactment, nor to substitute for gate/work‑level crossing witnesses. |
+| CC‑A15.3‑14 (view projection discipline) | Any `U.View` projection of a `SlotFillingsPlanItem` (e.g., `TechCard(PlanItemRef)`, `PlainView(PlanItemRef)`) MUST be an explicit projection that introduces no additional claims, defaults, or rows beyond the PlanItem; any additional semantics on the view is nonconformant. |
+
+
+### A.15.3:8 - Common Anti‑Patterns and How to Avoid Them
+
+#### A.15.3:8.1 - Plan-as-execution
+
+A plan document says: “Use the latest CG-Spec and the current best comparator; compute scores and launch.”
+This is nonconformant because it omits explicit `Γ_time`, omits edition pins, collapses planning into execution, and provides no stable baseline for variance/audit.
+
+#### A.15.3:8.2 - Anti-example: Edition-key change disguised as a plan edit (backfill)
+
+A team executes Work while actually using `CGSpecRef@edition(E2)` (and/or `ComparatorSetRef@edition(E2)`), but the previously approved baseline PlanItem had pinned `@edition(E1)`.
+Later, instead of recording variance and the required GateCrossing witness for the **edition-key change**, someone edits the baseline PlanItem “in place” to replace `E1 → E2`,
+and then claims “no variance; we followed the plan”.
+
+This is nonconformant because it:
+* collapses planning into execution (retroactive baseline editing),
+* hides an edition-key change that is crossing-relevant,
+* destroys reproducibility and breaks Work/Audit traceability.
+
+Correct handling: keep the old baseline intact; record variance in Work and, where applicable, require the gate/work-level crossing witness (UTS/CrossingSurface + policy-id pins),
+or produce a new PlanItem edition as the new planned baseline for subsequent enactments.
+
+### A.15.3:9 - Consequences
+
+| Benefit | Trade‑off / Cost | Notes / Mitigation |
+| --- | --- | --- |
+| Improved modularity | Requires an explicit baseline artifact | Keep baselines minimal; specialise only when a suite truly needs it. |
+| Audit clarity | More up‑front authoring work | The burden is intentional: it buys attributable variance and prevents “mystery defaults”. |
+| Edition honesty | Forces authors to think about editions and time | Use editioned refs and time selectors by ref; keep actual `Γ_time` in Work evidence. |
+| Controlled specialisation | Multiple PlanItem kinds may exist (core + suite‑specialised) | Use DRR to document why specialisation is warranted; keep the universal core stable. |
+
+### A.15.3:10 - Rationale
+
+This pattern exists to give WorkPlanning an explicit, citeable place to commit to “which artifacts will fill which slots” without collapsing into run-time state.
+
+Keeping the baseline bound to exactly one slot owner makes SlotKind semantics checkable and prevents accidental cross-owner slot drift.
+
+Treating indices as derived projections preserves a single source of truth (the rows) while still enabling human-friendly navigation or tooling acceleration.
+
+Finally, by disallowing run-time witnesses (launch values, observed values, concrete `Γ_time`) the pattern enforces the plan/run split and keeps audit variance attributable to an explicit baseline rather than to shifting defaults.
+
+### A.15.3:11 - SoTA‑Echoing (informative)
+
+This pattern aligns with post‑2015 practice in multiple traditions while deliberately staying notationally/tool independent.
+
+* **ISO/IEC/IEEE 12207:2017** — **Adopt** the separation between planning artifacts and execution artifacts plus baseline/change-control concepts; **Adapt** them into a lightweight, citeable PlanItem kind; **Reject** prescribing any specific process tooling as normative inside FPF.
+* **ISO 26262:2018** — **Adopt** the emphasis on traceability, change impact visibility, and preventing retroactive “paper compliance”; **Adapt** it into baseline immutability + variance reporting; **Reject** treating safety certification structure as a required envelope for all contexts.
+* **NIST SP 800-128 Rev.1 (2020)** — **Adopt** baseline management and deviation recording as an audit primitive; **Adapt** by expressing baselines as epistemic, context-bound references rather than machine configuration states; **Reject** security-tooling prescriptions as a dependency of the conceptual model.
+* **Forsgren, Humble, Kim (2018), _Accelerate_** — **Adopt** the empirical lesson that explicit change tracking and small, attributable deltas improve reliability; **Adapt** by making the baseline the anchor for fulfilment/variance; **Reject** any “one true pipeline” or vendor-specific operational recipe.
+* **Morris (2021), _Infrastructure as Code_ (2nd ed.)** — **Adopt** the desired-state vs observed-state distinction and the discipline of explicit declarations; **Adapt** by keeping declarations as plan-level epistemes rather than deployment manifests; **Reject** binding the model to any specific IaC syntax or platform.
+
+### A.15.3:12 - Relations
+
+* **Builds on / governed by:**
+  * **A.15.2 `U.WorkPlan`** — container + PlanItem discipline; baseline citeability.
+  * **A.6.5 slot discipline** — SlotKind/RefKind hygiene and binding-time separation.
+  * **E.10.D1 Context discipline** — explicit context/edition; no implicit “latest”.
+  * **E.18 / TGA** — keeps `FinalizeLaunchValues` strictly in WorkEnactment; pin/guard discipline.
+* **E.17 / Publication discipline** — views are projections; no new semantics on cards.
+* **Interacts with / complements:**
+  * **A.6.7 `MechSuiteDescription`** — suites may require the presence of a planned baseline ref/pin without embedding planned fillers or launch values.
+  * **A.15.1 Work / WorkEnactment discipline** — fulfilment and variance are recorded downstream against this baseline.
+  * **C3.2-S-02 Time discipline** — time selection policy may be pinned by ref; run-time `Γ_time` stays in Work evidence.
+
+### A.15.3:End
 
 ## A.17 - Canonical “Characteristic” (A.CHR‑NORM)
 
