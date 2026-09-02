@@ -1,370 +1,496 @@
-## A.2.7 - RoleRelationStructure@BoundedContext - Context-Local Role Relations and Representation-Lens Boundary
+## A.2.7 - SystemRoleKindRelationStructure - Relations among System-Role Kinds
+
+> **Type:** Architectural (A)
 > **Status:** Stable
-> **Type:** Ontic relation-structure pattern
+> **Normativity:** Normative unless marked informative
 
+### A.2.7:0 - Use This When
 
-### A.2.7:0.1 - Kind Settlement
+**Plain designation.** Say “structure of relations among system-role kinds” for `SystemRoleKindRelationStructure`.
 
-**Use this pattern when** a project needs context-local role substitution, incompatibility, factor, qualification, bundle relations, or role-decomposition repair without turning labels or role-algebra notation into a second ontology.
+Use this pattern when several exact context-local system-role kinds are already admitted, and a later admission, allocation, or interpretation check needs one of these results:
 
-**What goes wrong if missed.** Role labels start carrying type, capability, method, work, evidence, or permission claims, and a representation lens starts replacing the role relation structure in life.
+- an assignment to one system-role kind may satisfy a condition written for another kind;
+- two system-role kinds are incompatible under one exact holder, Work, and time rule;
+- several independently obtaining assignments are required together under one allocation rule; or
+- one system-role kind narrows another, and the practitioner must decide whether that narrowing is monotonic `U.SubkindOf` or a different residual relation.
 
-**What this buys.** Role-relation claims stay small, local, and inspectable while role assignment, capability, method, work, evidence, source, status, publication, and lens claims keep their own governing patterns.
+Typical working moments include these:
 
-A.2.7 does not admit `U.RoleAlgebra` as a durable U-kind. The governed object is `RoleRelationStructure@BoundedContext`: a selected context-local relation structure over role descriptions, `U.Role` values, role expressions, substitution, incompatibility, and bundle-expression relations. A role algebra, graph, matrix, embedding, distributed model, or neural representation is a mathematical or representation lens over that structure, not the structure itself and not an operation on holder systems.
+- a pressure-test MethodDescription names `HydraulicsTechnicianSystemRole`, while the proposed holder is assigned to `SeniorHydraulicsTechnicianSystemRole`;
+- the same system must not hold author and approver assignments for the same hazard-analysis Work during overlapping windows;
+- a surgical procedure needs surgeon, anesthetist, and scrub-practitioner assignments together, with three distinct holders;
+- `RoboticsEngineerSystemRole` may be a subkind of `EngineerSystemRole`, but neither a nested label nor one assignment can establish that order.
 
-`RoleRelationStructure@BoundedContext` is the FPF object for context-local relations among role descriptions, declared role values, local role expressions, role-bundle expressions, and role-assignment-admission uses. It is not a new `U.*` kind beside `U.Role`; it is a selected relation structure over role-side values inside one bounded context. When project prose calls this "role architecture", the FPF object is still the selected role-relation structure in life; a role-algebra, graph, matrix, embedding, distributed, or neural description is a lens over that structure, not the structure itself and not an operation on holder systems. Coupled method relations are governed symmetrically as `MethodRelationStructure@BoundedContext` under `A.3.1`, `A.3.2`, `A.15`, `G.5`, or a direct method-composition pattern when current; A.2.7 names the role-relation side and the bridge to role-method naming.
+**First useful result.** Write the readable direct relation or `U.SubkindOf` claim needed by the receiving use. Recover its exact predicate. Stop there unless another claim needs one relation occurrence as an identifiable object or needs several obtaining relations selected into one structure.
 
-Use this pattern when a method, work-admission rule, staffing rule, safety case, governance rule, or role description needs to say that one role value can satisfy a role-admission condition stated with another role value, two roles cannot be held together by the same holder during the same window, a role expression has a factor or domain qualification, a role-decomposition claim needs grounding, or a frequent conjunction of roles is worth naming.
+**Primary EntityOfConcern.** For one direct question, the EntityOfConcern is the exact relation occurrence or exact `C.3.1 U.SubkindOf` occurrence. When several such occurrences must be selected together, it is one `SystemRoleKindRelationStructure`: a dependent `U.Structure` selected from exact local system-role-kind constituents and exact obtaining relations under the exact applied constraints and one named selection-use frame.
 
-**Primary EntityOfConcern.** The EntityOfConcern is `RoleRelationStructure@BoundedContext`: a context-local role-relation and role-expression structure in one `U.BoundedContext`. Algebraic notation, matrices, partial orders, products, graphs, embeddings, neural representations, or other mathematical or representation expressions are descriptions or lenses of that structure. The role architecture in life is the selected relation structure among role values and role expressions; the lens is not the holder, not the performed work, not the living system, not the method, and not the role assignment.
+The structure contains neither holder systems nor system-role-assignment occurrences. A graph, taxonomy table, policy file, or organization chart may describe it but does not become the structure or any selected relation by form.
 
-**Primary working reader.** A manager, architect, method author, safety assessor, or model author who needs role-admission substitution, separation-of-duties, role-factor or qualification expression, role-bundle expression, or ordinary name guidance without turning the role relation structure into capability, method, holder, work, evidence, status, or kind hierarchy.
+**Primary working reader.** The first reader is an engineer, Method designer, safety practitioner, clinical team designer, or manager deciding which relations a later check may rely on. The reader should be able to recover the exact system-role kinds, relation rule, applicability, occurrence identity, and assignment inputs without treating a name hierarchy or policy row as the relation itself.
 
-**First useful move.** Name the bounded context, the role descriptions or role values being related, the local role expression or relation being claimed, and the assignment, method, work-admission, naming, or bridge check that will use that relation. If the claim decomposes a role, first decide whether the recovered object is role-admission substitution, factor or qualification, bundle expression, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, method/work decomposition, or only ordinary prose. Use a role-algebra lens only when mathematical notation helps state or check that relation.
+**What goes wrong if missed.** A job-title order is used as admission authority. An independence rule omits the holder, Work, or overlap condition. A bundle name hides whether one or several systems must hold the assignments. A semantic restriction is called `U.SubkindOf` although a known broader classification can be false. A scheme or taxonomy edition is then inserted as a participant of every relation even when it changes no meaning.
 
-**What goes wrong if missed.** Role names start acting like type hierarchy, org-chart hierarchy, permission policy, capability model, method family, staffing plan, or cross-context translation. Then FPF grows a second ontology beside `U.Role`, `U.RoleAssignment`, `U.Capability`, and method or work patterns, or treats algebraic notation as if it were the object in life.
+**What this buys.** Admission substitution, incompatibility, joint allocation, monotonic kind order, and residual qualification remain different claims with different truth and identity laws. Actual holders remain systems, actual assignments remain direct species of `U.SystemRoleAssignment`, and the system performing a receiving check remains visible.
 
-**What this buys.** Context-local role relation structure gives a small, replayable set of role relations for role assignment, method role-admission checks, naming, and bridge work while keeping ability, work, method, evidence, and status claims in their governing patterns. Role-algebra notation remains a lens for describing those relations, not a substitute ontology.
+**Not this pattern when.** Use `A.2` and `C.3` to admit and classify exact local system-role kinds. Use `A.2.1` for assignments and their holders, `A.2.5` for `SystemRoleAssignmentStatePredicate` and `SystemRoleAssignmentStateRelation`, `A.2.2` for capability, A.3 patterns for Methods, and A.15 patterns for planned or performed Work. Use `F.9` and `A.6.9` for an actual cross-scheme Bridge, then a separate bounded-use assertion and reliance decision. Use `C.29` when a graph, matrix, algebra, embedding, or table is the object under evaluation.
 
-**Not this pattern when.**
+### A.2.7:1 - Problem Frame
 
+A system applying a maintenance-admission Method may admit a current assignment to `SeniorHydraulicsTechnicianSystemRole` where the MethodDescription names `HydraulicsTechnicianSystemRole`. A system applying a safety Method may reject overlapping author and approver assignments. A clinical MethodDescription may state a joint condition over three assignments. A classification review may ask whether every true `RoboticsEngineerSystemRole` judgment implies a true `EngineerSystemRole` judgment.
 
-- If the current claim is who holds a role, use `A.2.1`.
-- If the current claim is whether an assignment is currently in a work-admitting state, use `A.2.5`.
-- If the current claim is ability, use `A.2.2`.
-- If the current claim is a method, method family, or method description, use `A.3.1` or `A.3.2`.
-- If the current claim is performed work or planned work, use `A.15`, `A.15.1`, or `A.15.2`.
-- If the current claim is cross-context naming or translation, use F-family context and naming patterns such as `F.9` and `F.18`.
-- If the current claim is evidence, source, status, assurance, publication, or description use, use `C.2.1`, `A.10`, `B.3`, `E.17.*`, `E.24.PUB`, or `A.7` as the direct governing pattern for that episteme-use claim.
+These uses all concern exact system-role kinds, but they do not concern the same relation. The assignment occurrences used by a receiving check are also not participants of the kind relation. They remain independently obtaining A.2.1 relations whose holder, exact assigned kind, extent, and any real domain participant are recovered under their direct species.
 
-### A.2.7:1 - Problem frame
+A system-role-kind description or taxonomy episteme may state a relation claim, and its reference scheme may help interpret that claim. The world-side relation obtains under its direct predicate. When a `KindSignature`, scheme, Bridge, or other edition changes the relation rule, include that edition in the predicate's semantic basis; otherwise keep it as interpretation material outside occurrence identity.
 
-**Use this when** a method, work-admission rule, staffing rule, safety case, governance rule, or role description needs a declared context-local relation among role values, role expressions, or role-bundle expressions.
+`SystemRoleKindRelationStructure` is the selected organization among exact kinds and exact obtaining relations. For any checking Work, identify the acting system and dated Work under their direct patterns; the selected structure supplies only the organization used by that check.
 
-**What goes wrong if missed.** Role labels act as type hierarchy, org chart, permission, capability, method family, staffing plan, or cross-context equivalence; mathematical notation then starts replacing the role relation structure in life.
+### A.2.7:2 - Problem
 
-**What this buys.** Role-admission substitution, incompatibility, role factors, and role bundles become inspectable local relations while role assignment, capability, method, work, evidence, source, status, and publication claims stay with their governing patterns.
+The practitioner needs a reusable relation for a later engineering check, but familiar shorthand collapses four different questions:
 
-Work governed by role values and role assignments often needs three small claims:
+1. Can an assignment to one system-role kind satisfy an admission condition written for another?
+2. Are assignments to two system-role kinds incompatible under a stated holder, Work, and time rule?
+3. Must assignments to a finite set of system-role kinds be present together, and how may holders be allocated?
+4. Does one kind monotonically narrow another, or does the restriction require a different relation?
 
-1. One role value can satisfy a role-admission condition stated with another role value in the same context when a role-admission substitution relation is declared.
-2. Two roles are incompatible for the same holder during overlapping windows.
-3. A recurring conjunction of roles can be named as a role bundle expression.
+Calling every answer a hierarchy loses the predicate. Calling the answer a role part introduces mereology without constructive assembly or a meta-holon transition. Calling the answer a policy, chart, taxonomy, or scheme confuses a relation with an episteme or convention that describes or interprets it. The receiving check then cannot show which premise it used or what change would invalidate the outcome.
 
-Role decomposition is not a fourth primitive and not evidence of role holonhood. It prompts recovery of one of the declared relations above, a role-state refinement under `A.2.5`, a separate role value under `A.2`, a capability, responsibility, permission, commitment, or obligation relation under its direct owner, or a coupled method/work decomposition under `A.15`.
+### A.2.7:3 - Forces
 
-Without a local role relation structure, teams usually encode those claims in the wrong objects:
+| Force                                                 | Tension                                                                                                                                                    |
+|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reuse vs local meaning                                | Several contexts may use similar labels while their exact local kinds and relation rules differ.                                                           |
+| Direct relation realism vs socially constituted rules | A row does not create predicate truth, while some specialized social relations genuinely depend on an accepted act or decision named by their direct rule. |
+| Readable claim vs occurrence identity                 | Ordinary use should stop at a direct sentence, while a later assertion may need one exact relation occurrence.                                             |
+| Kind relation vs holder assignment                    | A relation among kinds may guide a check but assigns no system and creates no assignment.                                                                  |
+| Monotonic order vs residual restriction               | True subkind order must preserve every defined classification judgment; many useful semantic restrictions do not.                                          |
+| Joint admission vs compound kind                      | Several assignments may be required together without creating a combined system-role kind.                                                                 |
+| Stable predicate vs changing semantic basis           | A compatible edition may preserve meaning, but a changed rule or identity-bearing basis creates another predicate and occurrence.                          |
+| Structure vs representation                           | A graph or matrix can make organization inspectable without becoming that organization.                                                                    |
 
-- a role assignment says "senior inspector" and silently satisfies "inspector" without declared relation;
-- a separation-of-duties rule is written as a deontic slogan rather than an incompatibility relation over assignments;
-- a role bundle becomes a new holder, capability, work product, or method;
-- a cross-context label match is treated as role equivalence;
-- method role-admission wording smuggles capability or work claims into role names.
+### A.2.7:4 - Solution
 
-A.2.7 keeps the role relation structure small and local. It says how role values, role descriptions, and role expressions relate; it does not say who holds them, whether holders are able, whether work happened, or whether an episteme proves something. Algebraic, graph, factor, embedding, distributed, neural, or other mathematical descriptions are optional lenses over that structure.
+Start with the one relation family needed by the receiving use. Use exact local system-role kinds as its participants and put the rule, applicability, and only meaning-changing semantic-basis editions in its by-value predicate. Current assignments, assignment-state relations, capability, evidence, and the receiving window remain inputs to the later check.
 
-### A.2.7:1.0 - Problem
-
-A combined role expression such as engineer-roboticist, inspector-auditor, or musician-teacher can hide several different claims: a local role-admission substitution, a role bundle, a factor or qualification, an incompatibility, a holder assignment, a capability claim, a responsibility, permission, commitment, or obligation relation, a role-state refinement, or a method/work coupling. The problem is to recover the local role relation structure without minting a new universal role kind, treating role decomposition as mereological parthood, or treating an algebraic, graph, factor, embedding, or neural description as the role structure itself.
-
-### A.2.7:1.1 - Forces
-
-| Force                                 | Tension                                                                                                                                                                                  |
-|:------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Local relation vs universal type      | A role-admission substitution is valid inside one bounded context; it must not become kind subsumption or a universal role taxonomy.                                                     |
-| Life structure vs representation lens | Algebra, graph, matrix, embedding, or neural representation may describe the selected role relation structure; the lens is not the holder, role assignment, capability, method, or work. |
-| Compact naming vs hidden bundle       | Ordinary names such as engineer-roboticist can help when the context declares the relation or bundle; they hide work when they silently combine independent roles or methods.            |
-| Role-method coupling vs collapse      | Role and method relation structures often appear together, but method, method family, work plan, and performed work keep their direct governing patterns.                                |
-
-### A.2.7:2 - Solution - Core Role-Relation Structure
-
-`RoleRelationStructure@BoundedContext` is a relation structure declared inside one `U.BoundedContext`. A role-algebra description may be attached when notation helps inspection, but the structure remains the governed object.
+Build a structure only when several exact relation occurrences must be selected together:
 
 ```text
-RoleRelationStructure:
-  BoundedContextRef:
-  RoleDescriptionRefs?:
-  RoleValueSet:
-  RoleExpressionSet?:
-  RoleAdmissionSubstitutionSet:
-  IncompatibilityRelationSet:
-  FactorOrQualificationExpressionSet?:
-  BundleExpressionSet:
-  MathematicalOrRepresentationDescriptionRefs?:
-  UseRelationRefs:
+SystemRoleKindRelationStructure : U.Structure
+  systemRoleKindSubstrate:
+    exact finite set of independently identified context-local system-role kinds, by value
+  selectedSystemRoleKindRelationOccurrenceRefs:
+    finite set of references to exact obtaining relation occurrences
+  appliedConstraintClaimRefs:
+    exact constraint claims applied in this selection; an empty set is stated explicitly
+  namedSelectionUseFrame:
+    question:
+    admissibleAction:
+    stopOrReturnCondition:
+    groundedNonAdmissibleOverread?:
 ```
 
-**BoundedContextRef.** The role relation structure is local. A relation declared in `HospitalOR_2026` does not automatically apply in `PlantMaintenance_2026` or another hospital's governance context.
+The structure specializes A.22's four-part identity: the exact system-role-kind constituents, the exact selected obtaining relation occurrences, the exact constraint claims applied, and one named selection-use frame stating the question, admissible action, and stop or return condition. A grounded non-admissible overread is optional use-boundary material and not an identity discriminator. A changed rendering, identifier, selecting Work, publication, table, or graph changes no structure while all four values remain unchanged. Replacing a constituent, selected relation occurrence, applied constraint, or use frame identifies another structure. Without a required constraint or named frame, the material is still an arrangement or description rather than an admitted `SystemRoleKindRelationStructure`.
 
-**RoleDescriptionRefs.** Role descriptions may supply the recognized meaning of role values or role expressions. They are description epistemes, not the holder, not the assignment, and not the algebraic lens.
+#### A.2.7:4.1 - Direct Relation and Declaration Discipline
 
-**RoleValueSet.** The structure ranges over `U.Role` values governed by `A.2`.
+Substitution, incompatibility, bundle, and residual qualification are four families of direct relations under `U.Relation`. This pattern gives their different laws. Each context declares its exact direct species with exact local ValueKinds in its `RelationSignature`; A.2.7 does not introduce a permissive root signature or four additional universal Tech kinds over every possible system-role kind.
 
-**RoleExpressionSet.** The structure may include context-local role expressions such as qualified roles, bundle expressions, decomposition candidates, or labels that ordinary prose uses before a durable role value is declared.
+Apply the relation-object order from `A.6.REL`:
 
-**RoleAdmissionSubstitutionSet.** The context may declare `AcceptedAssignmentRole <= AdmissionConditionRole` as a role-admission substitution relation. This is a local admissibility relation for method, work-admission, staffing, safety, or governance checks. It is not kind subsumption, org-chart rank, capability evidence, source-label equivalence, or public naming.
+1. recover the exact participant kinds and by-value predicate;
+2. establish from current facts or accepted constituting history whether the predicate obtains;
+3. individuate one occurrence only when a receiving use needs occurrence identity;
+4. assign a stable reference only when another episteme needs it; and
+5. keep assertion, evidence, reliance, and representation separate from the occurrence.
 
-**IncompatibilityRelationSet.** The context may declare `RoleA incompatibleWith RoleB`. This means the same holder cannot use overlapping role assignments for both roles in the same bounded context and window when that incompatibility is current for the work claim.
+Each direct species declares one SlotSpec for every actual system-role-kind participant and one by-value predicate SlotSpec. A context-local kind domain gives each system-role-kind SlotSpec its exact ValueKind. A system-role-taxonomy episteme, effective reference scheme, `KindSignature`, Bridge, or selected model-use structure is not another generic participant. Include its exact edition in predicate identity only when the rule depends on that edition.
 
-**FactorOrQualificationExpressionSet.** The context may declare that one ordinary label is a qualified role expression, such as engineer qualified by robotics domain, method family, practice, or work field. This does not automatically create a separate `RoboticistRole` or a combined role value.
+A record does not constitute predicate truth by itself. If a specialized direct relation obtains only through an accepted appointment, policy decision, installation, or other constituting act, the context-local predicate must name that act and its acceptance condition. A.2.7 does not silently treat every taxonomy statement or policy row as constitutive.
 
-**BundleExpressionSet.** The context may declare `RoleBundle := Role1 and Role2 and Role3` as a role-bundle expression. The expression is satisfied only by valid assignments to each component role under the same bounded context and required window. It does not create a composite holder, composite capability, or method.
+Logical form supplies argument order, set semantics, and relation laws. It does not supply grounded kinds, truth, occurrence identity, Work, Method, transformation, agency, constructive assembly, or holon admission. A grammatical verb makes none of those objects act.
 
-**MathematicalOrRepresentationDescriptionRefs.** A mathematical or representation description may use order, product, factorization, graph, matrix, embedding, neural representation, distributed model, or another lens to express the selected role relation structure. This description is governed like any lens use: it names what it represents, what it preserves, what it loses, and what it must not be overread to prove.
+If current facts nevertheless concern one actual bounded change, make that change a separate subject and use `A.3.4` to recover one `U.Transformation` at the resolution and boundary needed by the use. Name its affected entity, boundary, precondition, postcondition, and obtaining relations. Keep it distinct from the relation among system-role kinds, an assertion about that relation, and the Work that checks it. `U.Transformation` by itself supplies neither a transformation-composition predicate nor holonhood.
 
-**UseRelationRefs.** A method step, work-admission check, staffing rule, safety case, naming decision, or governance rule may cite the role relation it uses.
+#### A.2.7:4.2 - Admission Substitution
 
-### A.2.7:3 - Role-Relation Expressions
+Use the admission-substitution family when one assignment may satisfy a receiving condition written for another system-role kind. The relation is directional.
 
-#### A.2.7:3.0 - Role Decomposition Boundary
-
-Start from the object claim, not from the word used for it. If a role is decomposed, the admissible repairs are:
-
-- role-admission substitution when one role assignment may satisfy a role-admission condition stated with another role value;
-- factor or qualification when one role expression narrows a role by domain, practice, method family, work field, or context;
-- bundle expression when several independent role assignments must be held together;
-- separate role value when the bounded context needs its own role description, state expectations, capability-fit conditions, and method or work relations;
-- role-state refinement under `A.2.5` when only enactable-state detail changes;
-- capability-fit condition, responsibility relation, permission, commitment, or obligation under the direct owner when the decomposition actually names those objects;
-- method or work decomposition under `A.15` when the source actually divides method into submethods or work into work-part relations.
-
-Do not use role `partOf`. `U.Role` is a root work-facing role value under `A.2`, not an admitted holon kind under `A.1`.
-Do not infer role parts from slots. `RoleAssignment`, role-state relations, evidence-use relations, and role-relation structures may declare SlotSpecs under `A.6.5`; those SlotSpecs are relation positions. Role descriptions may have episteme constituents. Neither case supplies parts of the `U.Role` value.
-
-#### A.2.7:3.1 - Role-Admission Substitution
-
-Use role-admission substitution when one role value can satisfy a role-admission condition stated with another role value in the same bounded context.
+For an exact context-local species, declare:
 
 ```text
-SeniorWeldingInspector <= WeldingInspector
+<exact context-local admission-substitution relation species> : U.Relation
+RelationSignature:
+  CandidateSystemRoleKindSlot: exact candidate-kind domain, ByValue
+  RequiredSystemRoleKindSlot: exact required-kind domain, ByValue
+  AdmissionSubstitutionPredicateSlot:
+    exact context-local admission-substitution predicate kind, ByValue
 ```
 
-Read this as: an assignment to `SeniorWeldingInspector` may satisfy a method or work-admission condition stated with `WeldingInspector` when the bounded context declares that substitution and the assignment window is current.
+One predicate value is identified by the ordered candidate and required system-role kinds, the exact receiving-use rule, applicability, and only the semantic-basis editions that change that rule. Reversing the two kinds requires another predicate evaluation. A job-grade order, common word stem, or `U.SubkindOf` relation may be evidence or another premise; none is the substitution relation by itself.
 
-The relation is not kind subsumption. `SeniorWeldingInspector` is not a subtype of a system kind; it is a role value related to another role value for local admission satisfaction. It is also not capability evidence, public naming, or method identity. A senior inspector role may still need a separate capability-fit claim under `A.2.2`, a method relation under `A.3.1`/`A.3.2`, or a naming settlement under `F.5`/`F.18`.
+Current assignments and any required A.2.5 state occurrences are inputs to the receiving check. They are not participants of the relation among kinds. The relation creates no classification, assignment, capability, authorization, gate outcome, or Work occurrence.
 
-#### A.2.7:3.2 - Role Incompatibility
+#### A.2.7:4.3 - Incompatibility
 
-Use role incompatibility when the same holder cannot validly use overlapping assignments to two roles in the same context and window.
+Use the incompatibility family when assignments to two system-role kinds cannot be jointly admitted under one exact rule.
+
+For an exact context-local species, declare:
 
 ```text
-SurgeryPerformer incompatibleWith SurgeryVerifier
+<exact context-local incompatibility relation species> : U.Relation
+RelationSignature:
+  IncompatibleSystemRoleKindSlot[1]: exact local kind domain, ByValue
+  IncompatibleSystemRoleKindSlot[2]: exact local kind domain, ByValue
+  IncompatibilityPredicateSlot:
+    exact context-local incompatibility-predicate kind, ByValue
 ```
 
-This relation is often used for separation-of-duties or independence constraints. It does not create a commitment object, permission policy, or evidence record by itself. A work-admission check may use it to reject the proposed assignment combination.
-
-#### A.2.7:3.3 - Role Bundle Expression
-
-Use a role bundle expression when a frequent conjunction of roles is useful to name inside one context.
+The predicate is identified by the unordered pair of kinds, the exact same-holder or different-holder rule, Work identity condition, temporal-overlap test, applicability, and only meaning-changing semantic-basis editions. The relation obeys the symmetry law:
 
 ```text
-IncidentLeadOnCall := IncidentCommander and Communicator and DecisionMaker
+incompatible(k1, k2, p) = incompatible(k2, k1, p)
 ```
 
-The bundle expression is satisfied by current assignments to all component roles under the same bounded context and required window. It is not a product of role values, not a new holder, not a method, and not a capability.
+The exact assignments later evaluated are receiving inputs. A conflicting allocation is a case satisfying the incompatibility rule; it is not what creates the kind relation. The relation does not reject an assignment or perform a check. A system applies the receiving Method and records the resulting admit, reject, defer, or unresolved outcome under the pattern for that decision.
 
-A bundle expression becomes a durable role value only when the bounded context declares it as a role with its own role description, role-state expectations, capability-fit conditions, and method or work relations where current.
+#### A.2.7:4.4 - Monotonic Kind Order and Residual Qualification
 
-### A.2.7:4 - How Role Relation Structure Is Used
-
-Role relation structure is normally used by neighboring patterns as one selected structure, sometimes informally called the local role architecture:
+When one exact system-role kind appears to narrow another, test `C.3.1 U.SubkindOf` first. Use that relation only when the paired classification judgments satisfy monotonicity under the exact aligned editions and effective-reference-scheme edition required by C.3.1:
 
 ```text
-MethodRoleAdmissionCheck:
-  methodRef: WeldInspectionMethod
-  requiredRoleValue: WeldingInspector
-  proposedAssignmentRoleValue: SeniorWeldingInspector
-  substitutionRef: SeniorWeldingInspector <= WeldingInspector
+for every candidate x in the defined comparison domain:
+  judgment(x, NarrowerSystemRoleKind) = true
+  implies judgment(x, BroaderSystemRoleKind) = true
 ```
+
+The proposed `U.SubkindOf` edge is never a premise for either membership judgment. Direct feature criteria must establish both judgments independently. A known narrower `true` with broader `false` refutes the relation. An unavailable broader dependency yields `unknown` and leaves the order unresolved.
+
+When the restriction is useful but non-monotonic, use a separate residual relation rather than weakening `U.SubkindOf`:
 
 ```text
-WorkAdmissionCheck:
-  holderRef: SurgeonA
-  proposedAssignments: SurgeryPerformer, SurgeryVerifier
-  incompatibilityRef: SurgeryPerformer incompatibleWith SurgeryVerifier
-  window: AssignmentWindow
+<exact context-local residual qualification relation species> : U.Relation
+RelationSignature:
+  QualifiedSystemRoleKindSlot: exact local qualified-kind domain, ByValue
+  ReferenceSystemRoleKindSlot: exact local reference-kind domain, ByValue
+  ResidualQualificationPredicateSlot:
+    exact context-local residual-qualification-predicate kind, ByValue
 ```
 
-The role relation structure supplies one role-substitution relation used by the method role-admission or work-admission check. The method, method family, method relation structure, work plan, performed work, capability envelope, and evidence use remain governed by their direct patterns. When a method relation or method composition structure also needs to be named, the current object is `MethodRelationStructure@BoundedContext` under `A.3.1`, `A.3.2`, `A.15`, `G.5`, or a direct method-composition pattern when current; method-algebra notation is a lens over that structure, not a hidden product of roles.
+The residual predicate names the exact restriction, applicability, orientation, and only meaning-changing semantic-basis editions. It grants no admission substitution. A receiving Method needing substitution must establish that separate directional relation.
 
-#### A.2.7:4.1 - Naming role-relation and role-method expressions
+#### A.2.7:4.5 - Joint-Admission Bundle
 
-Role relation work may leave behind something people need to name in ordinary project prose. The named object is not always an atomic `U.Role` value. It may be a holder-in-role statement, a context-local role expression, a role-admission substitution relation, an incompatibility relation, a role-bundle expression, a durable combined role value, a coupled role-method expression, a method name, or a work name.
+Use the bundle family when a receiving use needs assignments to a finite set of system-role kinds together and the holder-allocation rule matters.
 
-Recover the named object before choosing the label:
-
-| Source wording                                                       | Recovered object                                                                                                                                               | Ordinary wording consequence                                                                                                                                               |
-|:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| "Vasya is an engineer"                                               | holder-in-role claim: Vasya has a current assignment to an engineering role value in the bounded context                                                       | ordinary prose may say "engineer" without `Role`; the FPF record still separates holder, role value, assignment, and window                                                |
-| "robotics engineer" or "engineer-roboticist"                         | engineering role value or local engineering-role expression qualified by robotics domain, robotics-engineering method family, practice, or governed work field | ordinary label may stay "robotics engineer" or "engineer-roboticist"; `RoboticsEngineerRole` is optional Tech-register spelling only when durable reference needs it       |
-| "engineer and roboticist"                                            | two independent role values and two assignments, if `RoboticistRole` is current separately from `EngineerRole`                                                 | use only when the project really needs two independent roles                                                                                                               |
-| "engineer-roboticist and musician"                                   | one robotics-qualified engineering role expression or role value plus one independent musician role value                                                      | preferred ordinary wording when robotics qualifies engineering, while musician is separate                                                                                 |
-| "engineer-roboticist-musician"                                       | one declared combined role value or one named role-bundle expression                                                                                           | use only when the bounded context declares that combined value or bundle name; otherwise it hides independent assignments                                                  |
-| "robot engineering", "music performance", or "teaching robots music" | method, method family, work, or work family                                                                                                                    | name under `A.3.1`, `A.3.2`, or `A.15`; these are not role-relation products merely because their labels share role words                                                  |
-| "role algebra", "role graph", "role matrix", or "role embedding"     | mathematical or representation description of selected role relation structure                                                                                 | name the lens or representation only when that description is the governed value; otherwise name the recovered role relation, role expression, assignment, method, or work |
-
-`Role` and `Method` suffixes are optional Tech-register disambiguators. They are not ordinary-name requirements and they do not create the FPF kind. A user-facing sentence may say "Vasya is an engineer-roboticist and musician" without saying "role" when the FPF record or surrounding context lets a reader recover the role expression, role values, holder assignments, methods, and work separately.
-
-Hyphenation is not algebra by itself. Use a hyphenated ordinary label when it helps a reader see a recovered factor, domain, practice, method-family qualification, or combined role expression. Use "and" when the current point is multiple independent role assignments. Do not mechanically concatenate operands into a Tech label.
-
-The math-lens boundary is narrow. A role-algebra, graph, matrix, embedding, distributed, or neural representation is a lens over role values, role-admission substitution relations, incompatibility relations, role-factor or qualification expressions, and role-bundle expressions. The lens is not itself the role, holder, assignment, method, work, or capability. The name attaches to the recovered object or expression, not to the notation that helped recover it.
-
-### A.2.7:5 - Archetypal Grounding - Worked Cases
-
-#### A.2.7:5.1 - Role-Admission Substitution Without Capability Smuggling
-
-`PlantMaintenance_2026` declares:
+For an exact context-local species, declare:
 
 ```text
-SeniorHydraulicsTechnician <= HydraulicsTechnician
+<exact context-local bundle relation species> : U.Relation
+RelationSignature:
+  BundledSystemRoleKindSetSlot:
+    exact order-insensitive finite set of local system-role kinds, ByValue
+  JointAdmissionPredicateSlot:
+    exact context-local joint-admission-predicate kind, ByValue
 ```
 
-A method-description source or work-admission check that states `HydraulicsTechnician` as a role-admission condition may accept an assignment to `SeniorHydraulicsTechnician`. This does not prove that the technician has the pressure-test capability. The same source or admission check may separately state `PressureTestCapability` as a capability-fit condition under `A.2.2`.
+The predicate is identified by the exact order-insensitive set, joint-admission and holder-allocation rule, applicability, and only meaning-changing semantic-basis editions. It states whether one system may hold several assignments, distinct systems must hold specified assignments, some assignments may be shared, and how the receiving window is tested.
 
-#### A.2.7:5.2 - Incompatibility for Independence
+Exact current assignments and the receiving window remain inputs to the later check. The relation creates no compound system-role kind, assignment, team, or Work occurrence. A list of labels without a joint-admission and allocation rule is not a bundle relation.
 
-`SafetyCase_2026` declares:
+#### A.2.7:4.6 - Occurrence Identity and Continuity
+
+For substitution and residual qualification, one occurrence begins when fixed ordered kinds satisfy one fixed predicate. For incompatibility, the participant identity is the unordered pair. For a bundle, it is the order-insensitive finite set. In every case, the occurrence continues through the maximal uninterrupted interval during which the fixed predicate obtains for those fixed participants.
+
+A compatible declaration, scheme, `KindSignature`, Bridge, or other semantic-basis edition preserves the predicate only through an explicit continuity decision showing that the rule, orientation or set semantics, applicability, system-role-kind identities, and meaning-bearing semantic basis remain unchanged. Otherwise another predicate and relation occurrence begin. Equal displayed labels establish no continuity.
+
+An affirmative assertion or occurrence description may state the known `systemRoleKindRelationExtent` only after current facts or accepted constituting history satisfy the predicate and the identity rule recovers the occurrence. Closing an open extent refines the same occurrence when obtaining was uninterrupted. A demonstrated predicate-false gap ends it; later truth begins another. Missing evidence leaves reliance unresolved and does not demonstrate a truth gap.
+
+`systemRoleKindRelationExtent` is content of an affirmative assertion or occurrence description, not a temporal SlotSpec. A target `declaredSystemRoleKindRelationEvaluationWindow` belongs to the receiving assertion or check and is not part of the direct relation signature or occurrence identity.
+
+For `U.SubkindOf`, use C.3.1's own obtaining and identity law, including its exact effective-reference-scheme edition. Do not replace it with the generic A.2.7 interval rule.
+
+`SystemRoleKindRelationStructure` identity follows all four A.22 discriminators: exact kind constituents, exact selected relation occurrences, exact applied constraint claims, and the named selection-use frame. A scheme change that changes a constituent, selected relation, applied constraint, or use frame changes the structure; selecting System, Method, Work, result episteme, and publication remain outside identity. No blanket scheme-insensitive continuity is asserted.
+
+#### A.2.7:4.7 - Assertion and Receiving Check
+
+A relied-on kind-relation claim is a C.2.1 assertion episteme, not the relation occurrence. Keep these moves in order:
+
+1. name the exact direct relation family or `U.SubkindOf`, participant kinds, predicate, and applicability;
+2. establish whether current facts or accepted constituting history satisfy that predicate;
+3. when the receiver needs occurrence identity, apply the direct identity rule and recover the already obtaining occurrence;
+4. only then let an affirmative assertion use that occurrence as its `EntityOfConcern` and state its known extent; and
+5. add evidence, currentness, and reliance only when the receiving use needs them.
+
+When no positive occurrence is recovered, a negative, candidate, counterfactual, or unsupported affirmative claim normally uses the exact admitted relation kind, or another independently identified entity, as its EntityOfConcern. Its ClaimGraph carries proposed fillings, predicate, polarity or modality, and meaning-bearing semantic basis. It carries no fabricated positive occurrence reference or actual extent.
+
+Unresolved reliance preserves the assertion's stated polarity; it is not a third polarity and does not create or erase an occurrence. C.2.1 still identifies the assertion by its content, exact EntityOfConcern, and effective reference scheme.
+
+Supported assertions serve as typed premises for another Method. The selected structure is not the checker. A system performing a receiving check normally:
+
+1. resolves the exact local system-role kinds and any current direct `U.SystemRoleAssignment` species or A.2.5 state occurrences needed by the rule;
+2. tests the exact relation predicate without copying assignments or state occurrences into the kind-relation participant set;
+3. individuates the relation only when the receiving use needs its identity;
+4. records the appropriate assertion and its separate reliance posture;
+5. evaluates capability, resource, interface, risk, evidence, currentness, assurance, or other conditions under their direct patterns; and
+6. performs the checking Work by the selected Method and records the outcome defined for the next question's exact decision kind.
+
+Current facts make a world-side relation obtain. Optional individuation recovers one occurrence. An episteme asserts it. Evidence supports reliance. A system performs the check. None of these layers substitutes for another.
+
+#### A.2.7:4.8 - Recover Apparent Decomposition
+
+When ordinary wording says *subrole*, *role part*, or *combined role*, start from the engineering question:
+
+| Engineering question                                                            | Recovered object                                                                                                             |
+|:------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|
+| May this assignment satisfy a condition written for another system-role kind?   | directional admission-substitution relation                                                                                  |
+| Does every true narrower classification imply the broader classification?       | `C.3.1 U.SubkindOf` after independent paired judgments                                                                       |
+| Does one kind restrict another without monotonicity?                            | residual system-role-kind qualification relation                                                                             |
+| Must assignments to two kinds not overlap under an exact condition?             | symmetric incompatibility relation                                                                                           |
+| Must assignments to several kinds be present together under an allocation rule? | order-insensitive bundle relation                                                                                            |
+| Which system is assigned, and for which interval?                               | exact direct species under `U.SystemRoleAssignment`; use A.2.1 to recover it                                                 |
+| Does an assignment satisfy a Work-admitting state condition?                    | `SystemRoleAssignmentStateRelation`; use A.2.5 to recover it                                                                 |
+| Can the holder perform within an operating envelope?                            | capability and capability-fit relations under A.2.2                                                                          |
+| Are ways of doing or Work occurrences composed?                                 | Method composition under A.3 and B.1.5, or Work structure under A.15                                                         |
+| Did one actual bounded change occur?                                            | one `U.Transformation` under A.3.4, with its affected entity, boundary, precondition, postcondition, and obtaining relations |
+
+This recovery introduces no system-role mereology. Exact kinds, relations, assignments, predicates, Methods, and Work remain available without pretending that one is a part of another.
+
+#### A.2.7:4.9 - Representation, Model-Use, and Cross-Scheme Boundaries
+
+A graph, table, matrix, algebra, embedding, policy file, taxonomy, or organization chart may describe a `SystemRoleKindRelationStructure` or support a C.29 mathematical-lens use. It is not the selected structure or any selected relation occurrence by form. State what organization the representation preserves and loses before relying on it.
+
+Reference an independently selected `BoundedModelUseStructure` only when interpretation depends on that model-use organization. Keep it with the receiving assertion or use unless one direct relation predicate truly depends on its exact edition; only then does that edition enter the predicate's semantic basis. It never becomes a generic participant merely for context.
+
+When a comparison, translation, or reuse crosses schemes, first recover the exact F.17 sense cells and obtaining F.9 Bridge. Then state a separate C.2.1 bounded-use assertion naming direction, correspondence rule, tolerated loss, polarity, use, and effective scheme. Ordinary reliance requires the current A.10 evidence-provenance relation and a passing disposition for that use. Use B.3 only when an actual named assurance claim is current; require its result for the same bounded assurance use. Neither branch supplies authorization.
+
+A Bridge, profile, or card alone establishes neither bounded-use suitability nor an A.2.7 relation, assignment, authorization, receiving-check outcome, or performed Work. A local relation that obtains keeps the participant set and identity declared here.
+
+#### A.2.7:4.10 - Lightweight Path
+
+Ordinary prose may state a readable relation and stop:
 
 ```text
-HazardAnalysisAuthor incompatibleWith HazardAnalysisApprover
+For pump pressure-test Work, an assignment to SeniorHydraulicsTechnicianSystemRole
+may satisfy the condition written for HydraulicsTechnicianSystemRole.
 ```
 
-The same holder cannot use overlapping assignments for both roles when approving the same hazard analysis. If a source sentence says "the approver role is independent", A.2.7 recovers the role incompatibility relation; evidence of independence, approval work, and approval records stay in their direct patterns.
+Add an exact direct-species `RelationSignature` when reusable participant typing matters. Individuate an occurrence only when another claim depends on its identity. Assign a stable reference only when another episteme needs it. Build a `SystemRoleKindRelationStructure` only when several selected relations must be used together and all four A.22 discriminators are recoverable. Completeness is not a reason to materialize every layer.
 
-#### A.2.7:5.3 - Bundle Expression Without New Capability
+### A.2.7:5 - Worked Slices and Archetypal Grounding
 
-`IncidentOps_2026` declares:
+#### A.2.7:5.1 - Manufacturing Admission Substitution
+
+Plant A admits `SeniorHydraulicsTechnicianSystemRole` and `HydraulicsTechnicianSystemRole` as exact local kinds. During 2026H2, the pressure-test admission Method uses this rule: an assignment to the senior kind may satisfy the condition written for the technician kind only for `PumpPressureTestMethodFamily` and only while the candidate assignment satisfies A.2.5 predicate `PressureTestReady`.
+
+The direct species uses the local `PlantMaintenanceSystemRoleKindDomain`:
 
 ```text
-IncidentLeadOnCall := IncidentCommander and Communicator and DecisionMaker
+PlantPressureTestSystemRoleKindSubstitution :
+  U.Relation
+RelationSignature:
+  CandidateSystemRoleKindSlot:
+    PlantMaintenanceSystemRoleKindDomain, ByValue
+  RequiredSystemRoleKindSlot:
+    PlantMaintenanceSystemRoleKindDomain, ByValue
+  AdmissionSubstitutionPredicateSlot:
+    PlantPressureTestAdmissionSubstitutionPredicate, ByValue
 ```
 
-This is a reusable role-bundle expression for method role-admission checks. It does not state that one person has incident-management capability; that remains a capability claim. It does not state that incident work happened; that remains a work claim.
-
-#### A.2.7:5.4 - Naming Engineer-Roboticist and Musician
-
-A project says: "Vasya is an engineer, does robot engineering, is therefore an engineer-roboticist. These are musical robots, and Vasya is also a musician, performs music, and teaches robots music."
-
-Good ordinary rewrite:
-
-> Vasya is our engineer-roboticist and musician: he works on robot engineering, and in the musical-robots project he also performs music and teaches robots music.
-
-This ordinary sentence is admissible because a reader can recover the separate FPF values behind it:
+The predicate names the ordered two kinds, receiving Method family, `PressureTestReady` rule, 2026H2 applicability, and the exact semantic basis whose edition changes either clause. `PlantMaintenanceRoles-2026` and `Plant-A-Maintenance-Scheme` may be cited in the assertion; they are not extra relation participants. If a later compatible edition preserves all identity-bearing clauses, an explicit continuity decision preserves the predicate. Otherwise another predicate and occurrence are required.
 
 ```text
-BoundedContextRef: MusicalRobotLab_2026
-HolderRef: Vasya
-EngineeringRoleExpression: EngineerRole qualified by robotics domain, robotics-engineering method family, practice, or work field
-OrdinaryRoleLabel: engineer-roboticist or robotics engineer
-IndependentRoleValue: MusicianRole
-HolderAssignmentRefs: Vasya assigned to the robotics-qualified engineering role expression or declared RoboticsEngineerRole; Vasya assigned to MusicianRole
-MethodOrWorkRefs: robot-engineering method or work; music-performance work; robot-music-teaching method or work
-RepresentationLensRefs?: role-algebra, graph, matrix, embedding, or neural representation only if the project explicitly uses such a description of the role relation structure
+PlantPressureTestSubstitutionAssertion:
+  entityOfConcernRef: Plant-A-Pressure-Test-Substitution-2026H2
+  ClaimGraph:
+    directClaimFamilyRef:
+      PlantPressureTestSystemRoleKindSubstitution
+    participantDesignations:
+      CandidateSystemRoleKindSlot:
+        SeniorHydraulicsTechnicianSystemRole
+      RequiredSystemRoleKindSlot:
+        HydraulicsTechnicianSystemRole
+      AdmissionSubstitutionPredicateSlot:
+        PlantPressureTestAdmissionSubstitutionPredicate
+    assertionPolarity: affirmative
+    systemRoleKindRelationExtent: [2026-07-01, 2026-12-31]
 ```
 
-Do not write "engineer and roboticist and musician" unless `EngineerRole`, `RoboticistRole`, and `MusicianRole` are three independent role values with separate assignments.
+The system performing admission checking resolves the candidate's exact A.2.1 assignment and its current `PressureTestReady` state occurrence. Those are inputs to the receiving rule, not substitution-relation participants. Capability is checked separately. The substitution relation assigns nobody and proves neither capability nor performed pressure-test Work.
 
-Do not write "engineer-roboticist-musician" unless the bounded context declares one durable combined role value or one named role-bundle expression with its own role description and naming settlement. Without that declaration, the label hides that musician is a separate role assignment.
+#### A.2.7:5.2 - Safety Separation of Duties
 
-Robot-engineering, music performance, and teaching robots music are method or work names when those values are current. They are not produced by a role-algebra lens merely because their labels share words with role names. The role relation structure and a `MethodRelationStructure@BoundedContext` can be coupled in the same working sentence, but the FPF record keeps their typed values distinct.
+For one hazard-analysis Work item, the same system must not hold both author and approver assignments during overlapping windows. The direct species uses the exact `SafetyCaseSystemRoleKindDomain` and a predicate identified by the unordered pair `{HazardAnalysisAuthorSystemRole, HazardAnalysisApproverSystemRole}`, same-holder rule, same-Work rule, overlap test, applicability, and meaning-bearing semantic basis.
 
-### A.2.7:6 - Cross-Context Boundary
+```text
+HazardAnalysisAuthorApproverIncompatibility :
+  U.Relation
+RelationSignature:
+  IncompatibleSystemRoleKindSlot[1]:
+    SafetyCaseSystemRoleKindDomain, ByValue
+  IncompatibleSystemRoleKindSlot[2]:
+    SafetyCaseSystemRoleKindDomain, ByValue
+  IncompatibilityPredicateSlot:
+    HazardAnalysisSeparationPredicate, ByValue
+```
 
-Role relation structure is context-local. Matching role labels across contexts are not enough.
+The predicate has characterized these kinds continuously since 2026-01-01. A particular pair of assignments with the same holder and Work item during overlapping windows is a later case satisfying the rule; it does not create the kind relation.
 
-`ArticleAssessorRole:JournalContext` and `SafetyAssessorRole:SafetyCaseContext` may share a source label, but a role-admission substitution or incompatibility relation in one context does not transfer to the other context by label. Cross-context reuse, bridge, translation, public naming, or semantic alignment uses F-family context and naming patterns.
+```text
+HazardAnalysisAuthorApproverIncompatibilityAssertion:
+  entityOfConcernRef:
+    HazardAnalysisAuthorApproverIncompatibility-2026
+  ClaimGraph:
+    directClaimFamilyRef:
+      HazardAnalysisAuthorApproverIncompatibility
+    participantDesignations:
+      IncompatibleSystemRoleKindSlot[1]:
+        HazardAnalysisAuthorSystemRole
+      IncompatibleSystemRoleKindSlot[2]:
+        HazardAnalysisApproverSystemRole
+      IncompatibilityPredicateSlot:
+        HazardAnalysisSeparationPredicate
+    assertionPolarity: affirmative
+    systemRoleKindRelationExtent: [2026-01-01, open]
+```
 
-### A.2.7:6.1 - Bias-Annotation
+A verifier system applies the work-admission Method to two exact assignment occurrences and the target Work item. The checking Work produces the receiving decision. The incompatibility relation neither acts nor produces that outcome.
 
-A.2.7 blocks two biases. The first is role nominalism: a convenient role label starts carrying ability, permission, method, work, evidence, or status claims that belong elsewhere. The second is representation bias: a role algebra, graph, matrix, embedding, or neural representation is mistaken for the role relation structure in life. Recover the relation in the bounded context first; then use a representation lens only for the properties it preserves.
+#### A.2.7:5.3 - Clinical Joint Admission
 
-### A.2.7:7 - Conformance Checklist
+A surgical MethodDescription states a joint rule: assignments to `SurgeonSystemRole`, `AnesthetistSystemRole`, and `ScrubPractitionerSystemRole` must be held by three distinct systems throughout the procedure window selected by the receiving check.
 
-| Check        | Question                                                                                                                                                                                                                                                                                                                       |
-|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `CC-A2.7-01` | Is the bounded context named?                                                                                                                                                                                                                                                                                                  |
-| `CC-A2.7-02` | Are the related values `U.Role` values governed by A.2?                                                                                                                                                                                                                                                                        |
-| `CC-A2.7-03` | Is each `<=` claim framed as same-context role-admission substitution rather than kind hierarchy or generic specialization?                                                                                                                                                                                                    |
-| `CC-A2.7-04` | Is incompatibility checked over role assignments, holders, and overlapping windows rather than over labels alone?                                                                                                                                                                                                              |
-| `CC-A2.7-05` | Is a bundle expression kept separate from holder, capability, method, and performed work?                                                                                                                                                                                                                                      |
-| `CC-A2.7-06` | Has any role decomposition claim been recovered as role-admission substitution, factor or qualification, bundle, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, method/work decomposition, or ordinary prose rather than role `partOf`? |
-| `CC-A2.7-07` | Do capability-fit conditions use A.2.2?                                                                                                                                                                                                                                                                                        |
-| `CC-A2.7-08` | Do assignment and state checks use A.2.1 and A.2.5?                                                                                                                                                                                                                                                                            |
-| `CC-A2.7-09` | Do method claims use A.3 patterns and work claims use A.15 patterns?                                                                                                                                                                                                                                                           |
-| `CC-A2.7-10` | Do cross-context equivalence and translation claims use F-family patterns?                                                                                                                                                                                                                                                     |
-| `CC-A2.7-11` | Does any evidence, source, approval, status, assurance, publication, description, or strict-distinction claim use `C.2.1`, `A.10`, `B.3`, `E.17.*`, `E.24.PUB`, or `A.7` rather than expressed as role relation structure or a lens over it?                                                                                   |
+```text
+OperatingTheatreThreeSystemRoleBundle :
+  U.Relation
+RelationSignature:
+  BundledSystemRoleKindSetSlot:
+    OperatingTheatreSystemRoleKindDomain, ByValue
+  JointAdmissionPredicateSlot:
+    ThreeDistinctHoldersForProcedurePredicate, ByValue
+```
 
-### A.2.7:8 - Common Anti-Patterns and How to Avoid Them
+The set is order-insensitive. The predicate names the three exact kinds, distinct-holder rule, full-window rule, procedure applicability, and meaning-bearing semantic basis. The taxonomy episteme and clinical reference scheme may help an assertion designate or interpret the kinds; they are not participants of the bundle relation.
 
-| Anti-pattern                                    | Symptom                                                                         | Repair                                                                                                                                                                                                                                                                                                                    |
-|:----------------------------------------------|:------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Role relation structure as type hierarchy       | `EngineerRole <= HumanSystem`.                                                  | Keep role relation over `U.Role` values; use kind taxonomy only for kinds.                                                                                                                                                                                                                                                |
-| Role relation structure as org chart            | "Manager is above Engineer, therefore satisfies Engineer."                      | Declare same-context role-admission substitution only when that admission relation is intended.                                                                                                                                                                                                                           |
-| Role-admission substitution as capability model | "Senior role implies precision capability."                                     | Keep the substitution relation separate; add `U.Capability` claim for measured ability if current.                                                                                                                                                                                                                        |
-| Bundle as new holder                            | `IncidentLeadOnCall` is treated as a person or team.                            | Treat it as role-bundle expression unless a role value or holder is separately declared.                                                                                                                                                                                                                                  |
-| Role decomposition as role part                 | `AssistantReviewerRole partOf ReviewerRole` is asserted.                        | Recover the relation: role-admission substitution, factor or qualification, bundle expression, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, method/work decomposition, or ordinary prose. Do not use role `partOf` for `U.Role`. |
-| Incompatibility as slogan                       | "Approver is independent" without relation.                                     | State the incompatible role values, holder relation, bounded context, and overlapping window condition.                                                                                                                                                                                                                   |
-| Cross-context label equivalence                 | Same role label in two contexts is treated as the same role relation structure. | Use F-family bridge or naming patterns; do not import role relations by label.                                                                                                                                                                                                                                            |
-| Episteme as role relation structure             | A standard, report, or dashboard is put into role relation structure.           | Use `C.2.1`, `A.10`, `B.3`, `E.17.*`, `E.24.PUB`, or `A.7` for the source, evidence, status, assurance, publication, description, or strict-distinction claim being made.                                                                                                                                                 |
+```text
+OperatingTheatreThreeSystemRoleBundleAssertion:
+  entityOfConcernRef: OperatingTheatreThreeSystemRoleBundle-2026
+  ClaimGraph:
+    directClaimFamilyRef: OperatingTheatreThreeSystemRoleBundle
+    participantDesignations:
+      BundledSystemRoleKindSetSlot:
+        {SurgeonSystemRole,
+         AnesthetistSystemRole,
+         ScrubPractitionerSystemRole}
+      JointAdmissionPredicateSlot:
+        ThreeDistinctHoldersForProcedurePredicate
+    assertionPolarity: affirmative
+    systemRoleKindRelationExtent: [2026-01-01, open]
+```
 
-### A.2.7:9 - Consequences
+For one planned procedure, the receiving check separately names its evaluation window and resolves three independently obtaining assignments. The bundle supplies the allocation rule; it neither creates the assignments nor makes a procedure team into one compound system-role kind. Credentials, state, capability, gate decisions, and procedure Work remain separate.
 
-**Benefits.**
+#### A.2.7:5.4 - Robotics Kind Order and Independent Musician Assignment
 
-- Method role-admission checks can use declared role substitutions without encoding taxonomy in every method-description source.
-- Separation-of-duties and independence claims become inspectable relations over assignments and windows.
-- Frequent role conjunctions can be named without creating fake holders or capabilities.
-- Role relation structure remains small enough to use in ordinary project work.
+The lab proposes:
 
-**Costs.**
+```text
+RoboticsEngineerSystemRole U.SubkindOf EngineerSystemRole
+```
 
-- Contexts need to declare their role relations instead of relying on job-title intuition.
-- Some role-like source labels need F-family cross-context repair before role relation structure can be reused.
-- Capability-fit conditions and method role-admission conditions need separate claims when role labels used to hide them.
+The proposal is not a premise for classifying Vasya or any other system. Under the exact aligned `KindSignature` editions and effective reference-scheme edition, direct robotics-engineering features are evaluated against both kinds. Only if every defined true `RoboticsEngineerSystemRole` judgment implies a true `EngineerSystemRole` judgment may C.3.1 establish the relation.
 
-### A.2.7:10 - Rationale
+A known robotics-engineer `true` with engineer `false` refutes the relation. If a dependency required by the broader judgment is unavailable, the result is `unknown` and the order remains unresolved. A restriction concerning only one Method family, project phase, or allocation condition that fails monotonicity uses a residual qualification relation instead.
 
-A.2.7 keeps role relation structure as a selected relation structure rather than a new U-kind because the durable object is still `U.Role` and its contextual use through assignments, states, methods, and work claims. This preserves ordinary role naming while preventing algebraic notation or organizational labels from becoming a second ontology.
+Vasya may separately hold assignments to `RoboticsEngineerSystemRole` and `MusicianSystemRole`. Those assignment identities and extents remain under A.2.1. Robot-engineering Work, music-performance Work, and teaching-robots-music Work remain A.15 occurrences. The `U.SubkindOf` result manufactures neither classification judgment, assignment, capability, admission substitution, nor performed Work.
 
-### A.2.7:10.1 - SoTA-Echoing
+### A.2.7:6 - Conformance Checklist
 
-| Practice line                                                                                                                                | What FPF takes                                                                                                    | Practical implication                                                                       |
-|:-------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
-| Role-based access-control and separation-of-duties practice supplies stable relations among roles, users, sessions, and constraints.         | A.2.7 keeps the role-relation part but does not turn access-control policy into general role ontology.            | Role substitution and incompatibility are declared relations, not labels or permissions.    |
-| Attribute-based and zero-trust authorization practice separates role-like attributes, current context, policy decision, and resource action. | Role relation structure is one input to a check; capability, state, policy, and work remain separate.             | "Has role" does not prove ability, currentness, permission, or performed work.              |
-| Organizational design and safety practice uses separation of duties and independence constraints beyond IT.                                  | Incompatibility is stated over role assignments and windows in any bounded context.                               | Safety, audit, laboratory, governance, and operations examples do not become software-only. |
-| Current FPF slot-relation and ontic discipline keeps relation positions from becoming kinds.                                                 | Role relation structure relates role values; it does not create a new role-slot ontic or reduce role to SlotKind. | A.2.7 can cite A.6.5 and E.24 without duplicating them.                                     |
+| Check        | Question                                                                                                                                                                                                                                                                                                       |
+|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `CC-A2.7-01` | Is the current object one exact relation among system-role kinds, one `C.3.1 U.SubkindOf` occurrence, or one dependent `SystemRoleKindRelationStructure` whose exact kind constituents, selected obtaining relation occurrences, applied constraint claims, and named selection-use frame are all recoverable? |
+| `CC-A2.7-02` | Are all participants exact context-local system-role kinds rather than systems, assignments, labels, taxonomy rows, or scheme values?                                                                                                                                                                          |
+| `CC-A2.7-03` | Does each direct context-local species declare exact SlotSpec ValueKinds and one by-value predicate?                                                                                                                                                                                                           |
+| `CC-A2.7-04` | Does the predicate state the actual receiving, incompatibility, allocation, or residual-restriction rule, applicability, and only meaning-changing semantic basis?                                                                                                                                             |
+| `CC-A2.7-05` | Are system-role-taxonomy and scheme epistemes absent as generic participants and included in predicate identity only when they change meaning?                                                                                                                                                                 |
+| `CC-A2.7-06` | Is relation obtaining distinct from assertion, evidence, identifier, publication, representation, and receiving-check outcome?                                                                                                                                                                                 |
+| `CC-A2.7-07` | Is substitution directional, incompatibility symmetric, and bundle membership order-insensitive?                                                                                                                                                                                                               |
+| `CC-A2.7-08` | Does incompatibility name the same- or different-holder rule, Work identity condition, overlap test, and applicability?                                                                                                                                                                                        |
+| `CC-A2.7-09` | Does a bundle state its joint-admission and holder-allocation rule without creating a compound kind?                                                                                                                                                                                                           |
+| `CC-A2.7-10` | Is `U.SubkindOf` used only after independent paired judgments establish monotonicity under the exact C.3.1 basis?                                                                                                                                                                                              |
+| `CC-A2.7-11` | Does a non-monotonic restriction remain a separately predicated residual relation?                                                                                                                                                                                                                             |
+| `CC-A2.7-12` | When occurrence identity matters, does it use fixed kind participants, fixed predicate, and maximal continuous truth interval rather than a row, graph key, or temporal SlotSpec; and is any target evaluation window kept in the receiving assertion or check?                                                |
+| `CC-A2.7-13` | Does an explicit continuity decision cover a compatible edition before predicate and occurrence identity are preserved?                                                                                                                                                                                        |
+| `CC-A2.7-14` | Are current assignments and A.2.5 state occurrences inputs to the receiving check rather than relation participants?                                                                                                                                                                                           |
+| `CC-A2.7-15` | Does the system performing the check, its selected Method, checking Work, and exact outcome kind remain visible?                                                                                                                                                                                               |
+| `CC-A2.7-16` | Are graphs, tables, matrices, algebras, policies, taxonomies, and publications kept as descriptions, lenses, or epistemes?                                                                                                                                                                                     |
+| `CC-A2.7-17` | Does a negative, candidate, counterfactual, or unsupported claim avoid fabricating a positive occurrence reference or actual extent?                                                                                                                                                                           |
+| `CC-A2.7-18` | Does cross-scheme use keep the Bridge, bounded-use assertion, reliance, local relation, assignment, authorization, and Work distinct?                                                                                                                                                                          |
 
-Source-currentness note: RBAC and separation-of-duties are stable lineage, not the full current frontier. Current practice adds attribute and zero-trust authorization, context and currentness checking, policy-as-code practice, and FPF's newer slot-relation discipline. A.2.7 therefore keeps only the role-relation part and leaves currentness, policy decision, capability, method, work, and evidence to their direct patterns.
+### A.2.7:7 - Failure Modes and Repairs
+
+| Failure                                                               | Why it fails                                                                                          | Repair                                                                                                                                                                                |
+|:--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Job-title or taxonomy order used for admission                        | The order states neither the receiving rule nor its applicability.                                    | Recover a directional admission-substitution predicate for the exact use.                                                                                                             |
+| `RoboticsEngineerSystemRole` treated as a subkind because of its name | A proposed edge is used as its own membership premise.                                                | Evaluate paired classifications independently and apply C.3.1 monotonicity.                                                                                                           |
+| Non-monotonic restriction forced into `U.SubkindOf`                   | A true narrower judgment can coexist with a false broader judgment.                                   | Keep the order unresolved or use a separately predicated residual relation.                                                                                                           |
+| Independence asserted without a joint condition                       | The checker cannot determine which holder, Work, and window combination is incompatible.              | Put same- or different-holder, Work identity, overlap, applicability, and basis into the incompatibility predicate.                                                                   |
+| Bundle name treated as one kind                                       | Holder allocation and independent assignments disappear.                                              | Keep an order-insensitive kind-set relation and exact allocation predicate.                                                                                                           |
+| Taxonomy or scheme made a permanent participant                       | Interpretation support is turned into world-side relation identity even when meaning does not change. | Keep only kind participants and predicate; include an edition in semantic basis only when the rule depends on it.                                                                     |
+| Positive assertion reference used to create an occurrence             | A reference and interval appear before predicate truth and individuation.                             | Establish truth, apply the identity rule when needed, then designate the occurrence.                                                                                                  |
+| Structure produces a decision                                         | A non-agentive organization is made to act.                                                           | Name the system, Method, checking Work, and outcome pattern.                                                                                                                          |
+| Graph treated as the relation structure                               | Representation identity replaces selected relation identity.                                          | Recover the exact kind constituents, selected obtaining occurrences, applied constraints, and named selection-use frame; use C.29 for the graph and its preserved and lost structure. |
+| Bridge used as substitution licence                                   | Correspondence is overread as suitability, assignment, authorization, or outcome.                     | Keep Bridge, bounded use, reliance, local relation, and receiving Work separate.                                                                                                      |
+| Evaluation window declared as a participant                           | The receiver's target interval is confused with the world-side relation's derived extent.             | Remove the temporal SlotSpec; keep `systemRoleKindRelationExtent` in an affirmative assertion or occurrence description and the target window in the receiving assertion or check.    |
+
+### A.2.7:8 - Consequences
+
+**Benefits.** Receiving Methods can reuse exact kind relations without hiding their predicates. Safety checks state separation conditions precisely. Joint Work distinguishes the required kind set from holder allocation. Monotonic order remains a classification law rather than a label convention. Residual restrictions remain useful without weakening `U.SubkindOf`. Relation assertions can stay readable until a receiving use needs occurrence identity.
+
+**Costs.** A consequence-bearing use must state the rule that an informal hierarchy or bundle name concealed. Each context-local relation species needs exact kind domains and predicate identity. Cross-context reuse may need a Bridge and bounded-use reliance. A compatible edition needs an explicit continuity decision before the same predicate is claimed.
+
+**Limits.** This pattern ends at the exact relation among system-role kinds and any selected structure over those relations. Use A.2.1 for assignments, A.2.2 and A.2.5 for capability and assignment-state relations, and A.15 for planned or performed Work. The final decision remains an occurrence of its own exact outcome kind. Storage and visualization remain implementation and lens choices.
+
+Reopen only the affected relation or structure when a participant kind, rule, applicability, meaning-bearing semantic basis, truth interval, selected relation occurrence, or C.3.1 basis changes.
+
+### A.2.7:9 - Rationale
+
+Systems applying receiving Methods often need stable organization among system-role kinds before they inspect actual assignments. Keeping that organization as a dependent `U.Structure` preserves its engineering use without inventing a system-role holon, assignment configuration, second taxonomy, or universal context object.
+
+The families are separate because their laws differ. Substitution is directional. Incompatibility is symmetric under one joint condition. A bundle uses an order-insensitive finite set and an allocation rule. Monotonic qualification belongs to `U.SubkindOf`; non-monotonic restriction stays residual. One generic hierarchy cannot preserve those distinctions.
+
+Relation realism prevents a document model from becoming the ontology. Direct predicates determine obtaining, and identity laws determine whether the same world-side relation occurrence continues; assertions, policies, and diagrams describe those facts. Slot discipline makes context-local participant domains reviewable without calling a system-role kind, holder, assignment, predicate, slot, or representation position the same object.
+
+### A.2.7:10 - SoTA-Echoing
+
+| Current or mature line                                                                                 | What it contributes                                                                                                           | Concrete use in A.2.7                                                                                                                              |
+|:-----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|
+| [gUFO 2026](https://arxiv.org/abs/2603.20948)                                                          | A current foundational-ontology comparator with explicit type and relation reification distinctions.                          | Keep relation obtaining, occurrence individuation, assertion episteme, and representation separate without importing gUFO's upper taxonomy.        |
+| [OpenFGA role-modeling guidance](https://openfga.dev/docs/best-practices/modeling-roles), updated 2026 | Distinguishes static role-like relations, user-defined role forms, and instance-specific assignments in authorization models. | Use it as a software stress case for separating kind relations, assignment inputs, and outcomes; do not make authorization the universal ontology. |
+| [Cedar policy construction](https://docs.cedarpolicy.com/policies/syntax-policy.html)                  | Evaluates concrete principal, action, resource, scope, and additional conditions.                                             | Keep structure as one premise while the checking system, exact assignments, action condition, and outcome remain visible.                          |
+| Separation-of-duties practice across safety, clinical work, governance, and authorization              | Useful independence claims depend on exact holder, Work, overlap, and applicability conditions rather than title intuition.   | Put those conditions in the symmetric incompatibility predicate and test actual assignments separately.                                            |
+| FPF `C.3.1`, `A.6.REL`, `A.6.5`, and `A.22`                                                            | Supply monotonic kind order, relation occurrence identity, declaration-local SlotSpecs, and dependent structure identity.     | Reuse the existing apparatus instead of creating another role taxonomy or relation-record ontology.                                                |
+
+The software sources are stress cases, not the universal subject. Their transferable contribution is the separation of kind definitions, instance assignments, evaluation inputs, and outcomes.
 
 ### A.2.7:11 - Relations
 
-| Pattern                                             | Relation                                                                                                                                                                    |
-|:--------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `A.1.1`                                             | Supplies `U.BoundedContext`, the locality boundary for role relation structure.                                                                                             |
-| `A.2`                                               | Governs `U.Role` values ranged over by role relation structure.                                                                                                             |
-| `A.2.1`                                             | Governs `U.RoleAssignment`, the relation checked when role-admission substitutions, incompatibilities, or bundles are used for real holders.                                |
-| `A.2.2`                                             | Governs capability; role relation structure does not grant ability.                                                                                                         |
-| `A.2.5`                                             | Governs role state and enactable-state admission; role relation structure does not prove current state.                                                                     |
-| `A.3.1`, `A.3.2`, `A.15`, `A.15.1`, `A.15.2`        | Govern method, method description, plan, and performed work uses that may cite a role relation.                                                                             |
-| `A.6.5`                                             | Supplies relation-slot discipline for role-relation declarations and use relations.                                                                                         |
-| `A.6.RSIR`                                          | Recovers role, slot, relation, signature, and interface source wording before role-relation repair when the source sentence is mixed.                                       |
-| `F.5`, `F.9`, `F.17`, `F.18`                        | Govern naming, cross-context bridge, public naming, and durable local names for role values, role expressions, role-method expressions, or bundle expressions when current. |
-| `C.27`                                              | Governs temporal windows and currentness when overlapping assignments or validity windows are material.                                                                     |
-| `C.2.1`, `A.10`, `B.3`, `E.17.*`, `E.24.PUB`, `A.7` | Govern episteme slot relation, evidence, assurance, publication, description, and strict-distinction uses that may justify a role-relation declaration or a check using it. |
-| `C.29`                                              | Governs mathematical-lens fit if a role-algebra, graph, matrix, embedding, distributed, or neural representation is itself under evaluation.                                |
-
-### A.2.7:12 - Excluded Objects
-
-Do not use `RoleRelationStructure@BoundedContext` or a role-algebra lens as the current object for:
-
-- holder taxonomy, system kind hierarchy, or org chart hierarchy;
-- capability model, skill model, performance threshold, or operating envelope;
-- method family, algorithm family, or work procedure;
-- work plan, work occurrence, approval act, or audit record;
-- evidence graph, source record, standard, report, dashboard, publication, or model card;
-- cross-context translation, public naming, or bridge claim.
-
-Those values may cite or justify a role relation. They do not become role relation structure by adjacency.
+| Pattern                                    | Relation                                                                                                                                                             |
+|:-----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `A.1`                                      | Keeps systems distinct from kinds, assignments, relation occurrences, and selected structures; only admitted systems act.                                            |
+| `A.1.1`                                    | Use for a selected `BoundedModelUseStructure` when interpretation truly depends on it.                                                                               |
+| `A.2` and `C.3`                            | Use for exact context-local system-role kinds, their descriptions, membership, and classification.                                                                   |
+| `C.3.1`                                    | Use for monotonic `U.SubkindOf`, its three-valued judgment discipline, effective-reference-scheme edition, obtaining, and identity.                                  |
+| `A.2.1`                                    | Use for direct `U.SystemRoleAssignment` species and occurrences supplied to receiving checks.                                                                        |
+| `A.2.2` and `A.2.5`                        | Use for capability and assignment-state predicates and relations that remain separate from kind relations.                                                           |
+| `A.3.1`, `B.1.5`, and `A.15`               | Use for Method and Work identity, composition, planning, participation, and performance.                                                                             |
+| `A.3.4`                                    | Use when current facts require one actual bounded change as a separate `U.Transformation`; it supplies neither a transformation-composition predicate nor holonhood. |
+| `A.6.0`, `A.6.5`, and `A.6.REL`            | Use for exact signatures, declaration-local SlotSpecs, relation obtaining, and progressive occurrence individuation.                                                 |
+| `A.22`                                     | Use to recover `SystemRoleKindRelationStructure` as a dependent non-agentive `U.Structure` over exact kinds and relations.                                           |
+| `A.6.9`, `F.9`, `C.2.1`, `A.10`, and `B.3` | Use for cross-scheme Bridges, bounded-use assertions, evidence reliance, and assurance without preserving local relation identity by form.                           |
+| `A.2.4`, `C.27`, and `G.11`                | Use for evidence-use relations, currentness, and support for assertions consumed by a receiving check.                                                               |
+| `C.29`                                     | Use for graph, table, matrix, algebra, and embedding representations and their preserved or lost structure.                                                          |
+| `E.24.UK`                                  | Use to avoid admitting a selected structure, local relation slot, or convenient bundle name as a root U-kind by punctuation.                                         |
+| `E.10.ROLE`, `F.5`, and `F.18`             | Use for recovery of ambiguous source wording and durable naming after the exact object is known.                                                                     |
 

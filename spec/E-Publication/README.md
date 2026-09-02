@@ -11,17 +11,22 @@ Patterns from Part E of FPF Specification.
 ### E.10
 
 - [[E.10|E.10 - Unified Lexical Rules for FPF]]
+- [[E.10.LRN|E.10.LRN - Recovering What “Learning” Means in the Current Claim]]
+- [[E.10.DEV|E.10.DEV - Recovering What Development or Evolution Means in the Current Claim]]
 - [[E.10.MOVE|E.10.MOVE - Move and Readiness Wording Precision Restoration]]
 - [[E.10.ARCH|E.10.ARCH - Wording-Use Ontological Precision Restoration Architecture]]
+- [[E.10.ROLE|E.10.ROLE - Recovering What “Role” Means in the Current Claim]]
 - [[E.10.P|E.10.P - Conceptual Prefixes policy & registry]]
-- [[E.10.D1|E.10.D1 - Lexical Discipline for “Context” (D.CTX)]]
+- [[E.10.D1|E.10.D1 - Recovering What “Context” Means in Use]]
 - [[E.10.D2|E.10.D2 - EntityOfConcern, Description Episteme, and Specification-Use Discipline]]
 
 ### E.11
 
-- [[E.11|E.11 - Practical-Use Guidance and Pattern Discovery]]
+- [[E.11|E.11 - First-Practical Entry and Pattern-Use Discoverability Discipline]]
 - [[E.11.PUA|E.11.PUA - Pattern Use in a Working Situation and First Useful Result]]
 - [[E.11.PUR|E.11.PUR - Pattern-Use Applicability, Recommendation, and Coordination]]
+- [[E.11.PFP|E.11.PFP - Framework Publication Form Profile]]
+- [[E.11.DSG|E.11.DSG - DPF Suite Reference]]
 
 ### E.12
 
@@ -37,7 +42,7 @@ Patterns from Part E of FPF Specification.
 
 ### E.15
 
-- [[E.15|E.15 - Lexical Authoring & Evolution Protocol  (LEX‑AUTH)]]
+- [[E.15|E.15 - Pattern Change, Edition Continuity, and Impact Analysis]]
 
 ### E.16
 
@@ -45,15 +50,15 @@ Patterns from Part E of FPF Specification.
 
 ### E.17
 
-- [[E.17.0|E.17.0 - `U.MultiViewDescribing` - Viewpoints, Views & Correspondences]]
-- [[E.17.1|E.17.1 - `U.ViewpointBundleLibrary` - Reusable Viewpoint Bundles]]
-- [[E.17.2|E.17.2 - `TEVB` - Typical Engineering Viewpoints Bundle]]
+- [[E.17.0|E.17.0 - Viewpoint and View Recognition for Multi-View Describing]]
+- [[E.17.1|E.17.1 - Viewpoint Bundle Library - Reusable Viewpoint Reference Bundles]]
+- [[E.17.2|E.17.2 - TEVB - Project-local Typical Engineering Viewpoint Bundle Template for Holons]]
 - [[E.17|E.17 - Multi‑View Publication Kit]]
 - [[E.17.EFP|E.17.EFP - ExplanationFaithfulnessProfile — explanation-use discipline over existing MVPK faces]]
 - [[E.17.ID.CR|E.17.ID.CR - ComparativeReviewUnit - bounded comparison over comparative review units]]
 - [[E.17.AUD|E.17.AUD - PublicationUnit Stability Discipline - keep one publication unit stable enough to read honestly]]
 - [[E.17.AUD.LHR|E.17.AUD.LHR - PublicationUnit Stability Discipline and Local Head Restoration - repair the overloaded local lexical head before the publication unit inherits it]]
-- [[E.17.AUD.OOTD|E.17.AUD.OOTD - PublicationUnit Stability Discipline and PublicationUnit Primary EntityOfConcern Discipline - publication-unit stability over one primary EntityOfConcern]]
+- [[E.17.AUD.OOTD|E.17.AUD.OOTD - PublicationUnit Stability Discipline and PublicationUnit Primary-Subject Discipline - publication-unit stability over one primary subject]]
 
 ### E.18
 
@@ -87,6 +92,8 @@ Patterns from Part E of FPF Specification.
 ### E.23
 
 - [[E.23|E.23 - Quality Improvement Loop Method]]
+- [[E.23.CDI|E.23.CDI - Developing Capability for a Named Work Family]]
+- [[E.23.CAE|E.23.CAE - Capability Access and Expression Differential Probe]]
 
 ### E.24
 
@@ -107,6 +114,7 @@ Patterns from Part E of FPF Specification.
 - [[E.4.DPF|E.4.DPF - Domain Principle Framework Authoring and Publication-or-Access Carrier Assembly]]
 - [[E.4.DPF.DA|E.4.DPF.DA - Domain Principle Framework Package-Adequacy Evaluation CharacteristicSpace]]
 - [[E.4.PFR|E.4.PFR - Pattern-Framework Relation and Edition Discipline]]
+- [[E.4.PFIP|E.4.PFIP - Principle-Framework Publication Integration and Preservation]]
 
 ### E.5
 
@@ -127,7 +135,7 @@ Patterns from Part E of FPF Specification.
 ### E.8
 
 - [[E.8|E.8 - FPF Authoring Conventions & Style Guide]]
-- [[E.8.ECSPF|E.8.ECSPF - Evaluation CharacteristicSpace FPF Pattern Publication Form]]
+- [[E.8.ECSPF|E.8.ECSPF - FPF Pattern Publication Form for Evaluation Guidance]]
 
 ### E.9
 

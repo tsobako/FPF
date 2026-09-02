@@ -12,10 +12,14 @@ Patterns from Part A of FPF Specification.
 
 - [[A.1|A.1 - Holon Ontic Foundation (U.Holon and Admitted Holon Kinds)]]
 - [[A.1.1|A.1.1 - Bounded Model-Use Structure and DDD Bounded-Context Recovery]]
+- [[A.1.SCR|A.1.SCR - Finding the Acting or Changed System]]
+- [[A.1.CSD|A.1.CSD - Discovering Systems That May Bear Consequences]]
+- [[A.1.STM|A.1.STM - Using the System-Thinking Long Mantra]]
 
 ### A.10
 
 - [[A.10|A.10 - Evidence Graph Referring: Claim-Bound Evidence and Provenance Graph]]
+- [[A.10.1|A.10.1 - Revalidate Affected Uses When a Relied-on Source Changes]]
 
 ### A.11
 
@@ -35,13 +39,16 @@ Patterns from Part A of FPF Specification.
 
 ### A.15
 
-- [[A.15|A.15 - Role–Method–Work Alignment]]
+- [[A.15|A.15 - System-Role–Method–Work Alignment]]
 - [[A.15.1|A.15.1 - U.Work]]
 - [[A.15.2|A.15.2 - U.WorkPlan]]
 - [[A.15.3|A.15.3 - SlotFillingsPlanItem]]
 - [[A.15.4|A.15.4 - Work-Relevant Appearance-Based Reliance Repair]]
 - [[A.15.5|A.15.5 - Work-Entry Readiness and Full-Kit Preparation]]
 - [[A.15.6|A.15.6 - Project, Process, and Case Recovery through Work, Method, and Transformation]]
+- [[A.15.7|A.15.7 - Situation-Responsive Work Steering and Next-Action Selection]]
+- [[A.15.8|A.15.8 - Work-Performance Configuration and Recovery Testing]]
+- [[A.15.9|A.15.9 - Request and Use a Bounded Result from Another Practice]]
 - [[A.15.PROD|A.15.PROD - Production Work, Entity-Identity Inception, and Production Completion Recovery]]
 
 ### A.16
@@ -77,25 +84,25 @@ Patterns from Part A of FPF Specification.
 
 ### A.2
 
-- [[A.2|A.2 - Role Taxonomy]]
-- [[A.2.1|A.2.1 - U.RoleAssignment - System Role Assignment]]
+- [[A.2|A.2 - System-Role Kinds and Assignments]]
+- [[A.2.1|A.2.1 - U.SystemRoleAssignment - Contextual System-Role Assignment]]
 - [[A.2.2|A.2.2 - U.Capability - System Ability Envelope and Measures]]
 - [[A.2.3|A.2.3 - `U.PromiseContent` (Promise Content)]]
 - [[A.2.4|A.2.4 - Episteme Evidence-Use and Status-Use Relations]]
-- [[A.2.5|A.2.5 - RoleStateRelation@BoundedContext - Role State Space and Enactable-State Admission]]
+- [[A.2.5|A.2.5 - SystemRoleAssignmentStateRelation - Assignment-State Recognition and Work Admission]]
 - [[A.2.6|A.2.6 - Unified Scope Mechanism (USM): Context Slices & Scopes]]
-- [[A.2.7|A.2.7 - RoleRelationStructure@BoundedContext - Context-Local Role Relations and Representation-Lens Boundary]]
-- [[A.2.8|A.2.8 - `U.Commitment` (Deontic Commitment Object)]]
+- [[A.2.7|A.2.7 - SystemRoleKindRelationStructure - Relations among System-Role Kinds]]
+- [[A.2.8|A.2.8 - `U.Commitment` (Deontic Commitment Relation)]]
 - [[A.2.8.PER|A.2.8.PER - Granted Permission, Exercise, and Non-Prohibition]]
 - [[A.2.9|A.2.9 - `U.SpeechAct` (Communicative Work Kind, Occurrences, and Records)]]
 
 ### A.20
 
-- [[A.20|A.20 - Flow Constraint Validity — Eulerian]]
+- [[A.20|A.20 - Constraint Validity for Transformation Steps]]
 
 ### A.21
 
-- [[A.21|A.21 - GateProfilization: `OperationalGate(profile)` (GateFit core)]]
+- [[A.21|A.21 - Gate Decisions from Independent Check Results]]
 
 ### A.22
 
@@ -106,6 +113,7 @@ Patterns from Part A of FPF Specification.
 
 - [[A.3|A.3 - Transformer Constitution (Quartet)]]
 - [[A.3.1|A.3.1 - U.Method: Reusable Way of Doing with Explicit Applicability]]
+- [[A.3.1.MR|A.3.1.MR - Candidate-Method Recovery from Work Evidence]]
 - [[A.3.2|A.3.2 - U.MethodDescription: Description Episteme for a Way of Doing]]
 - [[A.3.3|A.3.3 - U.Dynamics: State-Space and Transition-Law Episteme]]
 - [[A.3.4|A.3.4 - U.Transformation: Bounded Change Under Conditions]]
@@ -128,13 +136,13 @@ Patterns from Part A of FPF Specification.
 - [[A.6.REL|A.6.REL - Relation Obtaining and Individuated Relation Occurrences]]
 - [[A.6.0|A.6.0 - U.Signature - Reusable Law-Governed Declaration Episteme]]
 - [[A.6.1|A.6.1 - U.Mechanism - Reusable Law-Governed Operation Declaration]]
-- [[A.6.2|A.6.2 - `U.EffectFreeEpistemicMorphing` — Effect‑free morphisms of epistemes]]
-- [[A.6.3|A.6.3 - `U.EpistemicViewing` — EntityOfConcern-preserving morphism]]
+- [[A.6.2|A.6.2 - Effect-free episteme morphing]]
+- [[A.6.3|A.6.3 - Episteme viewing - EntityOfConcern-preserving episteme construction]]
 - [[A.6.3.CSC|A.6.3.CSC - Controlled Semantic Coarsening]]
 - [[A.6.3.CR|A.6.3.CR - ConservativeRetextualization: EntityOfConcern-Preserving Textual Re-Expression]]
 - [[A.6.3.RT|A.6.3.RT - Representation-Scheme Transition: EntityOfConcern-Preserving Representation-Scheme Transition]]
 - [[A.6.3.NAR|A.6.3.NAR - Structure-to-Narrative Rendering]]
-- [[A.6.4|A.6.4 - `U.EpistemicRetargeting` — EntityOfConcern retargeting morphism]]
+- [[A.6.4|A.6.4 - EntityOfConcern retargeting]]
 - [[A.6.P|A.6.P - Relational Precision Restoration - Recovering Direct Relations from Under-Specified Claims]]
 - [[A.6.P.WMR|A.6.P.WMR - Exact Relation Recovery for Method and Work Claims]]
 - [[A.6.RCD|A.6.RCD - Needed Relation Claim Derivation and Relation-Kind Admission]]
@@ -143,11 +151,10 @@ Patterns from Part A of FPF Specification.
 - [[A.6.F|A.6.F - Function and Functional Precision Restoration (RPR-FUNCTION)]]
 - [[A.6.M|A.6.M - Module Relation Repair]]
 - [[A.6.5|A.6.5 - Relation-Declaration Slot Discipline - SlotKind, ValueKind, RefKind, and participant-designation discipline]]
-- [[A.6.6|A.6.6 - Base Declaration Discipline - Kind-explicit, scoped, witnessed base declaration discipline (with base-change lexicon)]]
+- [[A.6.6|A.6.6 - Base Declaration Discipline - Direct relation first; reusable declaration only when needed]]
 - [[A.6.7|A.6.7 - `MechSuiteDescription` — Description of a set of distinct mechanisms]]
-- [[A.6.8|A.6.8 - Service Polysemy Unpacking (RPR‑SERV)]]
 - [[A.6.9|A.6.9 - Cross-Context Sameness Disambiguation - Repairing cross-context "same", "equivalent", and "align" via explicit Bridges (RPR-XCTX)]]
-- [[A.6.S|A.6.S - U.SignatureEngineeringPair - Signature engineering via a ConstructorSignature and a TargetSignature]]
+- [[A.6.S|A.6.S - TargetSignature and optional ConstructorSignature - demand-driven signature engineering]]
 - [[A.6.H|A.6.H - Wholeness Language Unpacking — RPR-WHOLE]]
 
 ### A.7

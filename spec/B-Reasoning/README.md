@@ -25,7 +25,7 @@ Patterns from Part B of FPF Specification.
 
 ### B.3
 
-- [[B.3|B.3 - Trust and Assurance Calculus (F-G-R with Congruence)]]
+- [[B.3|B.3 - Trust and Assurance Calculus]]
 - [[B.3.3|B.3.3 - Assurance Subtypes & Levels]]
 - [[B.3.4|B.3.4 - Evidence Decay & Epistemic Debt]]
 - [[B.3.5|B.3.5 - Working-Model Relations & Grounding (CT2R-LOG)]]

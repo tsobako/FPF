@@ -13,6 +13,10 @@ The first useful move is `ScaleClaimTriage`:
 ```text
 ScaleClaimTriage:
   architectureAlternativeSetRef:
+  describedHolonRef:
+  claimScopeRef:
+  selectedContextSliceRefs:
+  modelUseStructureRef?:
   scaleVariableRef:
   scaleWindowRef:
   claimedPreferenceUnderScale:
@@ -24,7 +28,7 @@ ScaleClaimTriage:
   stopCondition:
 ```
 
-Ordinary use starts by naming the alternatives, the scale variable, the scale window, the claimed preference under scale, the available slope or scale-probe evidence or no-probe reason, the expected stable or improving structure, and the exception growth risk. Use `ArchitectureScaleAuditRecord@Project` only when the scale preference is being used to affect a comparison, selected set, publication, assurance input, or architecture decision.
+Ordinary use starts by naming the alternatives and described holon, the exact `U.ClaimScope` and relevant A.2.6 `U.ContextSlice` membership, the scale variable and scale window, the claimed preference under scale, the available slope or scale-probe evidence or no-probe reason, the expected stable or improving structure, and the exception-growth risk. Name `modelUseStructureRef` only when one independently selected `BoundedModelUseStructure` changes this receiving interpretation; it never replaces the claim scope. Use `ArchitectureScaleAuditRecord@Project` only when the scale preference is being used to affect a comparison, selected set, publication, assurance input, or architecture decision.
 
 What goes wrong if C.31.ASAP is missed: "modular", "platform", "product line", "reusable", "general", "open", "coarse-grained", or "RG-like" becomes a shortcut for a scale-preference claim; a locally hand-engineered solution is called debt even when safety, law-domain, or mission constraints justify it; exception growth is hidden until the architecture is already expensive to change; and coarse descriptions keep losing lower-scope safety or semantic distinctions without a source-return condition.
 
@@ -59,7 +63,7 @@ C.31.ASAP specializes scale-amenability preference for architecture alternatives
 
 C.31.ASAP applies only when all of the following are present:
 
-1. a declared architecture alternative set;
+1. a declared architecture alternative set, described holon, exact `U.ClaimScope`, and relevant A.2.6 `U.ContextSlice` membership;
 2. a declared scale variable or scale window;
 3. a claimed preference under scale;
 4. slope evidence, scale-probe evidence, or a no-probe reason;
@@ -75,7 +79,9 @@ Use `ScaleClaimTriage` before any heavier scale audit:
 ScaleClaimTriage:
   architectureAlternativeSetRef:
   describedHolonRef:
-  boundedContextRef:
+  claimScopeRef:
+  selectedContextSliceRefs:
+  modelUseStructureRef?:
   architectureClaimRef?:
   scaleVariableRef:
   scaleWindowRef:
@@ -87,20 +93,24 @@ ScaleClaimTriage:
   exceptionGrowthRisk:
   sourceReturnCondition:
   admissibleUse:
-  nonAdmissibleUse:
+  groundedScaleShortcut?:
   relatedClaimGovernanceIfClaimed:
   stopCondition:
 ```
 
-The triage is complete enough when it states the next admissible architecture move and the nearest blocked overread. It may stop at local guidance when no comparison, publication, assurance, selected-set, or decision use is being made.
+The triage is complete when it states the next admissible architecture move and the stop or return condition. Add `groundedScaleShortcut?` only when the current label, evidence, representation, or an observed recurring use supplies that exact shortcut. Local guidance is a complete result until a downstream reliance claim becomes current.
+
+`claimScopeRef` names one exact `U.ClaimScope`; `selectedContextSliceRefs` names the A.2.6 membership relevant to this use. `scaleWindowRef` gives the range of the scale variable for which the preference is claimed. Fill `modelUseStructureRef` only when an independently selected A.1.1 `BoundedModelUseStructure` changes this exact preference use. Each field therefore comes from its direct object or relation; a generic bounded-context label is insufficient.
 
 #### C.31.ASAP:4.3 - Architecture scale-preference rule
 
 When architecture alternatives satisfy the same safety boundary, law-domain boundary, and assurance boundary, prefer the alternative whose reusable functional-structure, flow-structure, control-structure, module-interface, work-template, and evidence-package structure and learning-transfer slopes remain stable or improve over the declared scale window, unless an `ArchitectureScaleAuditRecord@Project` records a bounded exception.
 
-This is not a selector result. If an alternative set, shortlist, selected set, local choice, gate, or decision is being claimed, use `G.5`, `G.9`, `C.11`, `A.21`, or the governing pattern. C.31.ASAP governs only the scale-preference claim and its boundary.
+C.31.ASAP records the scale-preference claim and its boundary. Use `G.5` or `G.9` for an alternative or selected set, `C.11` for a local choice, and the direct gate or decision pattern when that claim is current.
 
-A scale-preference claim may inform `C.32` candidate generation or comparison by naming the scale variable, scale window, expected stable or improving structure, exception-growth risk, and source-return condition for candidate alternatives. It does not select, publish, authorize, or prove an architecture. `C.32` carries the candidate architecture palette; `G.5` governs selected-set publication, `C.11` governs final local choice, `C.32.PAD` governs project architecture decision, and evidence, assurance, gate, and release patterns govern those claims when current.
+A scale-preference claim may inform `C.32` candidate generation or one `A.19.CPM` comparison when it names the scale variable, scale window, expected stable or improving structure, exception-growth risk, and source-return condition. The receiving pattern carries any resulting comparison, selected-set, publication, reliance, or decision claim.
+
+When the same scale-sensitive pressure must also become a project criterion, `C.32.ACS` records a separate row with its characteristic or Q-Bundle slot, bearer, scale form, and use class. That row may supply declared input to the ASAP preference; the ASAP record continues to carry the alternative preference, while the ACS row carries criterion admission and classification.
 
 #### C.31.ASAP:4.4 - Scale variables
 
@@ -128,7 +138,12 @@ Use the heavier audit only when the scale preference changes comparison, publica
 
 ```text
 ArchitectureScaleAuditRecord@Project:
+  projectWorkOccurrenceRef?: U.EntityRef constrained to U.Work
+  architectureScaleAuditProjectUseRelationRef?: U.RelationRef governed by the exact audit-use or work-use pattern
   architectureAlternativeSetRef:
+  claimScopeRef:
+  selectedContextSliceRefs:
+  modelUseStructureRef?:
   scaleVariableRefs:
   scaleWindowRef:
   ArchitectureSlopeVector:
@@ -138,10 +153,12 @@ ArchitectureScaleAuditRecord@Project:
   BespokeResidueRegisterRef?:
   SourceReturnCondition:
   admissibleUse:
-  nonAdmissibleUse:
+  groundedScaleShortcut?:
   relatedClaimGovernanceIfClaimed:
   stopCondition:
 ```
+
+For `ArchitectureScaleAuditRecord@Project`, `@Project` is a retrieval cue. To claim project-local audit use, cite both the exact composite `U.Work` in `projectWorkOccurrenceRef` and the obtaining audit-use relation in `architectureScaleAuditProjectUseRelationRef`. `BespokeResidueRegister@Project` remains retrieval-only in this edition; claim its project locality only through a separately governed direct register-to-work relation and cite that occurrence.
 
 | Output                           | Meaning                                                                                                                                                                                                                                  |
 |:-------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -149,11 +166,11 @@ ArchitectureScaleAuditRecord@Project:
 | `IsoScaleParityNote`             | Comparison under equalized scale budgets where possible; if parity is not possible, the loss is named.                                                                                                                                   |
 | `ASAPWaiverReason`               | Declared reason for not choosing the scale-amenable alternative.                                                                                                                                                                         |
 | `ArchitectureHeuristicDebt`      | Report-only note for knowingly accepting a locally hand-engineered solution with less scale-amenable slope profile under the declared scale window.                                                                                      |
-| `BespokeResidueRegister@Project` | Exception inventory with expiry or refactor triggers; not a kernel kind.                                                                                                                                                                 |
+| `BespokeResidueRegister@Project` | Pattern-local exception inventory with expiry or refactor triggers.                                                                                                                                                                      |
 | `ScaleWindow`                    | Declared range where the preference claim holds.                                                                                                                                                                                         |
 | `SourceReturnCondition`          | Condition for returning from a compressed, coarse, extracted, indexed, or accounting representation to source-side structural evidence, source records, or a related source or evidence record with higher declared validation boundary. |
 
-`ArchitectureScaleAuditRecord@Project` is a project-side triage record governed by this pattern. It is not an assurance proof, gate record, selected-set publication, local decision, or work plan.
+`ArchitectureScaleAuditRecord@Project` carries project-side triage for an architecture scale-preference claim. Represent any downstream reliance through its direct pattern and result.
 
 #### C.31.ASAP:4.6 - Waiver discipline
 
@@ -166,7 +183,7 @@ ASAPWaiverReason:
   context-specific bounded exception
 ```
 
-Not every non-scale-amenable choice is debt. A deontic constraint, safety boundary, law-domain boundary, mission constraint, assurance infeasibility, or scale-probe overturn can justify a bounded exception without creating `ArchitectureHeuristicDebt`.
+A deontic constraint, safety or law-domain boundary, mission constraint, assurance infeasibility, scale-probe overturn, or another bounded context-specific reason can justify a non-scale-amenable choice. Record such a choice as a bounded exception rather than `ArchitectureHeuristicDebt`.
 
 `ArchitectureHeuristicDebt` remains report-only unless tied to a decision, risk, work, evidence, assurance, or selected-set record through its governing pattern.
 
@@ -185,9 +202,9 @@ Before scale-preference guidance becomes action-guiding, name at least one possi
 
 #### C.31.ASAP:4.8 - C.29 lens relation
 
-C.31.ASAP does not prove a scale law and does not perform mathematical-lens recovery. Use `C.29` when the scale preference depends on an RG, coarse-graining, epiplexity, graph, multilevel-learning, or frustration lens.
+When a scale preference depends on an RG, coarse-graining, epiplexity, graph, multilevel-learning, or frustration lens, use `C.29` for the mathematical-lens recovery and keep the architecture scale-preference claim in C.31.ASAP.
 
-For architecture use, the C.29 output should name `MLU.Description@RGArchitecture`, `MLU.Description@MultilevelLearningFrustration`, or another local MathLensUse output only when the lens changes the next admissible use. The C.31.ASAP side records the scale variable, scale window, slope or scale-probe evidence, exception-growth risk, and source-return condition. C.29 records candidate mathematical object, mapping mode, preserved structure, lost structure, visible payoff, admissible use, non-admissible use, and stop condition.
+For architecture use, cite a local C.29 output only when its lens changes the next admissible use. The C.31.ASAP side records the scale variable, scale window, evidence, exception-growth risk, and source-return condition. C.29 records its mathematical object, mapping, preserved and lost structure, visible payoff, declared use, stop condition, and any grounded optional overread.
 
 ### C.31.ASAP:5 - Archetypal Grounding
 
@@ -203,6 +220,10 @@ For architecture use, the C.29 output should name `MLU.Description@RGArchitectur
 ```text
 ScaleClaimTriage:
   architectureAlternativeSetRef: product-line platform alternative vs bespoke customer-specific variants
+  describedHolonRef: the regulated deployment platform and its site-specific variants
+  claimScopeRef: preference claim for 5 to 40 named regulated deployment sites inside the current qualification boundary
+  selectedContextSliceRefs: the named site, jurisdiction, and qualification-window slices admitted by that claim scope
+  modelUseStructureRef?: absent; no independently selected bounded-model-use structure changes this use
   scaleVariableRef: N_sites
   scaleWindowRef: 5 to 40 regulated deployment sites inside the current qualification window
   claimedPreferenceUnderScale: platform alternative is preferred if interface variants and approval exceptions grow slower than bespoke variants
@@ -214,7 +235,7 @@ ScaleClaimTriage:
   stopCondition: stop at local scale-preference guidance unless comparator admission, evidence validity, and decision or selected-set governance are present
 ```
 
-Admissible move: prefer the platform alternative as a local scale-preference guide and start interface-grammar repair before deployment spread increases. Non-admissible move: treat the platform label, reusable-share number, or six-site probe as architecture selection, evidence sufficiency, assurance, gate passage, or final decision.
+Admissible move: use the platform alternative as a local scale-preference guide and start interface-grammar repair before deployment spread increases. Stop at local guidance; open the direct selector, evidence, assurance, gate, or decision pattern only when that downstream claim is current.
 
 #### C.31.ASAP:5.2 - Near-miss lowering slice
 
@@ -241,18 +262,20 @@ Stop C.31.ASAP use when the scale window, probe evidence or no-probe reason, com
 
 ### C.31.ASAP:7 - Conformance Checklist
 
-| ID               | Requirement                                                                                                                                                           | Purpose                                                                      |
-|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|
-| `CC-C31.ASAP-1`  | A C.31.ASAP use being made names architecture alternative set, scale variable or scale window, and claimed preference under scale.                                    | Prevents generic "scales better" wording.                                    |
-| `CC-C31.ASAP-2`  | `ScaleClaimTriage` names slope evidence, scale-probe evidence, or a no-probe reason.                                                                                  | Prevents preference claims without declared evidence or no-probe reason.     |
-| `CC-C31.ASAP-3`  | Expected stable or improving structure and exception-growth risk are stated.                                                                                          | Keeps the pattern about architecture structure rather than scale vocabulary. |
-| `CC-C31.ASAP-4`  | Source-return condition is present when any compressed, coarse, extracted, indexed, or accounting representation drops source-side distinctions.                      | Prevents unsafe coarse descriptions.                                         |
-| `CC-C31.ASAP-5`  | Waiver reason is one of deontic constraint, safety or law-domain boundary, scale-probe overturn, assurance infeasibility, or context-specific bounded exception.      | Prevents false debt labels.                                                  |
-| `CC-C31.ASAP-6`  | `ArchitectureHeuristicDebt` remains report-only unless a decision, risk, work, evidence, assurance, or selected-set record is being used under its governing pattern. | Prevents shadow project authority.                                           |
-| `CC-C31.ASAP-7`  | Platform, product-line, modularity, reuse, open-interface, RG, and coarse-graining labels do not establish scale preference by themselves.                            | Blocks source-label overread.                                                |
-| `CC-C31.ASAP-8`  | Mathematical-lens claims name C.29 output fields; C.31.ASAP governs only the architecture scale-preference side.                                                      | Keeps C.29 and C.31.ASAP distinct.                                           |
-| `CC-C31.ASAP-9`  | Comparison, selected-set, local choice, evidence, assurance, gate, work, or release claims name the governing pattern.                                                | Prevents scale preference from becoming selection or assurance.              |
-| `CC-C31.ASAP-10` | SoTA rows mutate at least one solution line, checklist item, boundary, relation, or worked slice.                                                                     | Keeps source use non-decorative.                                             |
+| ID               | Requirement                                                                                                                                                                                                                              | Purpose                                                                                              |
+|:---------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------|
+| `CC-C31.ASAP-1`  | A C.31.ASAP use being made names the architecture alternative set, described holon, exact `U.ClaimScope`, relevant A.2.6 `U.ContextSlice` membership, scale variable or scale window, and claimed preference under scale.                | Prevents generic "scales better" and generic-context wording.                                        |
+| `CC-C31.ASAP-2`  | `ScaleClaimTriage` names slope evidence, scale-probe evidence, or a no-probe reason.                                                                                                                                                     | Prevents preference claims without declared evidence or no-probe reason.                             |
+| `CC-C31.ASAP-3`  | Expected stable or improving structure and exception-growth risk are stated.                                                                                                                                                             | Keeps the pattern about architecture structure rather than scale vocabulary.                         |
+| `CC-C31.ASAP-4`  | Source-return condition is present when any compressed, coarse, extracted, indexed, or accounting representation drops source-side distinctions.                                                                                         | Prevents unsafe coarse descriptions.                                                                 |
+| `CC-C31.ASAP-5`  | Waiver reason is one of deontic constraint, safety or law-domain boundary, scale-probe overturn, assurance infeasibility, or context-specific bounded exception.                                                                         | Prevents false debt labels.                                                                          |
+| `CC-C31.ASAP-6`  | `ArchitectureHeuristicDebt` remains report-only unless a decision, risk, work, evidence, assurance, or selected-set record is being used under its governing pattern.                                                                    | Prevents shadow project authority.                                                                   |
+| `CC-C31.ASAP-7`  | Platform, product-line, modularity, reuse, open-interface, RG, and coarse-graining labels do not establish scale preference by themselves.                                                                                               | Blocks source-label overread.                                                                        |
+| `CC-C31.ASAP-8`  | Mathematical-lens claims name C.29 output fields; C.31.ASAP governs only the architecture scale-preference side.                                                                                                                         | Keeps C.29 and C.31.ASAP distinct.                                                                   |
+| `CC-C31.ASAP-9`  | Comparison, selected-set, local choice, evidence, assurance, gate, work, or release claims name the governing pattern.                                                                                                                   | Prevents scale preference from becoming selection or assurance.                                      |
+| `CC-C31.ASAP-10` | SoTA rows mutate at least one solution line, checklist item, boundary, relation, or worked slice.                                                                                                                                        | Keeps source use non-decorative.                                                                     |
+| `CC-C31.ASAP-11` | Project-local audit use names both `projectWorkOccurrenceRef` and `architectureScaleAuditProjectUseRelationRef`; a residue register remains retrieval-only unless its own governed direct relation to the exact composite Work is cited. | Prevents an `@Project` suffix, work reference, or borrowed audit relation from fabricating locality. |
+| `CC-C31.ASAP-12` | When an ACS criterion row and an ASAP preference are both current, each is separately referenced and neither substitutes for the other.                                                                                                  | Keeps criterion admission and alternative preference distinct.                                       |
 
 ### C.31.ASAP:8 - Common Anti-Patterns and How to Avoid Them
 
@@ -277,22 +300,22 @@ Stop C.31.ASAP use when the scale window, probe evidence or no-probe reason, com
 
 C.31.ASAP is added because `C.31` and `C.31.RSA` can expose scale-sensitive characteristics and reusable-structure residue, but they should not themselves decide which architecture alternative is preferable under scale. C.31.ASAP governs this architecture scale-preference claim family; it is narrower than general BLP and broader than one measurement card.
 
-The pattern adapts BLP-style scale-amenability to architecture: prefer the alternative that preserves or improves reusable structure over a declared scale window when safety, law-domain, and assurance boundaries are comparable. It also blocks the common shortcut that treats modularity, reuse, platform practice, or mathematical coarse-graining as scale-preference evidence by itself.
+The pattern adapts BLP-style scale-amenability to architecture: prefer the alternative that preserves or improves reusable structure over a declared scale window when safety, law-domain, and assurance boundaries are comparable. It requires the scale mechanism and evidence instead of accepting modularity, reuse, platform practice, or mathematical coarse-graining as the preference basis.
 
 ### C.31.ASAP:11 - SoTA-Echoing
 
-| Source family                                                                                                                                                            | Source-use relation                                                                                                                                      | C.31.ASAP adaptation                                                                                                                                                                                                                                             | Non-admissible overread                                                                                                                                                           | Practitioner implication                                                                                                                                                                                   |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Software product-line and variability-management practice (`https://www.sei.cmu.edu/library/variability-in-software-product-lines/`; `https://arxiv.org/abs/2605.21353`) | Mature variability lineage plus current SPLE-review cues.                                                                                                | Adopt variability slots, product-line reuse, exception inventory, and refactor triggers as architecture scale-preference fields.                                                                                                                                 | Product-line label, shared code base, feature model, or platform name is not scale-preference evidence.                                                                           | Before preferring the product-line alternative, name the scale window, variability slots, exception curve, and source-return condition.                                                                    |
-| Product-platform and modular product-architecture practice (`https://link.springer.com/article/10.1007/s00163-023-00427-1`; `https://arxiv.org/abs/2510.11089`)          | Current engineering-design source line for modular product architecture, assembly orientation, product-family reuse, and manufacturing-aware modularity. | Adopt the product-family commonality and variety trade-off as an architecture scale-preference pressure: reusable structure needs declared variation points, interface rules, assembly or realization constraints, exception curve, and source-return condition. | A product-platform name, common-module count, or modular-product label is not scale-preference evidence and does not by itself justify a module-interface or manufacturing claim. | Before preferring a product-platform alternative, state which product-family variation is scaled, which structure remains stable, and which assembly, safety, law-domain, or mission exception is allowed. |
-| Platform-engineering maturity practice (`https://tag-app-delivery.cncf.io/fr/whitepapers/platform-eng-maturity-model/`)                                                  | Current platform-practice source for platform service set, extension-rule, substitution-policy, and maturity-pressure claims.                            | Adapt platform practice into extension-rule, substitution-policy, conformance-expectation, and exception-growth checks.                                                                                                                                          | Platform maturity does not by itself select an architecture or prove reusable structure.                                                                                          | Treat platform claims as source cues until the architecture scale variable and exception behavior are declared.                                                                                            |
-| C.19.1 BLP in FPF                                                                                                                                                        | FPF-local preference discipline for general scale-amenable methods.                                                                                      | Specialize the preference idea to architecture alternatives, selected structures, scale variables, and architecture slope vector.                                                                                                                                | C.31.ASAP does not replace general method BLP, selector policy, or decision records.                                                                                              | Use C.19.1 for method-family policy; use C.31.ASAP for architecture scale preference.                                                                                                                      |
-| C.29 RG and coarse-graining lens use in FPF                                                                                                                              | FPF-local mathematical-lens discipline.                                                                                                                  | Require scale window, coarse-graining rule, preserved structure, lost structure, and source-return condition when RG-like architecture scale reasoning is being claimed.                                                                                         | RG wording is not physical RG, scale proof, causal proof, assurance, or selected architecture.                                                                                    | Use `MLU.Description@RGArchitecture` or `MLU.Description@MultilevelLearningFrustration` only when the lens changes the next admissible use.                                                                |
+| Source family                                                                                                                                                            | Source-use relation                                                                                                                                      | C.31.ASAP contribution                                                                                                                                                                    | Practitioner use                                                                                                                        |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
+| Software product-line and variability-management practice (`https://www.sei.cmu.edu/library/variability-in-software-product-lines/`; `https://arxiv.org/abs/2605.21353`) | Mature variability lineage plus current SPLE-review cues.                                                                                                | Adopt variability slots, product-line reuse, exception inventory, and refactor triggers as architecture scale-preference fields.                                                          | Before preferring the product-line alternative, name the scale window, variability slots, exception curve, and source-return condition. |
+| Product-platform and modular product-architecture practice (`https://link.springer.com/article/10.1007/s00163-023-00427-1`; `https://arxiv.org/abs/2510.11089`)          | Current engineering-design source line for modular product architecture, assembly orientation, product-family reuse, and manufacturing-aware modularity. | Adopt the product-family commonality and variety trade-off: declare variation points, interface rules, assembly or realization constraints, exception curve, and source-return condition. | State which product-family variation is scaled, which structure remains stable, and which bounded exception is allowed.                 |
+| Platform-engineering maturity practice (`https://tag-app-delivery.cncf.io/fr/whitepapers/platform-eng-maturity-model/`)                                                  | Current platform-practice source for platform service set, extension-rule, substitution-policy, and maturity-pressure claims.                            | Adapt platform practice into extension-rule, substitution-policy, conformance-expectation, and exception-growth checks.                                                                   | Treat platform maturity as a source cue; declare the architecture scale variable and exception behavior before scale-preference use.    |
+| C.19.1 BLP in FPF                                                                                                                                                        | FPF-local preference discipline for general scale-amenable methods.                                                                                      | Specialize the preference idea to architecture alternatives, selected structures, scale variables, and architecture slope vector.                                                         | Use C.19.1 for method-family policy and C.31.ASAP for architecture scale preference.                                                    |
+| C.29 RG and coarse-graining lens use in FPF                                                                                                                              | FPF-local mathematical-lens discipline.                                                                                                                  | Require scale window, coarse-graining rule, preserved structure, lost structure, and source-return condition for RG-like architecture scale reasoning.                                    | Use `MLU.Description@RGArchitecture` or `MLU.Description@MultilevelLearningFrustration` when the lens changes the next admissible use.  |
 
 ### C.31.ASAP:12 - Relations
 
-- **Builds on:** `C.31`, `C.31.RSA`, `C.16`, `A.17`, `A.18`, `A.19`, `C.18.1`, `C.19.1`, and `C.29`.
-- **Coordinates with:** `A.6.M` for module-interface relation repair; `C.30`, `C.30.ASV`, `C.30.LCA`, and `C.30.ILC` for architecture and selected-structure questions; `C.33`, `C.34`, and `C.35` when scale-amenability material needs captured-structure adequacy, lost-structure adequacy, preservation adequacy, correspondence adequacy, or generated-carrier adequacy before candidate use; `C.32.P2S` when scale-amenability pressure must continue through problem-to-structure architecturing; `C.32` when scale preference informs candidate architecture generation or comparison; `A.10`, `B.3`, and `G.6` for evidence and assurance reliance; `G.5`, `G.9`, and `C.11` for selected-set, parity, and choice claims.
-- **Boundary:** `C.31.ASAP` governs architecture scale-preference claims. `C.31`, `C.31.RSA`, `C.29`, `C.18.1`, `C.19.1`, `G.5`, `G.9`, and `C.11` govern modularity-characteristic, reusable-structure accounting, mathematical-lens, scale-law, general method preference, selected-set, parity, and local-choice claims when those claims are being made.
+- **Builds on:** `C.31`, `C.31.RSA`, `C.16`, `A.2.6`, `A.17`, `A.18`, `A.19`, `C.18.1`, `C.19.1`, and `C.29`; uses A.1.1 only when a selected `BoundedModelUseStructure` changes the receiving interpretation.
+- **Coordinates with:** `A.6.M` for module-interface relation repair; `C.30`, `C.30.ASV`, `C.30.LCA`, and `C.30.ILC` for architecture and selected-structure questions; `C.33`, `C.34`, and `C.35` when scale-amenability material needs captured-structure adequacy, lost-structure adequacy, preservation adequacy, correspondence adequacy, or generated-carrier adequacy before candidate use; `C.32.P2S` when scale-amenability pressure must continue through problem-to-structure architecturing; `C.32.ACS` when the pressure is represented as a distinct project criteria row; `C.32` when scale preference informs candidate architecture generation; `A.19.CPM` when it supplies one input to explicit comparison; `A.10`, `B.3`, and `G.6` for evidence and assurance reliance; `G.5`, `G.9`, and `C.11` for selected-set, parity, and choice claims.
+- **Boundary:** `C.31.ASAP` governs architecture scale-preference claims. `C.32.ACS` governs criteria-set and criteria-row construction; `A.19.CPM` governs explicit comparison. `C.31`, `C.31.RSA`, `C.29`, `C.18.1`, `C.19.1`, `G.5`, `G.9`, and `C.11` govern modularity-characteristic, reusable-structure accounting, mathematical-lens, scale-law, general method preference, selected-set, parity, and local-choice claims when those claims are being made.
 - **Precision-restoration relation:** source wording recovered by `E.10`, `E.10.ARCH`, or `C.30.STRAT` is governed by C.31.ASAP only when the recovered claim being made is architecture scale preference over a declared alternative set, scale variable, and scale window.
 

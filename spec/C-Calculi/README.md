@@ -7,6 +7,7 @@ Patterns from Part C of FPF Specification.
 ### C.11
 
 - [[C.11|C.11 - Decision Theory (Decsn-CAL)]]
+- [[C.11.CRC|C.11.CRC - Configuration-Relative Contribution Comparison]]
 
 ### C.13
 
@@ -20,7 +21,7 @@ Patterns from Part C of FPF Specification.
 
 ### C.17
 
-- [[C.17|C.17 - Characterising Generative Novelty & Value (Creativity‑CHR)]]
+- [[C.17|C.17 - Characterising Generative Novelty and Value]]
 
 ### C.18
 
@@ -50,7 +51,7 @@ Patterns from Part C of FPF Specification.
 
 ### C.20
 
-- [[C.20|C.20 - Composition of `U.Discipline` (Discipline‑CAL)]]
+- [[C.20|C.20 - Composition of `U.Discipline` (Discipline-CAL)]]
 
 ### C.21
 
@@ -58,10 +59,10 @@ Patterns from Part C of FPF Specification.
 
 ### C.22
 
-- [[C.22|C.22 - Problem Typing & TaskSignature Assignment (Problem-CHR)]]
+- [[C.22|C.22 - Task Typing and TaskSignature Assignment (Problem-CHR)]]
 - [[C.22.1|C.22.1 - Task-family adaptation signature]]
 - [[C.22.PFR|C.22.PFR - Problematic-For Relation]]
-- [[C.22.2|C.22.2 - ProblemCard@Context]]
+- [[C.22.2|C.22.2 - ProblemCard]]
 
 ### C.23
 
@@ -84,12 +85,12 @@ Patterns from Part C of FPF Specification.
 
 ### C.27
 
-- [[C.27|C.27 - Temporal Claim Adequacy: State Readings, Temporal Trends, and Intervention-Sensitive Temporal Change]]
+- [[C.27|C.27 - Temporal Claim Adequacy: State Readings, Temporal Trends, and Intervention-Sensitive Change]]
 - [[C.27.TA|C.27.TA - Temporal Aspect: Time Windows, Rhythm, Cadence, and Currentness]]
 
 ### C.28
 
-- [[C.28|C.28 - CausalUse-CAL: Causal-Use Questions, Causality-Ladder Rungs, Identification and Realizability]]
+- [[C.28|C.28 - CausalUse-CAL: Causal-Use Questions, Identification, and Realizability]]
 
 ### C.29
 
@@ -100,8 +101,8 @@ Patterns from Part C of FPF Specification.
 - [[C.3|C.3 - Kinds, Intent and Extent, and Typed Reasoning]]
 - [[C.3.1|C.3.1 - U.Kind and U.SubkindOf Core]]
 - [[C.3.2|C.3.2 - Kind Intent, Membership Judgment, and Extension]]
-- [[C.3.3|C.3.3 - KindBridge & CL^k — Cross‑context Mapping of Kinds]]
-- [[C.3.4|C.3.4 - RoleMask — Contextual Adaptation of Kinds (without cloning)]]
+- [[C.3.3|C.3.3 - KindBridge and CL^k — Cross-local Correspondence between Distinct Kinds]]
+- [[C.3.4|C.3.4 - KindUseAdaptationDeclaration — Contextual Adaptation of Kinds without Cloning]]
 - [[C.3.5|C.3.5 - KindAT — Intentional Abstraction Facet for Kinds (K0…K3)]]
 - [[C.3.A|C.3.A - Typed Guard Macros for Kinds + USM (Annex)]]
 
@@ -132,6 +133,7 @@ Patterns from Part C of FPF Specification.
 - [[C.32.ACE|C.32.ACE - Architecture Characteristic Eval Programs]]
 - [[C.32.CONWAY|C.32.CONWAY - Architecture-Influence and Transformed-Architecture Correspondence]]
 - [[C.32.MLAO|C.32.MLAO - Multilevel Architecture Residual Optimization]]
+- [[C.32.MWA|C.32.MWA - Practice Architecture Synthesis from Several Structures]]
 - [[C.32.FAIL|C.32.FAIL - Architecture Failure Recognition and Repair]]
 - [[C.32.PAD|C.32.PAD - Project Architecture Decision After Candidate Synthesis]]
 - [[C.32.ADR|C.32.ADR - Architecture Decision Record Projection]]
@@ -153,4 +155,12 @@ Patterns from Part C of FPF Specification.
 
 - [[C.36|C.36 - Cultural Evolution and Cultural-Evolution Engineering]]
 - [[C.36.P|C.36.P - Cultural-Evolution Wording-Use Precision Restoration]]
+
+### C.37
+
+- [[C.37|C.37 - Use-Bounded Representation Selection and Co-Use]]
+
+### C.38
+
+- [[C.38|C.38 - Construct Comparable Ways to Obtain One Result]]
 

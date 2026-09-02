@@ -275,7 +275,7 @@ Register external environment/task taxonomies as index cards. Align them into ge
    → delegate to `CC‑GCORE‑TRIG‑1`, `CC‑GCORE‑TRIG‑2`, `CC‑GCORE‑TRIG‑3`, `CC‑GCORE‑TRIG‑4`.
 
 10. **CC‑G13‑IDContinuityForExternallySourcedIdentifiers.** *(delegated)* Interop publication **MUST** follow Δ‑discipline: no “renaming by meaning”; use aliases/deprecations as required.
-   → delegate to `CC‑GCORE‑ID‑1`, `CC‑GCORE‑ID‑2`.
+    → delegate to `CC‑GCORE‑ID‑1`, `CC‑GCORE‑ID‑2`.
 
 11. **CC‑G13‑NotationIndependence.** *(local)* Conformance is judged on the conceptual objects in `G.13:4.2`. Any serialisation is non‑normative and must not redefine semantics.
    *(Cites `E.5.2` for notation independence.)*
@@ -338,9 +338,9 @@ FPF is a conceptual framework for disciplined creative work, not a data governan
 5. On any external edition or policy change, emit canonical RSCR trigger causes with explicit scope + payload pins.
 6. Keep provider/tool specifics in `Extensions` (or Phase‑3 seed) and do not let formats redefine semantics.
 
-# **Part H - Reserved**
+# Part H - Reserved
 
-# **Part I – Annexes & Extended Tutorials**
+# Part I - Annexes & Extended Tutorials
 
 | §   | ID & Title                          | Concise reminder                                                                                                                                                                |
 |:--|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

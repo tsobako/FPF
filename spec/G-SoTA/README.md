@@ -22,7 +22,7 @@ Patterns from Part G of FPF Specification.
 
 ### G.12
 
-- [[G.12|G.12 - DHC Dashboards (Discipline‑Health time‑series; admissible telemetry; generation‑first)]]
+- [[G.12|G.12 - DHC Dashboards (Discipline-Health Time Series and Views)]]
 
 ### G.13
 

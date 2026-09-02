@@ -1,4 +1,4 @@
-## A.2 - Role Taxonomy
+## A.2 - System-Role Kinds and Assignments
 
 > **Type:** Architectural (A)
 > **Status:** Stable
@@ -6,330 +6,414 @@
 
 ### A.2:0 - Use This When
 
-**Plain name.** Work-facing role value.
+**Plain name.** Work-facing system classification and assignment.
 
-Use this pattern when a project needs to say what an admitted `U.System` holder, such as a system, organization-as-system, person, team, tool, agent, machine, motor, pump, or component, is being in a bounded context before method, plan, work, transformation, functioning, evidence, responsibility, or naming claims can be made safely.
+Use this pattern when one admitted `U.System` can contribute to different work or functioning without becoming a different system, and the current claim must say either:
+
+- which exact work-facing kind the system counts under now; or
+- which system-role assignment actually obtains.
+
+A system here is any individual independently admitted by A.1. It can be a person, team, organization, service, organism, or non-human technical object. The `SystemRole` head in a name such as `ReviewerSystemRole` says that candidates are systems; it does not admit the candidate, create an assignment, imply agency or capability, prove that Work occurred, or name a relation slot.
 
 Typical moments:
 
-- a project sentence says "engineer", "reviewer", "operator", "supplier", "model verifier", "agent", "service provider", "drive motor", "cooling circulator", "load-bearing brace", or another role-like name, and it is unclear what holder, context, and work, transformation, or functioning claim are current;
-- a team treats a role name as if it created capability, commitment, obligation, permission, method, work, or evidence;
-- a standard, report, dataset, model card, publication, requirement, or definition is described as having a "role" in evidence, status, assurance, source use, or publication use;
-- a method, plan, work occurrence, or result is attributed to a role without naming the holder and role assignment under which the work is performed;
-- role names must be kept reusable across contexts without making each context-local role into a new system kind;
-- a role boundary is being decomposed into factors, states, responsibilities, or method participation, and the project must recover the current neighboring object instead of treating role as a holon.
+- the same pump counts as a cooling circulator in plant operation and as a test article in qualification work;
+- a project must decide whether Alice counts as a reviewer in one review slice;
+- a relied-on claim says that a system holds a named system role but leaves the assignment occurrence unclear;
+- ordinary wording says that a publication, method, capability, or relation participant “plays a role”, although the direct relation is still hidden;
+- a proposed “part of a role” may instead be another kind, a relation among kinds, an assignment-state predicate, a capability condition, a responsibility or commitment relation, or a method or Work structure.
 
-**Primary EntityOfConcern.** The EntityOfConcern is `U.Role`: a context-bound enactment-facing role value in the role `ontologicalNeighborhood`. A role value names what an admitted `U.System` holder is being for a bounded context when method admission, role-state checking, transformation or functioning participation, or work attribution depends on that role. `U.Role` is a root U-kind, but it is not an admitted holon kind: role decompositions resolve to assignment, state, capability, responsibility, permission, commitment, obligation, method, work, or role-relation owners rather than to role parts.
+**Primary EntityOfConcern.** One exact local `U.Kind` whose candidates are `U.System` individuals and whose operative membership condition distinguishes a stable, assignable, work-facing contribution. C.3 recovers the kind through that candidate domain and condition, a useful member/non-member boundary, and a continuity rule. A practice or source reference may locate the definition or prompt comparison; it does not identify the kind. Such a kind is called a **system-role kind**. Assignment is a neighboring direct relation, not part of the kind.
 
-**Primary working reader.** The first reader is an engineer-manager, analyst, or FPF author who must separate role value, holder, role assignment, method, plan, work, evidence, and source-use claims before acting or writing a pattern. The downstream reader is the project participant who needs role language to answer who held what role, in which context, for which claim.
+**Primary working reader.** The first reader is an engineer-manager, analyst, or FPF author who must keep system identity stable while making classification and assignment inspectable. A later reader must be able to recover the kind's candidate domain, work-facing membership condition, member/non-member boundary, continuity rule, declaration edition, candidate and slice, useful definition provenance, and any separately obtaining assignment and Work attribution.
 
-**First useful move.** Name the role value, the bounded context, and whether the current claim is about role identity, a role assignment, role description, role state, role relation structure, capability-fit condition, functional or transformation participation, method role-admission condition, planned work, performed work, or an episteme used as evidence, source, standard, requirement, definition, explanation, status bearer, or publication.
+**First useful move.** Start with the ordinary conclusion: “Alice counts as a reviewer for this submission” or “PumpUnit-3 is assigned as cooling circulator for this operating episode.” For classification, name the local system-role kind and evaluate the candidate with one `KindSignature` under C.3.2. Add a `U.SystemRoleAssignment` occurrence only when holding or assignment identity is actually claimed.
 
-**What goes wrong if missed.** Role words become an ontology shortcut. A document becomes a "verifier role"; a capability becomes a role; a role name is treated as evidence that work happened; a method is treated as a role's hidden behavior; a publication is treated as if it acted. FPF then grows a second role ontology for epistemes, status labels, access labels, relation arguments, and source labels.
+**Concern-word boundary.** *Concern* is Plain reader- or viewpoint-facing wording. It does not admit `U.Concern` or replace the exact EntityOfConcern, viewpoint episteme, kind, assignment, or receiving relation needed by the claim.
 
-**What this buys.** A small role vocabulary can serve many projects without type explosion. The same system can hold different roles in different contexts; work remains performed by a holder under a role assignment; epistemes remain used through their own evidence, status, source, publication, requirement, definition, explanation, and assurance relations.
+**What goes wrong if missed.** One label absorbs kind identity, classification, holder, assignment, capability, responsibility, and Work. Or every contribution is forced into a system role even when the real claim concerns evidence use, a relation participant, a declaration slot, or ordinary wording. In both cases readers cannot tell what exists, what merely describes it, and what actually happened.
+
+**What this buys.** Systems retain their identities while work-facing classifications and assignments change. Membership is testable from the system features named by the membership rule rather than labels or circular hierarchy edges. Practices and sources may reuse one kind or define different kinds; comparing their exact distinctions decides which. Ordinary contribution wording can stay readable without manufacturing an ontology.
 
 **Not this pattern when.**
 
-- If the current claim is the assignment relation linking holder, role, context, and window, use `A.2.1`.
-- If the current claim is capability, use `A.2.2`.
-- If the current claim is role state, use `A.2.5`.
-- If the current claim is role-admission substitution, incompatibility, qualification, or bundles, use `A.2.7`.
-- If the current claim is method, method description, work plan, or performed work alignment, use `A.15`.
-- If the current claim is an episteme used as evidence, source, standard, definition, requirement, explanation, status bearer, publication, or assurance input, use the direct evidence-use, status-use, source-use, publication-use, requirement-use, definition-use, explanation-use, or assurance pattern. Do not force it through `U.Role`.
-- If the current issue is only a confusing role-like word, first use `A.6.RSIR` to recover the governed object or claim kind.
+- Use `A.2.1` when the current object is a `U.SystemRoleAssignment` species or occurrence and its participant, predicate, or identity law matters.
+- Use `A.2.2` for capability and `A.2.5` for assignment state.
+- Use `A.2.7` for substitution, incompatibility, bundle, qualification, or another admitted relation among system-role kinds.
+- Use `A.15` and its neighbors for method admission, planned Work, performed Work, and Work attribution.
+- Use `E.24.UK` when a local system-role kind is proposed as a durable public FPF U-kind.
+- Use `E.10.ROLE` when the source word *role* is ambiguous. If the recovered meaning is relation participation, a declaration place, an interface place, or a representation position, continue with `A.6.RSIR`.
+- When an episteme rather than a system is current, recover its direct use, evidence, publication, external-rule, currentness, or reliance relation through the relevant subject pattern.
 
 ### A.2:1 - Problem Frame
 
-FPF needs role language because the same holon can be used, treated, expected, or named differently in different bounded contexts. A pump can be a cooling circulator in one plant context and a test article in another. A person can be verifier in one work package and author in another. A service can be supplier in one agreement-like relation and consumer in another. Without a role value, these contextual uses either become new system subtypes or remain vague source language.
+One system can contribute in several ways while remaining the same system. `PumpUnit-3` remains the same pump when it counts under `CoolingCirculatorSystemRole` for plant operation and under `TestArticleSystemRole` for qualification. A person remains the same person while counting under author and verifier kinds in different slices and holding different assignments.
 
-At the same time, role language is dangerous. Everyday phrases such as "the role of this standard", "the role of this dataset", "the role of this theorem", "the role of this dashboard", or "the role of this interface" can hide several different FPF claims. They may be evidence-use, source-use, publication-use, status-use, requirement-use, explanation-use, interface, signature, capability, method, or work claims. They are not automatically `U.Role` claims.
+These are local typed distinctions, not durable universal kinds. Each system-role kind has `U.System` candidates and a condition that distinguishes the stable, assignable contribution in question. C.3 also requires a useful member/non-member boundary and a continuity rule. Practice or source provenance helps readers find and compare the definition but decides neither sameness nor difference. A `KindSignature` edition states how candidate features are evaluated. A C.3.2 judgment then answers whether one System counts under that kind in one slice. A separate assignment occurrence says that a System is assigned under its declared `U.SystemRoleAssignment` species.
 
-A.2 therefore keeps `U.Role` real, but narrow. A role is a context-bound enactment-facing role value. Enactment-facing does not mean "human job" or "social agent only": a motor can be assigned as a drive motor, a pump can be assigned as a cooling circulator, and a valve can be assigned as a regulator inside a functional or transformation context. A method or method description may name role-admission conditions; performed work cites a `U.RoleAssignment`; transformation and functioning claims may also need the same role value. A role becomes operational through neighboring relations, especially `U.RoleAssignment` in `A.2.1`, role-method-work alignment in `A.15`, transformation participation in `A.3.4`, and functional precision restoration in `A.6.F` when function wording is current. It does not absorb every relation in which a value participates.
+Ordinary language also uses *role* to mean contribution or position. A design method can use a standard publication as a source for a constraint; a report can participate in an evidence relation; and a value can fill a relation slot. Those useful claims make neither the episteme nor the slot filler a system-role kind or assignment participant. The current relation must be recovered before the wording carries an FPF technical claim.
 
 ### A.2:2 - Problem
 
 Without this pattern:
 
-1. **Type explosion returns.** Each contextual use becomes a new system kind such as `PumpAsCoolingCirculator` or `ReviewerReportSystem`.
-2. **Role and assignment collapse.** The role value, the holder, the context, and the time window are treated as one vague label.
-3. **Role and capability collapse.** A role name is treated as if it created ability.
-4. **Role and method collapse.** A role name is treated as if it contained the method by which work is done.
-5. **Role and evidence collapse.** A document, dataset, standard, proof, or model card is treated as a role holder because it is used as evidence or source material.
-6. **Role and work collapse.** A role label is treated as evidence that work was performed.
-7. **Argument-position drift appears.** "Role" is used for relation argument positions or slot positions, competing with `A.6.5` SlotSpec discipline.
-8. **Role-whole overclaim.** A role is decomposed into factors, responsibilities, states, permissions, obligations, or method participation and then treated as a holon, although `U.Role` is not admitted as a holon kind. The recoverable objects are neighboring relations or values, not role parts.
+1. one system's changing contributions are modeled as changes of system identity;
+2. a familiar label or taxonomy row is treated as a kind and as proof of membership;
+3. kind identity and the membership criterion are treated as the same thing;
+4. an assignment is used as a family-wide membership rule, or classification is used to manufacture an assignment;
+5. the holder, kind, assignment interval, capability, responsibility, and Work are compressed into one record;
+6. matching labels across local practices, sources, or editions are treated as identity or permission for reuse;
+7. proposed subkind edges or extension rows create their own membership evidence;
+8. ordinary *role* wording turns epistemes, slots, positions, or interfaces into system-held roles.
 
 ### A.2:3 - Forces
 
-| Force                                    | Tension                                                                                                                                                                                                                                                 |
-|:---------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Context reuse vs type explosion          | One role value can be reused inside a bounded context; making every contextual use a system subtype loses reuse.                                                                                                                                        |
-| Role identity vs assignment relation     | `U.Role` must stay a role value, while `U.RoleAssignment` links holder, role, context, and window.                                                                                                                                                      |
-| Role boundary vs false role holon        | A role decomposition may be useful, but A.2 must route factors, responsibilities, permissions, obligations, role states, capability-fit conditions, and method role-admission conditions to their direct owners instead of treating them as role parts. |
-| Ordinary speech vs FPF kind discipline   | "Role of X" is common language, but FPF must recover whether X is a holder, source, evidence, status bearer, method, work, relation argument, or publication.                                                                                           |
-| Work-facing roles vs episteme use        | Systems perform work, including physical and operational work by motors, pumps, devices, organisms, services, teams, and people; epistemes are used, cited, asserted, published, evaluated, refreshed, or relied on through direct relations.           |
-| Minimal kernel vs practical traceability | A small role kernel is useful only if it can still connect to role descriptions, role states, role relation structure, capability-fit conditions, method role-admission conditions, work, and evidence about performed work.                            |
+| Force                                           | Tension                                                                                                                                                                                      |
+|:----------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Stable system identity vs changing contribution | The candidate remains one system while classifications, assignments, participation, and Work change.                                                                                         |
+| Local typed use vs public ontology growth       | A project needs reusable work-facing kinds without admitting `U.Role` or another universal root.                                                                                             |
+| Kind identity vs membership                     | Candidate domain, operative membership distinction, boundary probes, and continuity recover the kind; a current criterion application decides whether one system counts under it in a slice. |
+| Classification vs assignment                    | A judgment classifies a system. An assignment is a direct relation occurrence and can exist or end independently.                                                                            |
+| Readable wording vs exact technical claims      | “Alice is reviewer” is useful; a receiving decision may still need the exact kind, judgment, assignment, or Work attribution.                                                                |
+| Useful factorization vs false role mereology    | Capability, responsibility, commitment, state, and Work remain separately governed rather than becoming parts of a role.                                                                     |
 
 ### A.2:4 - Solution
 
-Use `U.Role` as a context-bound role value, not as a generic contextual classifier.
+Use an exact local `U.Kind` when `U.System` candidates need one stable, assignable, work-facing membership distinction. Recover the kind through the candidate domain, operative condition, useful member/non-member boundary, and continuity rule. Keep practice or source provenance as a locator and comparison cue. Give a live technical name the `SystemRole` head, such as `ReviewerSystemRole` or `CoolingCirculatorSystemRole`. Do not introduce `U.SystemRole`; the concrete value is already a local `U.Kind` under C.3.
 
-`U.Role` answers the question: **what is this admitted `U.System` holder being, in this bounded context, for the current method, transformation, functioning, or work claim?**
+Then keep four moves separate:
 
-It does not answer by itself:
+1. identify the local system-role kind;
+2. declare or select the `KindSignature` edition used for membership;
+3. evaluate one system, kind, signature edition, and slice under C.3.2;
+4. add a directly declared `U.SystemRoleAssignment` species and occurrence only when an assignment actually obtains.
 
-- who holds the role;
-- whether the holder can do the work;
-- which method is selected;
-- which work was planned or performed;
-- which evidence justifies a claim;
-- which publication or description expresses the role;
-- which status applies to a document, method, result, or claim;
-- which relation argument position or SlotKind is current.
+Capability, assignment state, method admission, performed Work, responsibility, commitment, permission, authority, evidence, reliance, and publication remain direct neighboring claims.
 
-Those claims belong to neighboring patterns.
+#### A.2:4.1 - Recognize a System-Role Kind
 
-#### A.2:4.1 - Core Definitions
+A local kind is a system-role kind only when all of these conditions hold:
 
-**`U.Role`.** A `U.Role` is a context-bound enactment-facing role value: a reusable value that names what an admitted `U.System` holder is being in a bounded context. It is enactment-facing because its primary practical use is to govern or explain role assignment, method role-admission conditions, transformation or functioning participation, work attribution, role-state checks, role naming, and role-related evidence about work.
+1. its candidate `ValueKind` is `U.System`;
+2. its operative membership condition states the stable, assignable, work-facing contribution and uses directly governed candidate features;
+3. at least one intended member and one relevant non-member or boundary case make the distinction testable;
+4. its continuity rule says which changes preserve that distinction and which require another kind; and
+5. its `KindSignature` does not treat a label, taxonomy row, description, assignment record, classification judgment, extension row, or proposed `U.SubkindOf` edge as the feature by form.
 
-Plain gloss: a role is a contextual functional mask. The gloss is helpful only if the normative object stays clear: the role value is not the holder, not a system part, not the function itself, and not the work.
+The kind asks what continuing distinction classifies candidate systems. A particular C.3.2 judgment asks whether one system satisfies the current signature now. Practice or source provenance shows where to inspect the definition; it neither creates nor splits the kind.
+`CoolingPumpKind` is not thereby a system-role kind. Its identity can be a physical or functional pump distinction rather than an assignable work-facing contribution. `ShortAssignmentKind`, if declared to classify assignment occurrences by duration, is also not a system-role kind because its candidates are assignments rather than systems.
 
-**`U.RoleAssignment`.** A `U.RoleAssignment` is a typed assignment relation value governed by `A.2.1`. It links a holder, a `U.Role`, a bounded context, and any current assignment window. A.2 names why this relation is needed; A.2.1 governs its SlotSpecs.
+#### A.2:4.2 - Evaluate Membership without a Circular Shortcut
 
-**Role holder.** A holder of a `U.RoleAssignment` is an admitted `U.System` selected by the governing work, transformation, functioning, or method pattern as the system-like performer for the bounded context. The word "performer" here includes physical and operational performance by motors, pumps, valves, organisms, teams, services, and devices; it does not imply consciousness, social agency, or responsibility unless a neighboring pattern makes that claim current. An episteme is not admitted as holder merely because it is used as evidence, source, standard, requirement, definition, explanation, status bearer, publication, or assurance input.
-
-**Role description.** A role description is an episteme that describes, constrains, teaches, publishes, or stores a role value or role assignment. The description is not the role value by default.
-
-**Role boundary.** A role boundary is grounded by a bounded context, the holder class or known holders, the assignment or admission use, the method, transformation, functioning, or work claim, and any current role description, role-state relation, role-relation structure, capability-fit condition, method role-admission condition, or evidence about performed work. A proposed decomposition of a role does not supply role holonhood. Recover whether the decomposed objects are role-admission fit relations, factors or qualifications, bundle expressions, separate role values, role-state refinements, capability-fit conditions, responsibility, permission, commitment, or obligation relations, or coupled method/work structures.
-
-Do not infer role parts from slots or relation richness. Systems hold roles. Role assignments, role states, evidence uses, and other relation-bearing structures may have SlotSpecs. Epistemes such as role descriptions may have constituent parts. Those slots and description parts are not parts of the `U.Role` value.
-
-**Role relation-neighborhood.** A role value is surrounded by relations that are not parts of the role:
-
-| Relation family                       | Governing pattern                                                           | What it preserves                                                                                                                                                                   |
-|:------------------------------------|:--------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Role identity and role description    | `A.2`, Part F role-description and naming patterns                          | The role value and the descriptions that make it recognizable.                                                                                                                      |
-| Role assignment                       | `A.2.1`, `A.6.5`                                                            | Holder, role value, bounded context, window, and assignment-specific work, transformation, or functioning qualifiers.                                                               |
-| Capability-fit conditions             | `A.2.2`                                                                     | Ability constraints of a holder under stated conditions; a role name does not create ability.                                                                                       |
-| Role characterization and role state  | `A.2`, `A.2.5`, `A.19` when current                                         | Characteristic scales and state predicates used to accept or reject role use.                                                                                                       |
-| Role relation structure               | `A.2.7`                                                                     | Context-local role-admission substitution, incompatibility, qualification, and role bundles.                                                                                        |
-| Method role-admission conditions      | `A.15`, `A.3.1`, `A.3.2`                                                    | Method or method-description preconditions, capability-fit conditions, role-admission conditions, constraints, interface commitments, or exclusions linked to a role or assignment. |
-| Work and transformation attribution   | `A.15`, `A.15.1`, `A.3.4`, `A.6.F` when function wording is current         | Work or transformation participation is attributed to the holder under a role assignment; the role value itself does not act.                                                       |
-| Evidence and status about role claims | `A.10`, `B.3`, `F.10`, `C.2.1`, direct evidence-use and status-use patterns | Epistemes used as evidence or status bearers stay outside `U.RoleAssignment`.                                                                                                       |
-
-Do not turn every relation in this neighborhood into a slot of `U.Role`. Use SlotSpec discipline only when the governing pattern declares a slot-bearing relation.
-
-#### A.2:4.2 - Work-Facing Role Assignment Boundary
-
-Use the short readable notation only as a notation for a typed assignment relation:
+Each membership clause names the candidate feature's subject pattern, predicate or governed feature, applicability, dependencies, and slice. The classification has four explicit inputs:
 
 ```text
-Holder#Role:Context@Window
+J(candidateSystem, systemRoleKind, kindSignatureEdition, contextSlice)
+  -> true | false | unknown
 ```
 
-The normative assignment relation is governed by `A.2.1`, not by the notation. Its core slots are:
+An assignment may be one feature only when the local `KindSignature` explicitly uses that independently obtaining assignment predicate. There is no family-wide rule that assignment means membership. The judgment being computed, a broader-kind judgment, an extension row, or the proposed `U.SubkindOf` occurrence cannot be a premise of the same judgment.
+
+Missing a required feature or dependency yields `unknown`, not `false`. Evidence supports a claim about the governed feature; it does not create that feature or the membership result.
+
+Every `U.SubkindOf` proposal evaluates the aligned narrower and broader signatures independently for the same candidate and slice. Admit the order only when the C.3.1 monotonicity condition holds. The edge records an already established implication; it never produces either classification judgment.
+
+#### A.2:4.3 - Keep Kind Identity, Declaration, and Extension Separate
+
+The system-role kind is not its `KindSignature`, taxonomy episteme, reference scheme, classification judgment, or `KindExtension`. Same-kind continuity across declaration editions requires the C.3.1 comparison of candidate domain, operative membership distinction, member/non-member boundary, and continuity rule. A compatible criterion or scheme edition can preserve the kind while later judgments cite the edition actually used. A changed source or practice triggers that comparison but does not decide it.
+
+An old role taxonomy or scheme can help recover the candidate domain, membership distinction, boundary probes, continuity rule, or provenance of the current definition. Its label or identifier does not decide sameness. A selected `BoundedModelUseStructure` can qualify one receiving interpretation when that independently established organization matters; it is designated in the receiving assertion or use and is stored neither on the kind nor as an optional participant of a generic assignment or kind relation. A genuinely structure-dependent relation species instead declares the structure as a required participant, uses the stronger predicate, and states the resulting occurrence-identity law.
+
+Use `A.1.1` before citing that structure. Select `BoundedModelUseStructure` only when exact model applicability, actual model use in assigned Work, fixed-content expression coherence, exact applied constraints, and one named selection-use frame jointly change the receiving decision. If the direct kind, relation, assertion, or Bridge already answers the question, stop there; neither a model-use label nor a wish for more background selects the structure.
+
+#### A.2:4.4 - Admit Only Exact System-Role-Kind Domains
+
+`U.Kind` is too broad as the assigned-kind participant domain of an assignment species. Each bounded system-role vocabulary declares one local domain whose candidates are local kinds satisfying the recognition conditions above. For example:
 
 ```text
-RoleAssignmentCoreSlotSpec:
-  HolderSlot:
-  RoleValueSlot:
-  BoundedContextSlot:
-  AssignmentWindowSlot:
+JournalReviewSystemRoleKindDomain : U.Kind
+  definitionProvenance: JournalReview-2026 (comparison cue only)
+  candidateValueKind: U.Kind
+  criterion:
+    the candidate kind has U.System candidates, a stable assignable
+    work-facing membership condition, useful boundary probes, and
+    a continuity rule recovered under C.3
 ```
+A direct assignment species uses that local domain as the `ValueKind` of its declaration-local `AssignedSystemRoleKindSlot`. The slot therefore rejects `CoolingPumpKind`, `ShortAssignmentKind`, and arbitrary local kinds. This is local C.3 typed use, not admission of `U.Kind` as a durable public root.
 
-`HolderSlot` is filled by an admitted `U.System` selected as system-like performer for the current work, transformation, functioning, or method claim.
+#### A.2:4.5 - Assignment Boundary
 
-`RoleValueSlot` is filled by `U.Role`.
+`A.2.1` defines the `U.SystemRoleAssignment` family. The family contains directly declared relation species rather than one permissive universal signature. Every species declares:
 
-`BoundedContextSlot` is filled by the context that gives the role value its local meaning.
+- `HolderSystemSlot : U.System`;
+- a declaration-local `AssignedSystemRoleKindSlot` whose `ValueKind` is one exact local system-role-kind domain;
+- any additional real participants needed to distinguish that species; and
+- its own obtaining predicate, applicability, and occurrence-identity rule.
 
-`AssignmentWindowSlot` is filled when assignment currentness, work attribution, role-state admission, or source freshness depends on a window. An open-world missing slot means unknown, not asserted, not recovered, or not current for this claim; it does not mean no such value exists.
+A simple species can declare only the holder and assigned-kind participant meanings. A stronger appointment, authorization, or work arrangement can declare another participant meaning when its actual value changes occurrence identity. The specialized occurrence itself remains a `U.SystemRoleAssignment`; do not keep a second generic occurrence beside it merely for projection.
 
-Direct work-role patterns may add work-role qualifier slots. Evidence-use and status-use slots are not work-role qualifier slots and do not belong in assignment provenance.
+An assignment occurrence begins when its predicate starts obtaining for the fixed participants, continues over the maximal uninterrupted predicate-true interval, and ends when a participant changes or the predicate ceases to obtain. A taxonomy episteme, reference scheme, `KindSignature`, assertion, or interval description can interpret or describe the claim without becoming another world-side participant.
 
-#### A.2:4.3 - What Does Not Become `U.Role`
+Assignment does not prove classification unless the kind's signature uses that independently obtaining relation as a feature. Classification does not create an assignment. Neither one proves capability, agency, responsibility, authority, commitment, permission, functioning, method enactment, or performed Work.
 
-The following are not role values merely because source language says "role":
+#### A.2:4.6 - Relations around the Kind and Assignment
 
-| Source phrase or temptation          | Recover as                                                                                                           |
-|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------|
-| "the role of this standard"          | standard-use, requirement-use, source-use, or publication-use relation around an episteme.                           |
-| "the role of this dataset"           | evidence-use, source-use, freshness, provenance, or measurement relation.                                            |
-| "the role of this theorem"           | claim-use, proof-use, formal-substrate, or evidence-use relation.                                                    |
-| "the role of this status badge"      | status assertion, status-use relation, gate result, or assurance-use relation.                                       |
-| "the role of this parameter"         | SlotKind, ValueKind, RefKind, method parameter, model parameter, or source label according to the governing pattern. |
-| "the role of this interface"         | module-interface claim, port, signature, API, protocol, service-access package, publication face, or boundary claim. |
-| "the role of this capability"        | capability-fit condition, holder capability, method role-admission condition, or role description claim.             |
-| "the role of this relation argument" | SlotKind or relation position under `A.6.5`, not `U.Role`.                                                           |
+| Current claim                                          | Subject pattern                                                    | Kept distinct                                                                                                                                                                                                                           |
+|:-----------------------------------------------------|:-----------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Local kind, declaration, classification, and extension | `C.3`, `C.3.1`, `C.3.2`                                            | system-role kind, `KindSignature`, four-input judgment, optional extension, and kind-continuity decision                                                                                                                                |
+| System-role assignment                                 | `A.2.1`, `A.6.5`, `A.6.REL`                                        | direct species, exact participants, predicate, applicability, and uninterrupted occurrence identity                                                                                                                                     |
+| Assignment state                                       | `A.2.5`                                                            | exact assignment occurrence, `SystemRoleAssignmentStatePredicate`, `SystemRoleAssignmentStateRelation` occurrence, and its maximal truth interval; target evaluation window, assertion polarity, evidence, and reliance remain separate |
+| Capability                                             | `A.2.2`                                                            | holder, capability instance, envelope, measures, currentness, and fit predicate                                                                                                                                                         |
+| Relations among system-role kinds                      | `A.2.7`, `C.3.1`                                                   | exact kind participants and substitution, incompatibility, bundle, or monotonic qualification relation                                                                                                                                  |
+| Description and naming                                 | `F.4`, `F.5`, `F.18`                                               | kind, `SystemRoleKindDescription`, names, and publication or access carrier                                                                                                                                                             |
+| Method and Work                                        | `A.3`, `A.13`, `A.15.1`, `F.6`                                     | Method and MethodDescription; exact actual performer recovered through A.13; independently admitted Work occurrence; assignment and F.6 attribution only when precise assignment-bound attribution is expressly consumed                |
+| Responsibility, commitment, permission, or authority   | direct domain pattern, `A.2.8`, `A.2.8.PER`, or `missing-governor` | actual bearer, exact relation participants, predicate, and instituting or permission basis                                                                                                                                              |
+| Evidence, reliance, or publication                     | `A.10`, `A.15.4`, `B.3`, `C.2.1`, `E.17`, `F.10`                   | episteme, evidenced claim, reliance, provenance, currentness, and publication relation                                                                                                                                                  |
 
-If the direct kind is not yet clear, use `A.6.RSIR`.
+Select only the objects needed by the current claim. A large neighborhood is not a larger kind, and none of these values is a “part of the role”.
 
-#### A.2:4.4 - Role Taxonomy Inside a Bounded Context
+`SystemRoleKindDescription` is an F.4 description episteme whose exact EntityOfConcern is one system-role kind. An episteme about an assignment or a relation among kinds has that assignment or relation as its EntityOfConcern instead. Teaching from, storing, or publishing any such description does not make it the described kind or occurrence.
 
-Inside one bounded context, roles may be organized by:
+#### A.2:4.7 - Recover Contribution Wording before Formalizing It
 
-- role-admission substitution;
-- role incompatibility;
-- role bundles;
-- role-state predicates;
-- holder eligibility constraints;
-- capability-fit conditions;
-- method role-admission conditions or exclusions;
-- naming and description conventions.
+The phrase “the role of X” often means that X contributes to a use. Apply `E.10.ROLE` first. If X is an admitted system and the claim needs a work-facing classification, recover the local system-role kind and C.3.2 judgment; add an assignment only when holding is claimed. Otherwise keep X in its actual kind and name the direct relation or declaration place.
 
-`A.2.7` governs role relation structure. It is context-local role architecture in life, not mereology, not class subsumption for systems, not generic concern algebra, not `MethodRelationStructure@BoundedContext`, and not method algebra. Algebraic, graph, matrix, embedding, or neural descriptions are only lenses over selected role relation structure when a project explicitly uses them.
+| Ordinary wording                                 | Governed repair                                                                                                                                        |
+|:-----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `RFC 9110 plays a normative role in this design` | Keep the publication as an episteme and state the current external-rule, constraint, source-use, or publication relation selected by the design claim. |
+| `this dataset plays the benchmark role`          | Keep the dataset as an episteme and state the measurement, evidence, benchmark, source-use, or currentness relation that actually obtains.             |
+| `this parameter has the control role`            | Recover the Method or model parameter, or an A.6.5 participant slot, from the direct declaration.                                                      |
+| `this interface plays the integration role`      | Recover the selected module-interface, port, signature, or protocol relation under its governor.                                                       |
 
-Typical work-facing role families include:
+The alternatives are recognition probes, not a union kind. If no direct relation can yet be named, return the exact `missing-governor` rather than minting a system-role kind.
 
-| Role family             | Ordinary use                                                                                                                                                    | Boundary                                                                                                     |
-|:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
-| `TransformerRole`       | An admitted `U.System` holder changes, produces, maintains, selects, derives, or controls an EntityOfConcern by work under a method or transformation relation. | The role does not change anything by itself; the holder performs work or participates in the transformation. |
-| `DriveMotorRole`        | A motor supplies mechanical drive in a bounded machine, pump, vehicle, or plant context.                                                                        | The motor is the holder; the role is not a component of the motor and not the motor's capability envelope.   |
-| `CoolingCirculatorRole` | A pump circulates coolant in a plant or machine context.                                                                                                        | Circulation capability, method, actual work occurrence, and evidence remain neighboring claims.              |
-| `ObserverRole`          | An admitted `U.System` holder measures, samples, inspects, monitors, or records.                                                                                | The measurement record is an episteme; the observing work remains work by the holder.                        |
-| `VerifierRole`          | An admitted `U.System` holder checks a claim, result, method, or work product.                                                                                  | The report or proof produced by verification is evidence or publication, not the verifying role holder.      |
-| `CoordinatorRole`       | An admitted `U.System` holder coordinates other role assignments, plans, or work occurrences.                                                                   | Coordination work is still dated work under method and plan claims.                                          |
+#### A.2:4.8 - System-Role Vocabularies and Relations among Kinds
 
-Domains may define roles such as `DriveMotorRole`, `CoolingCirculatorRole`, `BridgeInspectorRole`, `ClinicalTrialCoordinatorRole`, `ModelCardReviewerRole`, or `ShipyardOperatorRole`. Define them in their bounded context and connect them to role assignment, capability, method, transformation, work, and evidence only when those claims are current.
+A system-role-vocabulary or taxonomy episteme may state local kind names, declarations, and selected relation claims under an effective reference scheme. Those statements create no kind, membership result, or assignment, and making the episteme available creates none either. Each live kind still needs the C.3 distinction that lets readers recover it; each judgment cites its actual signature edition.
 
-#### A.2:4.5 - Reduced Use and Reopen Conditions
+Use `A.2.7` to state one selected `SystemRoleKindRelationStructure` over exact local system-role kinds and admitted relations among them. A receiving use can cite an assertion about substitution, incompatibility, bundle, qualification, or another residual relation alongside separately stated assignments, state, capability, and Work. Systems and assignments are not participants of the kind-relation structure.
 
-A role-like word may stay in reduced use when it only helps people recognize a local conversation and no claim depends on holder, assignment, context, time, capability, method, work, evidence, status, source, publication, or gate use.
+Algebraic, graph, matrix, embedding, or neural representations are mathematical lenses over that selected structure when a project declares the lens use. They neither create the kinds nor make a relation obtain.
 
-Use the fuller role pattern when a claim based on the role-like word would change what can be done, claimed, checked, relied on, or attributed:
+| System-role kind              | Recognition case                                                                                                                   | Boundary                                                                 |
+|:----------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| `CoolingCirculatorSystemRole` | A pump supplies a circulation contribution in plant operation.                                                                     | Capability, assignment, functioning, and performed Work remain separate. |
+| `TestArticleSystemRole`       | The same pump is selected for qualification use.                                                                                   | The classification or assignment does not change pump identity.          |
+| `VerifierSystemRole`          | A person, team, organization, service, or non-human technical system supplies verification contribution under its local criterion. | A verification report is an episteme, not the classified system.         |
+| `TransformerSystemRole`       | A system is classified for a transformation-facing contribution.                                                                   | The system performs Work; the kind and assignment do not act.            |
 
-- use `A.2` when the role value itself, bounded context, role taxonomy, or role relation-neighborhood is current;
-- use `A.2.1` when holder, role value, context, window, assignment source, or work-role qualifier is current;
-- use `A.2.2` when ability or capability is current;
-- use `A.2.5` when role-state admission, currentness, or role-state gate is current;
-- use `A.2.7` when role-admission substitution, incompatibility, qualification, or role bundles are current;
-- use `A.15` when method, method description, work plan, or performed work is current;
-- use direct episteme-use patterns when evidence, status, source, publication, requirement, definition, explanation, assurance, or gate use of an episteme is current;
-- use `A.6.5` when the word "role" is only a relation position or SlotKind.
+#### A.2:4.9 - Reduced Use and Stronger Claims
 
-If a reduced-use role label is later used for a stronger claim, do not treat the earlier reduced use as evidence. Recover the needed role value, assignment relation, neighboring value, or direct episteme-use relation before the stronger claim is made.
+Ordinary “Alice is reviewer” or “this component plays a control role” wording can remain Plain when no decision, attribution, admission, or reliance depends on another technical distinction. Do not materialize a kind, judgment, or assignment merely to decorate the sentence.
+
+When a stronger claim appears, add only the needed object:
+
+- the local kind and judgment when classification matters;
+- the assignment occurrence when who holds what and when matters;
+- the direct state, capability, method, Work, responsibility, commitment, permission, evidence, reliance, or publication relation when that relation carries the claim;
+- the exact C.3.3 kind relation and, when local meanings differ, F.9 relation needed for cross-local use, without merging the kinds or creating assignments.
+
+The earlier Plain sentence is not evidence for a stronger claim.
 
 ### A.2:5 - Archetypal Grounding
 
+#### A.2:5.1 - Reviewer Membership and a Non-Circular Subkind
 
-#### A.2:5.1 - Pump in a Cooling Loop
+The JournalReview practice records one local kind under C.3. The source label locates the definition; the kind itself is recovered through its system-candidate domain, substantive-review condition, boundary probes, and continuity rule:
 
 ```text
-PumpUnit-3#CoolingCirculatorRole:Plant-A@2026-06-01..open
+ReviewerSystemRole : U.Kind
+  definitionProvenance: JournalReview-2026 (comparison cue only)
+  candidateValueKind: U.System
+  operativeMembershipDistinction:
+    can supply a substantive review judgment that meets the current
+    JournalReview acceptance conditions
+  intendedBoundary:
+    a system that applies those conditions is a member; a report or a
+    system that merely comments without applying them is not
+  continuityRule:
+    continue the kind only while that candidate range and distinction continue
+KindSignature@ReviewerSystemRole/e3:
+  EntityOfConcern: ReviewerSystemRole
+  candidateValueKind: U.System
+  membershipCriterion:
+    one current A.2.2 capability instance has the candidate system as holder,
+    names substantive-review Work or its review-judgment result class,
+    and satisfies its declared envelope, measures, and currentness;
+    the current JournalReview capability-fit predicate confirms the submission,
+    review-phase, and judgment-quality conditions for this slice
+  sliceApplicabilityConditions:
+    the submission, review phase, and temporal selector
+  effectiveReferenceScheme: JournalReview-Scheme-2026/e3
+  assumptionsAndDependencies:
+    the capability instance, currentness condition, and capability-fit predicate
 ```
 
-The holder is `PumpUnit-3`, a system. The role value is `CoolingCirculatorRole`. The context is `Plant-A`. The assignment window is open from a named date.
+The capability and fit predicate are governed under A.2.2. They are features used by the criterion, not substitutes for the kind or judgment. One application can therefore state:
 
-This does not say the pump has the capability to circulate under every condition. Capability claims stay under `A.2.2`. It does not say which method is used or which work occurred. Method, method description, work plan, and work claims stay under `A.15`.
+```text
+J(Alice, ReviewerSystemRole, KindSignature@ReviewerSystemRole/e3, ReviewSlice-17) = true
+J(Alice, ReviewerSystemRole, KindSignature@ReviewerSystemRole/e3, LaterSlice-18) = false
+```
 
-#### A.2:5.2 - Standard Used in Design Work
+The later result follows only from a known failed currentness or fit condition. Ending an assignment alone changes neither judgment because this signature does not use assignment as a feature. If a dependency is unavailable, the result is `unknown`.
 
-"RFC-9110 has the protocol-standard role in this design" is source-side wording that must be repaired.
+For `RoboticsEngineerSystemRole U.SubkindOf EngineerSystemRole`, evaluate the two aligned signatures independently for every admitted candidate and slice needed by the declared domain. Only after every defined true narrower judgment implies a true broader judgment may C.3.1 admit the relation. The proposed edge proves neither judgment. An independently obtaining robotics assignment also proves neither judgment unless the relevant signature explicitly uses it as a non-circular feature.
 
-Current FPF expression:
+#### A.2:5.2 - Pump in a Cooling Loop
 
-- the RFC publication is an episteme or publication used as source, standard, requirement, or method-description source;
-- the design service, engineer, or team is the admitted `U.System` holding any work-facing role;
-- the design work is performed by that holder under a role assignment;
-- the RFC does not perform the work and does not hold `U.Role`.
+`CoolingCirculatorSystemRole` names a local kind whose candidates are admitted systems. Its membership condition requires the governed circulation features needed for the plant-operation contribution; member/non-member probes and the continuity rule expose the boundary. `PlantOperations-2026` locates the current definition but does not identify the kind. `PumpUnit-3` is judged against that exact signature edition and slice; the judgment does not change pump identity.
 
-#### A.2:5.3 - Reviewer and Review Report
+When the plant also claims an assignment, it uses a directly declared species:
 
-A person, team, or agent service can hold `ReviewerRole` for a review context. The review report produced by that work is an episteme. Later, another project may use the report as evidence or status input. That use is an evidence-use or status-use relation around the report, not a role assignment to the report.
+```text
+PlantCoolingSystemRoleAssignment : U.SystemRoleAssignment
+  HolderSystemSlot: U.System
+  AssignedSystemRoleKindSlot: PlantOperationsSystemRoleKindDomain
+  predicate:
+    the holder is selected for the assigned plant-operation contribution
+    under the declared operating conditions
 
-#### A.2:5.4 - Relation Argument Named "Role"
+PlantCoolingAssignment@PumpUnit3:
+  HolderSystemSlot: PumpUnit-3
+  AssignedSystemRoleKindSlot: CoolingCirculatorSystemRole
+  assignmentInterval: [2026-06-01, open]
+```
 
-In a relation signature, "role" may mean an argument position. If the claim is about a relation position, use `A.6.5` SlotSpec discipline. Do not create a `U.Role` merely because the source says "argument role".
+The interval is assertion content about the known extent; the occurrence continues only while the species predicate obtains without interruption for the same participants. `PlantOperationsSystemRoleVocabulary-2026`, its reference scheme, and the relevant signature can be cited as interpretation evidence. They are not extra assignment participants.
+
+Closing the open interval later refines the same occurrence description when uninterrupted identity is preserved; the stated interval neither makes the relation obtain nor becomes another participant.
+
+The assignment proves neither circulation capability over every operating region nor performed circulation or maintenance Work. Those claims use A.2.2, A.15.1, and the applicable Method, transformation, measurement, and evidence relations.
+
+#### A.2:5.3 - A Standard Used in Design Work
+
+An engineering team uses RFC 9110 while designing an HTTP service. Keep these claims separate:
+
+1. `DesignTeam-2` independently counts under `ProtocolDesignerSystemRole` in the current slice when its signature criterion is satisfied.
+2. One design-assignment occurrence may obtain as an instance of a declared `U.SystemRoleAssignment` species.
+3. The RFC publication is the source episteme in the direct source-use or external-rule relation selected by the design claim.
+4. Recover `DesignTeam-2` as the exact actual performer through A.13, then let A.15.1 independently admit the dated design Work. Because this case expressly says the Work was performed under the exact design assignment, F.6 afterward establishes that relation through the same obtaining A.13 assignment; F.6 identifies neither assignment nor performer, and failed attribution would leave the Work intact. The Work may separately produce a MethodDescription or SystemDescription only through the applicable production claim.
+
+The publication neither counts under the system-role kind nor performs the Work.
+
+#### A.2:5.4 - The Same Label in Two Local Practices
+
+An editorial-review practice and a safety-assurance practice can each use `ReviewerSystemRole`. Compare their exact C.3 definitions before deciding whether one kind continues. In this case the safety-assurance condition admits a materially different contribution and member/non-member boundary, so two kinds are present. The practice names help locate those definitions; a shared label, vocabulary source, or reference-scheme spelling establishes neither sameness nor a Bridge.
+
+Suppose a staffing dashboard proposes `u-reviewer-display`: show assignments from both practices in one `Reviewer` column. First recover the two exact local kinds and any F.17 cells needed by the displayed expressions; then establish only the C.3.3 kind relation and F.9 local-sense relation that the display actually consumes. State a separate C.2.1 bounded-use assertion with direction `d-safety-to-editorial-display`, rule `r-preserve-reviewer-differences`, and tolerance `t-shared-label-only`, plus polarity and effective scheme. The rule keeps the practices' admission, independence, evidence, and completion fields separate and tolerates only the shared display label.
+
+Current A.10 provenance and `RelianceDisposition=pass` can support that display use. They do not justify substitution between assignments or merge the two kinds. If an actual named assurance claim about that use is current, only its B.3 result can support that bounded assurance use; a non-positive disposition stops or narrows it. Consequence alone creates no assurance claim. A Bridge Card can package the Bridge, bounded-use assertion, evidence, and disposition, but it grants no assignment, eligibility, capability, use suitability, or performed-Work inference. A selected `BoundedModelUseStructure` is cited only in the receiving use whose interpretation it changes.
+
+#### A.2:5.5 - A Relation Participant Slot Named `role`
+
+An external notation may call one relation position `role`. Apply E.10.ROLE and A.6.RSIR to recover the participant meaning and declaration-local SlotKind. Its `ValueKind` is the participant kind. The external label creates neither a system-role kind nor an assignment. A System participates in the relation as declared; it holds a system-role assignment only through a separate occurrence of a declared assignment species.
 
 ### A.2:6 - Bias Annotation
 
-| Bias risk               | Failure                                                                                          | Mitigation                                                                                                                               |
-|:----------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|
-| Semio-bias              | The pattern starts talking mainly about descriptions of roles, cards, records, and publications. | Keep `U.Role` as the EntityOfConcern. Descriptions and publications are neighboring epistemes.                                           |
-| Episteme-as-agent drift | A document, proof, standard, dataset, or model card is treated as if it acted.                   | Use evidence-use, source-use, status-use, publication-use, requirement-use, definition-use, explanation-use, or assurance-use relations. |
-| Slot-role drift         | Role is used as a generic slot position.                                                         | Use `A.6.5` for SlotKind and relation positions; keep `U.Role` for enactment-facing role values.                                         |
-| Capability-role drift   | A role name is treated as ability.                                                               | Use `A.2.2` for capability; role assignment may cite capability-fit conditions but does not create ability.                              |
-| Method-role drift       | A role name is treated as the method itself.                                                     | Use `A.15`, `A.3.1`, and `A.3.2` for method and method-description claims.                                                               |
+| Bias risk                         | Failure                                                                                        | Repair                                                                                                                                                                                                                                          |
+|:--------------------------------|:---------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Lexical bias                      | A familiar role label is treated as a kind, judgment, or assignment.                           | Do not let the familiar word decide. Say which systems can count, which work-facing condition separates members from relevant non-members, and what preserves that distinction; keep ordinary wording Plain when no technical object is needed. |
+| Document bias                     | A taxonomy, description, card, or publication is treated as the kind or assignment.            | Keep the episteme and publication relation separate from the governed world-side values.                                                                                                                                                        |
+| Episteme-as-agent drift           | A standard, report, dataset, or model is said to perform Work.                                 | Name the performer system and Work occurrence; keep the episteme in its evidence, reliance, external-rule, source-use, or publication relation.                                                                                                 |
+| Global-label bias                 | Matching names are treated as matching kinds or sufficient permission for cross-local use.     | Keep local identities separate and establish only the C.3.3 kind relation, any F.9 local-sense relation, and the bounded-use claim that actually obtain.                                                                                        |
+| Assignment-membership circularity | Assignment proves classification or classification creates assignment.                         | Evaluate direct features first; use assignment only when the signature explicitly cites an independently obtaining assignment predicate.                                                                                                        |
+| Slot-role drift                   | A relation participant becomes a system-held role because a source labels the position `role`. | Recover the exact participant meaning, SlotKind, and ValueKind under A.6.RSIR.                                                                                                                                                                  |
+| Capability-role drift             | Assignment or kind membership is treated as proof of ability.                                  | Use A.2.2 and a separate capability-fit predicate.                                                                                                                                                                                              |
+| Method-role drift                 | A system-role kind is treated as the Method or MethodDescription used for Work.                | Keep Method, MethodDescription, admission condition, assignment, and Work occurrence under A.3 and A.15.                                                                                                                                        |
+| Responsibility-role drift         | A system-role kind or assignment is treated as the responsibility result.                      | Cite the admitted responsibility predicate and actual bearer, or return `missing-governor`.                                                                                                                                                     |
+| Role mereology                    | State, capability, responsibility, or Work is modeled as a part of a role.                     | Recover another kind, relation among kinds, or the direct neighboring object and relation.                                                                                                                                                      |
 
 ### A.2:7 - Working Guidance
 
-1. Start with the source phrase and recover the current project concern.
-2. If the phrase names what an admitted `U.System` holder is being in a bounded context, recover a `U.Role` value.
-3. If the phrase names the holder-role-context-window relation, recover `U.RoleAssignment` under `A.2.1`.
-4. If the claim decomposes a role, do not open role mereology. Use `A.2.7` and neighboring owners to recover role-admission fit, factor or qualification, bundle expression, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, or coupled method/work structure.
-5. If the phrase names ability, recover capability under `A.2.2`.
-6. If the phrase names performed work, intended work, or governing method, use `A.15` and its neighboring method and work patterns.
-7. If the phrase names evidence, source, standard, requirement, definition, explanation, publication, status, assurance, or gate use of an episteme, use the direct episteme-use relation pattern.
-8. If the phrase only names a relation position, field, parameter, or argument, use `A.6.5`.
+1. Identify the candidate and confirm its independent A.1 admission as `U.System`.
+2. Recover the local kind by saying which systems can count, which work-facing condition separates members from relevant non-members, and what changes preserve that distinction. Record practice or source provenance only when it helps find or compare the definition.
+3. Declare or select the exact `KindSignature` edition and its direct governed feature criteria.
+4. Evaluate the candidate, kind, signature edition, and slice as `true`, `false`, or `unknown`.
+5. Add an assignment only when an occurrence of a declared assignment species actually obtains.
+6. State each claim about state, capability, Method, Work, responsibility, commitment, permission, authority, evidence, or reliance through the pattern that defines or constrains it.
+7. Evaluate every subkind proposal from independently obtained aligned judgments; never use the proposed edge as a membership premise.
+8. For cross-local use, keep both kinds and their assignments distinct and establish only the C.3.3 kind relation, F.9 local-sense relation, and bounded-use claim actually needed.
+9. If the source uses *role* for another object, apply E.10.ROLE and continue with the recovered subject pattern; stop at `missing-governor` when no relation is yet admitted.
 
 ### A.2:8 - Conformance Checklist
 
-| ID       | Check                                                                                                                                                                                                                                                                                                                               |
-|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CC-A2.1  | A `U.Role` is a role value, not a system subtype, part, capability, method, work occurrence, commitment, obligation, permission, description, publication, or SlotKind.                                                                                                                                                             |
-| CC-A2.2  | A `U.RoleAssignment` holder is an admitted `U.System` selected as system-like performer by the governing work, transformation, functioning, or method pattern.                                                                                                                                                                      |
-| CC-A2.3  | An episteme used as evidence, source, standard, definition, requirement, explanation, status bearer, publication, or assurance input is not a `U.RoleAssignment` holder.                                                                                                                                                            |
-| CC-A2.4  | Role claims name or recover the bounded context that gives the role value its local meaning.                                                                                                                                                                                                                                        |
-| CC-A2.5  | Work, transformation, and functioning claims cite the holder under `U.RoleAssignment` when role attribution is current; the role value itself does not act.                                                                                                                                                                         |
-| CC-A2.6  | Capability-fit conditions are governed by `A.2.2`, not hidden inside the role value.                                                                                                                                                                                                                                                |
-| CC-A2.7  | Method role-admission conditions, method-description acceptance conditions, preconditions, constraints, and interface commitments are governed by `A.15`, `A.3.1`, and `A.3.2`, not hidden inside the role value.                                                                                                                   |
-| CC-A2.8  | Role-admission substitution, incompatibility, qualification, and bundles are context-local role relation structure under `A.2.7`, not mereology and not system-kind subsumption.                                                                                                                                                    |
-| CC-A2.9  | Relation argument positions and SlotKinds are governed by `A.6.5`; they do not become `U.Role`.                                                                                                                                                                                                                                     |
-| CC-A2.10 | Role decomposition claims are recovered as role-admission fit, factor or qualification, bundle expression, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, or coupled method/work structure; `U.Role` is not placed in a role `partOf` chain. |
-| CC-A2.11 | Role descriptions, role cards, registers, and publications describe, cite, or store role values or assignments; they are not the role value by default.                                                                                                                                                                             |
+| ID         | Check                                                                                                                                                                                                                                                                                                   |
+|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `CC-A2.1`  | Every system-role kind is one local `U.Kind`; no `U.Role` or universal `U.SystemRole` is introduced.                                                                                                                                                                                                    |
+| `CC-A2.2`  | The `U.System` candidate domain, operative work-facing membership condition, intended member/non-member boundary, and continuity rule recover the kind; practice or source provenance only locates or prompts comparison of the definition.                                                             |
+| `CC-A2.3`  | Kind identity, `KindSignature`, classification judgment, extension, vocabulary episteme, and reference scheme remain distinct.                                                                                                                                                                          |
+| `CC-A2.4`  | Each judgment names one system, system-role kind, signature edition, slice, and `true`/`false`/`unknown` result.                                                                                                                                                                                        |
+| `CC-A2.5`  | Membership clauses use directly governed candidate features; labels, records, judgments, extensions, and proposed subkind edges are not features by form.                                                                                                                                               |
+| `CC-A2.6`  | An assignment is a membership feature only when the signature cites its independently obtaining predicate; no family-wide assignment-membership law exists.                                                                                                                                             |
+| `CC-A2.7`  | Every assignment occurrence belongs to one directly declared `U.SystemRoleAssignment` species with an exact local system-role-kind domain.                                                                                                                                                              |
+| `CC-A2.8`  | Taxonomy, scheme, signature, assertion, and interval description are interpretation or claim content rather than generic assignment participants.                                                                                                                                                       |
+| `CC-A2.9`  | Capability, state, Method, Work, responsibility, commitment, permission, authority, evidence, reliance, and publication remain separately governed.                                                                                                                                                     |
+| `CC-A2.10` | A `U.SubkindOf` claim follows independently evaluated aligned signatures and C.3.1 monotonicity.                                                                                                                                                                                                        |
+| `CC-A2.11` | Same spelling across local practices, sources, or editions does not decide kind identity; continuity and actual relations are explicit.                                                                                                                                                                 |
+| `CC-A2.12` | Relation-position or ordinary contribution wording creates no system-role kind or assignment by itself.                                                                                                                                                                                                 |
+| `CC-A2.13` | A proposed decomposition is resolved through exact relations among kinds or neighboring subject patterns, not `partOf` over a system-role kind.                                                                                                                                                         |
+| `CC-A2.14` | Cross-local use keeps both kinds distinct, cites the exact C.3.3 kind relation and any F.9 local-sense relation, and states the bounded use, direction, preservation rule, tolerated loss, polarity, effective scheme, and current reliance needed by the receiver; a Bridge Card is not a use licence. |
+| `CC-A2.15` | A selected model-use structure appears only in the receiving claim it changes; it neither classifies nor assigns a system and never enters a generic relation as an optional participant.                                                                                                               |
 
 ### A.2:9 - Common Anti-Patterns
 
-| Anti-pattern                                | Why it fails                                                                                            | Repair                                                                                                                                                                                                                                                                                |
-|:------------------------------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `TransformerSystem` as a system subtype     | It fuses system identity with a contextual role.                                                        | Use `U.RoleAssignment(holderRef=<system>, roleRef=TransformerRole@Context, boundedContextRef=<context>)` when a holder role assignment is current.                                                                                                                                    |
-| `AssistantReviewerRole partOf ReviewerRole` | It treats a role boundary as role mereology, but no role-part constructive assembly has been recovered. | Use `A.2.7`: decide whether the current object is role-admission fit, factor or qualification, bundle expression, separate role value, role-state refinement, capability-fit condition, responsibility, permission, commitment, or obligation relation, or method/work decomposition. |
-| "The PDF enforced the rule"                 | The episteme did not perform work.                                                                      | Name the admitted `U.System` that performed enforcement work, and name the PDF's source, requirement, or evidence use separately.                                                                                                                                                     |
-| "The report has EvidenceRole"               | It treats evidence use as a role held by an episteme.                                                   | Use an evidence-use relation around the report, target claim, grounding holon when current, claim scope, polarity, relevance window, and provenance constraints.                                                                                                                      |
-| "The role grants capability"                | A role name does not create ability.                                                                    | Name capability under `A.2.2` and link it through the current capability-fit or checking relation when current.                                                                                                                                                                       |
-| "The role contains the method"              | A role value is not a method.                                                                           | Name method and method description through `A.15`, `A.3.1`, and `A.3.2`.                                                                                                                                                                                                              |
-| "Argument role equals U.Role"               | A relation position is not an enactment-facing role value.                                              | Use `A.6.5` SlotKind and relation signature discipline.                                                                                                                                                                                                                               |
+| Anti-pattern                                            | Why it fails                                                                                                                                               | Repair                                                                                                                                                                                              |
+|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `PumpAsCoolingCirculator` as a new system subtype       | One contribution is mistaken for system identity.                                                                                                          | Keep the pump kind stable; use a local `CoolingCirculatorSystemRole` classification and a separate assignment when it obtains.                                                                      |
+| `PumpUnit-3#CoolingCirculatorSystemRole:Plant-A@Window` | The compact token hides the kind declaration, assignment species and occurrence, and the kind of Plant A while suggesting a mandatory context participant. | State the local kind and judgment; when assignment matters, name the A.2.1 occurrence and its declared species, and keep Plant A as the plant System or Work locus.                                 |
+| `ReviewerSystemRole` means “assigned reviewer”          | Kind membership and assignment occurrence are collapsed.                                                                                                   | Evaluate the signature; state the assignment independently.                                                                                                                                         |
+| Membership means “an assignment to this kind obtains”   | Broader classification would require a broader assignment and subkind order would create world-side facts.                                                 | Use direct governed system features; assignment can be one explicitly declared feature.                                                                                                             |
+| One generic assignment signature accepts `U.Kind`       | Arbitrary kinds enter the assigned-kind slot and stronger appointments lose their participant law.                                                         | Declare a direct species with an exact local system-role-kind domain.                                                                                                                               |
+| Taxonomy and scheme are assignment participants         | Interpretation editions become world-side identity changes.                                                                                                | Keep them in declarations, assertions, or evidence about the predicate.                                                                                                                             |
+| `AssistantReviewerSystemRole partOf ReviewerSystemRole` | No constructive whole or part relation is established.                                                                                                     | Test an exact qualification, substitution, incompatibility, bundle, or another local kind and direct relation.                                                                                      |
+| `The PDF enforced the rule`                             | An episteme replaces the system and Work that performed enforcement.                                                                                       | Name the performer and Work; state the PDF's source-use, external-rule, evidence, or reliance relation separately.                                                                                  |
+| Same label, therefore same kind or assignment           | Spelling establishes neither kind continuity nor an obtaining assignment or Bridge.                                                                        | Compare the C.3 definitions first. Reuse the same kind when its distinction continues; when two kinds are present, establish only the exact C.3.3 and, when needed, F.9 result consumed by the use. |
 
 ### A.2:10 - Consequences
 
-| Gain                                                                                                                                                                      | Cost or tradeoff                                                                            |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
-| Role names remain reusable without creating system subtypes.                                                                                                              | Authors must name bounded context instead of relying on global role meanings.               |
-| Work attribution becomes inspectable through holder, role assignment, method, plan, and work.                                                                             | Simple sentences may need a small role-assignment note when claims become reliance-bearing. |
-| Episteme use remains precise: evidence, status, source, standard, requirement, definition, explanation, publication, and assurance uses stay in direct relation patterns. | Everyday "role of this document" wording must be repaired before it becomes FPF vocabulary. |
-| Slot discipline and role discipline stop competing.                                                                                                                       | Authors must distinguish role value from SlotKind when reading relation signatures.         |
-| Role relation structure remains context-local and bounded.                                                                                                                | Cross-context reuse requires explicit alignment rather than silent synonymy.                |
+| Gain                                                                                      | Cost or tradeoff                                                                                                                                                                                                             |
+|:----------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Systems retain stable identity while contribution classifications and assignments change. | Relied-on classification must identify the local kind, its current signature edition, and the C.3 distinction that makes the kind continuous; source or practice provenance is recorded when it helps locate the definition. |
+| Membership can be checked without circular assignment or hierarchy premises.              | Direct candidate features and unavailable dependencies must be distinguished.                                                                                                                                                |
+| Assignment identity remains available through direct species and uninterrupted obtaining. | A stronger appointment needs its real participants and predicate rather than a generic record.                                                                                                                               |
+| Local vocabularies remain reusable without a universal role root.                         | Cross-local sameness and use require explicit continuity, an obtaining C.3.3 kind relation, or an F.9 local-sense relation, as applicable.                                                                                   |
+| Ordinary sentences remain readable.                                                       | A stronger receiving claim must still expose the exact kind, judgment, assignment, or relation it consumes.                                                                                                                  |
+| Episteme use, capability, responsibility, Method, and Work remain independently testable. | Contribution wording must be resolved before it carries another technical inference.                                                                                                                                         |
 
 ### A.2:11 - Rationale
 
-Roles are needed because holons participate in different contexts without changing their substantial identity. A role value gives this context-local participation a name. The pump remains the same pump while being a cooling circulator in one context and test article in another. The engineer remains the same person while holding verifier or author roles in different work packages.
+System-role kinds solve a local classification problem. System-role assignments solve a relation-occurrence problem. The pump does not become another system because its contribution changes, and a kind does not become an assignment because one system currently counts under it.
 
-The selected ontology keeps three levels separate:
+The architecture therefore keeps these levels separate:
 
-1. `U.Role`: the context-bound role value.
-2. `U.RoleAssignment`: the typed relation value linking holder, role, context, and window.
-3. Neighboring values: capability, method, method description, work plan, work occurrence, evidence-use relation, status-use relation, source-use relation, publication-use relation, and role description.
+1. the local system-role kind, its candidate domain, work-facing membership distinction, boundary probes, continuity rule, and useful definition provenance;
+2. the `KindSignature` and one C.3.2 judgment over a system and slice;
+3. any directly declared `U.SystemRoleAssignment` occurrence;
+4. direct neighboring relations for state, capability, Method, Work, responsibility, commitment, permission, authority, evidence, reliance, description, and publication.
 
-This is a compact architecture. It avoids type explosion, but it also avoids the opposite error of making role a generic slot word for anything that participates in anything else. A role is a real role value when an admitted `U.System` holder is being something in a bounded context for work, transformation, functioning, method, or attribution. Other participation claims use their own relation patterns.
+A system-role kind is not a holon merely because its description has internal fields. Proposed “parts” repeatedly resolve into other kinds, relation predicates, assignments, Method or Work structures, or parts of description epistemes. The useful structure is the exact relation structure governed by A.2.7, not role mereology.
+
+Semantic locality needs no universal context participant. C.3's candidate domain, operative membership distinction, boundary probes, and continuity rule recover the kind. A practice or source reference locates the definition and warns where comparison may be needed; it is not an identity participant. An assignment species declares only its real participants. A receiving assertion or use can cite a selected model-use structure when that structure actually changes interpretation.
 
 ### A.2:12 - SoTA-Echoing
 
-| Practice line                                                                                                                                        | Selected source examples                                                                                                                                      | What FPF adopts                                                                             | User-facing implication                                                                                                          |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|
-| Conceptual modeling with UFO and OntoUML treats roles as context-dependent, anti-rigid, relation-dependent descriptors rather than structural parts. | Guizzardi et al., "UFO: Unified Foundational Ontology", Applied Ontology 2022; current OntoUML and UFO conceptual-modeling practice.                          | Keep roles distinct from system kinds, mereological parts, and relation argument positions. | A project can name `VerifierRole` or `CoolingCirculatorRole` without creating a new system subtype.                              |
-| Bounded-context practice in domain modeling treats role names as local to a context and unsafe across boundaries without translation.                | Domain-driven design and socio-technical architecture practice around bounded contexts and explicit translation.                                              | Require bounded context for role use and reject global role meaning.                        | Two teams can reuse the same role word only after context and alignment are named.                                               |
-| Assurance and evidence practice treats documents, standards, reports, datasets, and proofs as evidence or source objects rather than agents.         | Safety, assurance-case, model-card, provenance, and evidence-management practice; ISO 26262:2018 and NIST SP 800-53 Rev. 5 are ordinary engineering examples. | Keep epistemes outside work-facing role holding.                                            | A standard, model card, theorem, report, or dashboard can be evidence or source material without becoming the doer of work.      |
-| Relation and signature modeling treat argument positions as relation positions, not as social or work roles.                                         | `A.6.5` SlotSpec discipline and ontology-design-pattern practice for typed relation positions.                                                                | Keep SlotKind and role value distinct.                                                      | "Argument role", "parameter role", and "field role" are repaired through relation-slot discipline before any role claim is made. |
+| Practice line                                                                                                                                                     | Source and status                                                                                                                               | FPF mutation                                                                                                                                                             | Practical consequence                                                                                    |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------|
+| Current foundational-ontology work separates role-like classification, relation participation, aspects, and situations instead of treating them as one category.  | Almeida, Guizzardi, Sales, and Fonseca, [gUFO](https://arxiv.org/abs/2603.20948), 2026 preprint; current comparator, not an imported hierarchy. | Use local C.3 kinds for work-facing classification, direct relation species for assignments, A.6.5 for participant slots, and separate state and episteme-use relations. | Different classifications and assignments do not create system subtypes or role parts.                   |
+| DOLCE separates endurants, perdurants, qualities, abstracts, dependence, and constitution but does not itself settle FPF system-role-kind or assignment identity. | DOLCE 2022 axiomatization; bounded comparator.                                                                                                  | Preserve system, kind, relation occurrence, Work, quality, and episteme distinctions under their FPF governors.                                                          | A borrowed category label cannot replace the local identity and predicate law.                           |
+| DDD makes model applicability local and Context Mapping a method applied to actual model-use boundaries.                                                          | Evans, *Domain-Driven Design Reference* (2015) and current context-mapping practice.                                                            | Use a selected `BoundedModelUseStructure` only in the receiving claim it changes; keep the Method and performed Work separate.                                           | A plant assignment needs its local kind and species, not a universal context participant.                |
+| FPF relation and episteme discipline separates description and publication from evidence, reliance, source use, and the systems performing Work.                  | Current C.2.1, A.6.REL, A.10, A.15.4, and E.17 line.                                                                                            | Require an admitted system for system-role classification and keep each episteme in the relation that makes its use relevant.                                            | A team can use a standard as a constraint source without making the standard a performer or role holder. |
+
+SysML is not used as a SoTA authority or lineage here. A modeling notation does not decide the identity of a system-role kind, classification judgment, assignment occurrence, participant slot, responsibility relation, or Work.
 
 ### A.2:13 - Relations
 
-**Builds on:** `A.1` for holon and system grounding; `A.6.5` for SlotSpec discipline; `E.24` for ontic and slot-relation discipline; `A.6.RSIR` for first-level wording-use recovery.
+**Builds on:** `A.1` for system admission; `A.1.1` for selecting a `BoundedModelUseStructure` only when its complete decision-relevant relation organization, applied constraints, and named selection-use frame are current; `C.3`, `C.3.1`, and `C.3.2` for local kind identity, declaration, classification, extension, subkind, and continuity; `A.6.0`, `A.6.5`, and `A.6.REL` for assignment declarations and occurrences; `C.2.1` for interpretation and assertion epistemes.
 
-**Governs with:** `A.2.1` for role assignment; `A.2.2` for capability; `A.2.5` for role state; `A.2.7` for role relation structure and role-algebra lens boundary; `A.15` for role-method-work alignment; Part F role-description and naming patterns for durable role names.
+**Governs with:** `A.2.1` for system-role assignments; `A.2.2` for capability; `A.2.5` for assignment state; `A.2.7` for relations among system-role kinds; `A.15` and `F.6` for Method-Work alignment and attribution; `F.4`, `F.5`, and `F.18` for description and naming.
 
-**Keeps separate from:** `A.10`, `B.3`, `C.2.1`, `C.28`, `E.17`, `F.10`, and direct evidence-use, status-use, source-use, publication-use, requirement-use, definition-use, explanation-use, assurance-use, and gate patterns for episteme use.
+**Crosses locality through:** `C.3.3` for exact local kinds, `F.9` for relations between exact F.17 cells, and `A.6.9` for ambiguous sameness wording across local boundaries, followed by a bounded-use assertion and current reliance when the receiving action needs them. A matching name, Bridge, card, or selected model-use structure creates neither identity nor assignment.
 
-**Precision-restoration applications:** If source wording uses "role" for interface, signature, argument, field, parameter, capability, method, function, concern, interest, status, evidence, or publication, apply `A.6.RSIR` only until the governed object or claim kind is recovered, then apply the direct governing pattern.
+**Keeps separate from:** responsibility, commitment, permission, authority, state, capability, Method, Work, evidence, reliance, publication, external-rule, and currentness relations. Apply `E.10.ROLE` to ambiguous wording and `A.6.RSIR` only when relation participation or its declaration must be recovered.
 
